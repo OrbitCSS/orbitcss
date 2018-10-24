@@ -1,0 +1,12 @@
+$panel-radius: 4px !default;
+$panel-shadow: 0 0 10px 0 rgba(10, 10, 10, 0.21) !default;
+$panel-padding: calculateRem(16) !default;
+
+.panel {
+  border-radius: $panel-radius;
+  box-shadow: $panel-shadow;
+  box-sizing: border-box;
+  display: block;
+  padding: $panel-padding;
+  width: 100%;
+}

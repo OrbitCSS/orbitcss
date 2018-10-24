@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+
+$small-max: 768px !default;
+$medium-min: 769px !default;
+$large-min: 1025px !default;
+$font-base: 16 !default;
+$body-font-family: 'Roboto', sans-serif !default;
+$body-font-color: $black;
+$body-font-size: calculateRem(16) !default;
+$body-font-weight: 400 !default;
+$body-line-height: 1.6 !default;
+$hr-color: #f5f5f5 !default;
+$hr-height: 2px !default;
+$hr-margin: 20px 0 !default;
+
+html {
+  font-size: 100%;
+  &.has-clip {
+    overflow: hidden;
+  }
+}
+
+body, html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  color: $body-font-color;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  line-height: $body-line-height;
+  min-height: 100%;
+  padding: 0;
+}
+
+body, html, h1, h2, h3, h4, h5, h6, ul, ol, p, dt, dd, div  {
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  background-color: $hr-color;
+  border: none;
+  height: $hr-height;
+  margin: $hr-margin;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: .65rem;
+}
+
+p, span, small, i, b, strong {
+  color: inherit;
+}
+
+img {
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+}
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

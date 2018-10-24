@@ -1,0 +1,69 @@
+@function color($key) {
+  @if map-has-key($color-palette, $key) {
+    @return map-get($color-palette, $key);
+  }
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+@function getTextColor($color) {
+  @if(lightness($color) > 60) {
+    @return color(black);
+  }
+  @else {
+    @return color(white);
+  }
+}
+
+$color-palette: (
+  primary: #6e45e2,
+  warning: #ffdd57,
+  info: #bfd9fe,
+  danger: #ff2b56,
+  success: #00e3ae,
+  black: #393939,
+  dark: #304352,
+  night: #4e4376,
+  white: #ffffff,
+  light: #eef1f5,
+  light-grey: #d7d2cc,
+  dark-grey: #616161,
+  link: #495aff,
+  disabled: #f7f7f7
+) !default;
+
+$primary: color(primary) !default;
+$warning: color(warning) !default;
+$info: color(info) !default;
+$danger: color(danger) !default;
+$success: color(success) !default;
+$black: color(black) !default;
+$dark: color(dark) !default;
+$night: color(night) !default;
+$white: color(white) !default;
+$light: color(light) !default;
+$light-grey: color(light-grey) !default;
+$dark-grey: color(dark-grey) !default;
+$link: color(link) !default;
+$muted: lighten($dark-grey, 35%) !default;
+$disabled: color(disabled) !default;
+
+.has-text {
+  @each $color in $color-palette {
+    &-#{nth($color, 1)} {
+      color: nth($color, 2) !important;
+    }
+  }
+
+  &-muted {
+    color: $muted;
+  }
+}
+
+.has-bg {
+  @each $color in $color-palette {
+    &-#{nth($color, 1)} {
+      background-color: nth($color, 2) !important;
+    }
+  }
+}

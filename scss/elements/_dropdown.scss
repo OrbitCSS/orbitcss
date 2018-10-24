@@ -1,0 +1,109 @@
+$dropdown-background: $white !default;
+$dropdown-border: 1px solid rgba(205, 205, 205, 0.34) !default;
+$dropdown-radius: 6px !default;
+$dropdown-shadow: 0 6px 6px rgba(10, 10, 10, 0.16) !default;
+$dropdown-min-width: 12rem !default;
+$dropdown-padding: 10px 0 !default;
+$dropdown-link-color: $black !default;
+$dropdown-link-padding: 5px 15px !default;
+$dropdown-link-hover: rgba(192, 192, 192, 0.09) !default;
+$dropdown-divider-color: #e9ecef !default;
+$dropdown-divider-margin: 5px 0 !default;
+$dropdown-item-color: $black !default;
+$dropdown-item-padding: 5px 15px !default;
+$dropdown-arrow-color: #7284ff !default;
+
+.dropdown {
+  background-color: $dropdown-background;
+  border: $dropdown-border;
+  border-radius: 6px;
+  box-shadow: $dropdown-shadow;
+  cursor: auto;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  min-width: $dropdown-min-width;
+  opacity: 0;
+  padding: $dropdown-padding;
+  position: absolute;
+  top: 100%;
+  text-align: left;
+  transform: translateY(-5px);
+  transition-duration: 100ms;
+  transition-property: opacity, transform, -webkit-transform;
+  visibility: hidden;
+  z-index: 10;
+
+  &__link {
+    border-radius: 0;
+    color: $dropdown-link-color;
+    cursor: pointer;
+    padding: $dropdown-link-padding;
+
+    a {
+      color: inherit;
+      display: block;
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: $dropdown-link-hover;
+      border-radius: 0;
+    }
+  }
+
+  &__divider {
+    border-top: 1px solid $dropdown-divider-color;
+    margin: $dropdown-divider-margin;
+  }
+
+  &__item {
+    color: $dropdown-item-color;
+    padding: $dropdown-item-padding;
+  }
+}
+
+.has-arrow {
+  padding-right: 35px !important;
+  position: relative;
+}
+
+.has-arrow::after {
+  border: 3px solid $dropdown-arrow-color;
+  border-radius: 2px;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: calculateEm(6);
+  margin-top: -(calculateEm(5));
+  position: absolute;
+  right: calculateEm(15);
+  top: 50%;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: calculateEm(6);
+}
+
+.has-dropdown {
+  display: inline-flex;
+  position: relative;
+
+  &.is-hoverable:hover > .dropdown, &.is-active > .dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  &.is-right {
+    .dropdown {
+      right: 0;
+      left: unset;
+    }
+  }
+
+  .button {
+    margin-bottom: 0.25rem !important;
+  }
+}

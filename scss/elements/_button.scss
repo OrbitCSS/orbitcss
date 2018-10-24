@@ -1,0 +1,235 @@
+$button-type-sizes: 'small' calculateRem(12), 'large' calculateRem(22) !default;
+
+$button-background: $white !default;
+$button-border-color: $light-grey !default;
+$button-border-width: 1px !default;
+$button-border-style: solid !default;
+$button-color: $black !default;
+$button-font-size: calculateRem(16) !default;
+$button-line-height: 1.6 !default;
+$button-margin-bottom: calculateRem(6.4) !default;
+$button-padding: calculateRem(8) calculateRem(12) !default;
+$button-text-align: center !default;
+$button-hover-border: darken($light-grey, 10%) !default;
+$button-radius: 6px !default;
+
+$button-loading-animation: spinner .8s linear infinite !default;
+$button-loading-width: 2px !default;
+$button-loading-color: $light-grey !default;
+
+$button-addon-radius: 6px !default;
+
+$button-group-gap: calculateRem(6.4) !default;
+
+$button-close-background: rgba(57, 57, 57, 0.23) !default;
+$button-close-height: calculateRem(24) !default;
+$button-close-width: calculateRem(24) !default;
+$button-close-hover: rgba(57, 57, 57, 0.41) !default;
+$button-cross-color: $white !default;
+$button-cross-width: 2px !default;
+$button-cross-height: 2px !default;
+
+@mixin button-color($background, $border, $color: getTextColor($background)) {
+  background-color: $background;
+  border-color: $border;
+  color: $color;
+}
+
+.button {
+  align-items: center;
+  border-width: $button-border-width;
+  border-style: $button-border-style;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: $button-font-size;
+  justify-content: center;
+  line-height: $button-line-height;
+  margin-bottom: $button-margin-bottom;
+  padding: $button-padding;
+  text-align: $button-text-align;
+  @include button-color($button-background, $button-border-color, $button-color);
+
+  &.is-rounded {
+    border-radius: $button-radius;
+  }
+
+  @each $size in $button-type-sizes {
+    &.is-#{nth($size, 1)} {
+      font-size: nth($size, 2);
+    }
+  }
+
+  &.is-full {
+    width: 100%;
+  }
+
+  &:hover {
+    border-left-color: $button-hover-border;
+    border-right-color: $button-hover-border;
+    border-color: $button-hover-border;
+  }
+
+  @each $color in $color-palette {
+    &.is-#{nth($color, 1)} {
+      @include button-color(nth($color, 2), transparent);
+      &:hover:not(.is-outline):not([disabled]) {
+        background-color: darken(nth($color, 2), 5%);
+      }
+
+      &.is-outline {
+        @include button-color(#ffffff, nth($color, 2), nth($color, 2));
+        &:hover:not([disabled]) {
+          @include button-color(nth($color, 2), transparent);
+        }
+
+        &.is-loading::after {
+          border-right-color: nth($color, 2);
+          border-top-color: nth($color, 2);
+        }
+      }
+
+      &:not(.is-outline).is-loading::after {
+        border-right-color: getTextColor(nth($color, 2));
+        border-top-color: getTextColor(nth($color, 2));
+      }
+    }
+  }
+
+  &.is-loading {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+
+    &::after {
+      animation: $button-loading-animation;
+      border: $button-loading-width solid $button-loading-color;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      content: ' ';
+      height: 1em;
+      position: absolute;
+      width: 1em;
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .icon {
+    &:first-child:not(:only-child) {
+      margin-right: 0.45rem;
+    }
+
+    &:last-child:not(:only-child) {
+      margin-left: 0.45rem;
+    }
+  }
+
+  :not(.is-button-group):not(.is-addon-group) > & {
+    align-self: flex-start;
+  }
+}
+
+.is-addon-group, .is-button-group {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  &.has-end {
+    justify-content: flex-end;
+  }
+
+  &.has-centered {
+    justify-content: center;
+  }
+
+  .button {
+    margin-bottom: $button-margin-bottom;
+  }
+}
+
+.is-button-group {
+  & > .button:not(:last-child) {
+    margin-right: $button-group-gap;
+  }
+
+  & > .is-addon-group:not(:last-child) {
+    margin-right: $button-group-gap;
+  }
+}
+
+
+.is-addon-group {
+  & > .button {
+    margin-right: 0;
+
+    &:not(:last-child) {
+      border-right: none;
+    }
+  }
+
+  &.is-rounded .button {
+    &:last-child {
+      border-top-right-radius: $button-addon-radius;
+      border-bottom-right-radius: $button-addon-radius;
+    }
+
+    &:first-child {
+      border-bottom-left-radius: $button-addon-radius;
+      border-top-left-radius: $button-addon-radius;
+    }
+  }
+}
+
+.button--close {
+  align-items: center;
+  background-color: $button-close-background;
+  border: none;
+  border-radius: 50%;
+  box-sizing: border-box;
+  color: $black;
+  cursor: pointer;
+  display: inline-block;
+  height: $button-close-height;
+  position: relative;
+  text-align: center;
+  width: $button-close-width;
+
+  &.has-no-background {
+    background: none;
+
+    &::before, &::after {
+      background-color: $black;
+    }
+  }
+
+  &:not(.has-no-background):hover {
+    background-color: $button-close-hover;
+  }
+
+  &::before, &::after {
+    background-color: $button-cross-color;
+    content: ' ';
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform-origin: center center;
+    top: 50%;
+  }
+
+  &::after {
+    height: $button-cross-height;
+    width: 50%;
+  }
+
+  &::before {
+    height: 50%;
+    width: $button-cross-width;
+  }
+}

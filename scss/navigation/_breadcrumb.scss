@@ -1,0 +1,52 @@
+$breadcrumb-color: $link !default;
+$breadcrumb-disabled-color: lighten($dark-grey, 35%) !default;
+$breadcrumb-active-color: $black !default;
+$breadcrumb-hover-color: $black !default;
+$breadcrumb-separator-color: $black !default;
+$breadcrumb-separator-padding: 0 0.625rem !default;
+$breadcrumb-separator: '/' !default;
+
+.breadcrumb {
+  display: flex;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+
+    li {
+      color: $breadcrumb-color;
+
+      a {
+        color: inherit;
+      }
+
+      &:hover {
+        color: $breadcrumb-hover-color;
+      }
+
+      &.is-disabled {
+        color: $breadcrumb-disabled-color;
+      }
+
+      &.is-active {
+        color: $breadcrumb-active-color;
+      }
+    }
+
+    li + li::before {
+      color: $breadcrumb-separator-color;
+      content: $breadcrumb-separator;
+      padding: $breadcrumb-separator-padding;
+    }
+  }
+
+  &.has-centered {
+    justify-content: center;
+  }
+
+  &.has-end {
+    justify-content: flex-end;
+  }
+}

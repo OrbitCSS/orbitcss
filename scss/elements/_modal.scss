@@ -1,0 +1,72 @@
+$modal-background: $white !default;
+$modal-radius: 6px !default;
+$modal-width: 600px !default;
+$modal-size-variations: 'small' 25%, 'medium' 45%, 'large' 75% !default;
+$modal-padding: 1rem !default;
+
+$modal-overlay-background: transparentize(color(black), 0.3);
+
+.modal {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+
+  &.is-active {
+    display: flex;
+  }
+
+  &__background {
+    background-color: $modal-overlay-background;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__content {
+    background-color: $modal-background;
+    border-radius: $modal-radius;
+    box-sizing: border-box;
+    position: relative;
+    overflow: auto;
+    width: $modal-width;
+
+    @include small {
+      border-radius: 0;
+      width: 100%;
+    }
+
+    @each $size in $modal-size-variations {
+      .modal.is-#{nth($size, 1)} > & {
+        width: nth($size, 2);
+      }
+    }
+
+    .modal.is-full > & {
+      border-radius: 0;
+      height: 100%;
+      height: 100vh;
+      width: 100%;
+    }
+
+    &.has-padding {
+      padding: $modal-padding;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}

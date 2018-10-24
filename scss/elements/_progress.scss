@@ -1,0 +1,64 @@
+$progress-height: 1rem !default;
+$progress-margin-bottom: 0.4rem !default;
+$progress-bar-color: $light-grey !default;
+$progress-bar-value-color: $dark !default;
+
+$pseudo-fill-classes: -moz-progress-bar, -webkit-progress-value, -ms-fill;
+
+.progress {
+  border: none;
+  box-sizing: border-box;
+  height: $progress-height;
+  margin-bottom: $progress-margin-bottom;
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  width: 100%;
+
+  &.is-round {
+    border-radius: 50px;
+
+    &::-webkit-progress-bar {
+      border-radius: 50px;
+    }
+
+    &::#{nth($pseudo-fill-classes, 2)} {
+      border-radius: 50px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &::#{nth($pseudo-fill-classes, 1)} {
+      border-radius: 50px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &::-webkit-progress-bar {
+    background-color: $progress-bar-color;
+  }
+
+  @each $class in $pseudo-fill-classes {
+    &::#{$class} {
+      background-color: $progress-bar-value-color;
+      border: none;
+    }
+  }
+
+  @each $color in $color-palette {
+    &.is-#{nth($color, 1)}::#{nth($pseudo-fill-classes, 3)} {
+      background-color: nth($color, 2);
+    }
+
+    &.is-#{nth($color, 1)}::#{nth($pseudo-fill-classes, 1)} {
+      background-color: nth($color, 2);
+    }
+
+    &.is-#{nth($color, 1)}::#{nth($pseudo-fill-classes, 2)} {
+      background-color: nth($color, 2);
+    }
+  }
+}

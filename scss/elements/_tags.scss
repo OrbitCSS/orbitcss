@@ -1,0 +1,103 @@
+$tag-background: #f3f3f3 !default;
+$tag-border-color: transparent !default;
+$tag-border-style: solid !default;
+$tag-border-width: 1px !default;
+$tag-color: $black !default;
+$tag-font-size: calculateRem(13) !default;
+$tag-line-height: 1.6 !default;
+$tag-height: calculateRem(25.6) !default;
+$tag-radius: 6px !default;
+$tag-group-gap: calculateRem(6.4) !default;
+$tag-group-margin: calculateRem(6.4) !default;
+$tag-addon-radius: $tag-radius !default;
+
+@mixin tag-color($background, $border, $color: getTextColor($background)) {
+  background-color: $background;
+  border-color: $border;
+  color: $color;
+}
+
+.tag {
+  align-items: center;
+  border-style: $tag-border-style;
+  border-width: $tag-border-width;
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: $tag-font-size;
+  height: $tag-height;
+  justify-content: center;
+  line-height: $tag-line-height;
+  padding: 0 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+  @include tag-color($tag-background, $tag-border-color, $tag-color);
+
+  &.is-rounded {
+    border-radius: $tag-radius;
+  }
+
+  &.is-full {
+    width: 100%;
+  }
+
+  @each $color in $color-palette {
+    &.is-#{nth($color, 1)} {
+      @include tag-color(nth($color, 2), transparent);
+
+      &.is-outline {
+        @include tag-color($white, nth($color, 2), nth($color, 2));
+      }
+    }
+  }
+}
+
+:not(.tag-group) > .tag {
+  align-self: flex-start;
+}
+
+.is-tag-group, .is-addon-group {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  &.has-end {
+    justify-content: flex-end;
+  }
+
+  &.has-centered {
+    justify-content: center;
+  }
+
+  .tag {
+      margin-bottom: $tag-group-margin;
+    }
+  }
+
+  .is-tag-group {
+    & > .tag:not(:last-child) {
+      margin-right: $tag-group-gap;
+    }
+
+    & > .is-addon-group:not(:last-child) {
+      margin-right: $tag-group-gap;
+    }
+  }
+
+  .is-addon-group {
+    & > .tag {
+      margin-right: 0;
+    }
+
+    &.is-rounded > .tag {
+      &:last-child {
+        border-top-right-radius: $tag-radius;
+        border-bottom-right-radius: $tag-radius;
+      }
+
+      &:first-child {
+        border-bottom-left-radius: $tag-radius;
+        border-top-left-radius: $tag-radius;
+      }
+    }
+  }

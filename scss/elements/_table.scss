@@ -1,0 +1,86 @@
+$table-border-color: #dbdbdb !default;
+$table-border-width: 1px !default;
+$table-head-border-width: 1px 0 2px !default;
+$table-body-border-width: 0 0 1px !default;
+$table-font-size: calculateRem(16) !default;
+$table-padding: calculateRem(8) calculateRem(10) !default;
+$table-hover: #f9f9f9 !default;
+$table-stripe: #f9f9f9 !default;
+$table-small-padding: calculateRem(4) calculateRem(8) !default;
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: left;
+  width: 100%;
+
+  thead th {
+    border-width: $table-head-border-width;
+  }
+
+  th, td {
+    border: 1px solid $table-border-color;
+    border-width: $table-body-border-width;
+    font-size: $table-font-size;
+    padding: $table-padding;
+  }
+
+  tr:last-child td {
+    border-bottom-width: 0;
+  }
+
+  &.is-bordered {
+    th, td {
+      border: $table-border-width solid $table-border-color;
+    }
+
+    tr:last-child td {
+      border-bottom-width: $table-border-width;
+    }
+  }
+
+  &.is-borderless {
+    th, td {
+      border: none;
+    }
+  }
+
+  &.has-outline {
+    border: $table-border-width solid $table-border-color;
+    border-width: $table-border-width;
+  }
+
+  &.is-hoverable {
+    tbody tr:hover {
+      background-color: $table-hover;
+    }
+  }
+
+  &.is-striped {
+    tbody tr:nth-child(odd) {
+      background-color: $table-stripe;
+    }
+  }
+
+  &.is-striped-even {
+    tbody tr:nth-child(even) {
+      background-color: $table-stripe;
+    }
+  }
+
+  &.is-small {
+    th, td {
+      padding: $table-small-padding;
+    }
+  }
+
+  &.has-scroll {
+    display: block;
+    overflow-x: auto;
+
+    thead tr {
+      white-space: nowrap;
+    }
+  }
+
+}

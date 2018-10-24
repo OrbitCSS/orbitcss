@@ -1,0 +1,90 @@
+$menu-title-color: lighten($dark-grey, 25%) !default;
+$menu-title-font-size: calculateRem(13.6) !default;
+$menu-title-line-height: 1.5 !default;
+$menu-title-padding: calculateRem(8) calculateRem(16) !default;
+$menu-title-case: uppercase !default;
+
+$menu-list-color: $black !default;
+$menu-list-line-height: 1.5 !default;
+$menu-list-padding:.5rem 1.5rem !default;
+$menu-list-active-background: $primary !default;
+$menu-list-active-color: getTextColor($primary) !default;
+$menu-list-hover: rgba(192, 192, 192, 0.09) !default;
+
+$menu-divider: 1px solid #e9ecef !default;
+$menu-divider-margin: calculateRem(8) !default;
+
+$menu-slidedown-border: 1px solid #e9ecef !default;
+$menu-slidedown-margin: calculateRem(12) !default;
+$menu-slidedown-padding-left: calculateRem(12) !default;
+$menu-slidedown-item-padding: 0 calculateRem(12) !default;
+
+.menu {
+  width: 100%;
+
+  &__title {
+    color: $menu-title-color;
+    font-size: $menu-title-font-size;
+    line-height: $menu-title-line-height;
+    padding: $menu-title-padding;
+    margin: 0;
+    text-transform: $menu-title-case;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+
+    .is-active > a {
+      background-color: $menu-list-active-background;
+      color: $menu-list-active-color;
+    }
+
+    li {
+      a {
+        color: $menu-list-color;
+        cursor: pointer;
+        display: block;
+        line-height: $menu-list-line-height;
+        padding: $menu-list-padding;
+      }
+
+      &:not(.is-active) > a:hover {
+        background-color: $menu-list-hover;
+      }
+    }
+  }
+
+  &__divider {
+    border-top: $menu-divider;
+    margin: $menu-divider-margin;
+  }
+
+  &__slidedown {
+    ul.is-open {
+      display: block;
+    }
+
+    ul {
+      border-left: $menu-slidedown-border;
+      list-style: none;
+      display: none;
+      margin: $menu-slidedown-margin;
+      padding-left: $menu-slidedown-padding-left;
+
+      li {
+        padding: $menu-slidedown-item-padding;
+
+        &.is-active > a {
+          background-color: $menu-list-hover;
+          color: $menu-list-color;
+        }
+      }
+    }
+  }
+
+  .button {
+    margin: 0;
+    width: 100%;
+  }
+}

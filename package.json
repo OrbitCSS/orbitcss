@@ -1,0 +1,34 @@
+{
+  "name": "orbitcss",
+  "version": "0.1.0",
+  "description": "Flexbox based CSS framework",
+  "main": "orbit.scss",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:OrbitCSS/orbitcss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OrbitCSS/orbitcss/issues"
+  },
+  "scripts": {
+    "build:sass": "node-sass --output-style expanded orbit.scss css/orbit.css",
+    "build:clean": "cleancss -o css/orbit.min.css css/orbit.css",
+    "build:autoprefixer": "postcss --use autoprefixer --map false --output css/orbit.css css/orbit.css",
+    "build": "npm-run-all build:sass build:autoprefixer build:clean"
+  },
+  "author": "Rhys Hall <rhysnhall@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "scss",
+    "flexbox",
+    "framework"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.3.0",
+    "clean-css-cli": "^4.2.1",
+    "node-sass": "^4.9.2",
+    "npm-run-all": "^4.1.3",
+    "postcss-cli": "^6.0.1"
+  }
+}

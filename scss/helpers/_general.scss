@@ -1,0 +1,120 @@
+.is {
+
+  &-block {
+    display: block !important;
+  }
+
+  &-flex {
+    display: flex !important;
+  }
+
+  &-inline {
+    display: inline !important;
+  }
+
+  &-inline-block {
+    display: inline-block !important;
+  }
+
+  &-inline-flex {
+    display: inline-flex !important;
+  }
+
+  &-hidden {
+    display: none !important;
+  }
+
+  &-invisible {
+    visibility: hidden !important;
+  }
+
+}
+
+.has-no {
+  &-padding {
+    padding: 0 !important;
+
+    &-top {
+      padding-top: 0 !important;
+    }
+
+    &-bottom {
+      padding-bottom: 0 !important;
+    }
+  }
+
+  &-margin {
+    margin: 0 !important;
+  }
+
+  &-border {
+    border: none !important;
+  }
+
+  &-shadow {
+    box-shadow: none !important;
+  }
+}
+
+.has-padding {
+  &-only-sides {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.has-text {
+  &-left {
+    text-align: left !important;
+  }
+
+  &-right {
+    text-align: right !important;
+  }
+
+  &-center {
+    text-align: center !important;
+  }
+}
+
+.is-margin-center {
+  margin: 0 auto !important;
+}
+
+.is-float {
+  &-left {
+    float: left;
+  }
+
+  &-right {
+    float: right;
+  }
+}
+
+.has-font {
+  &-normal {
+    font-weight: normal !important;
+  }
+
+  &-bold {
+    font-weight: bold !important;
+  }
+}
+
+.is-vertically-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.is-mobile-only {
+  @include medium {
+    display: none !important;
+  }
+}
+
+.is-desktop-only {
+  @include small {
+    display: none !important;
+  }
+}

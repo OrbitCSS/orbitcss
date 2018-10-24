@@ -1,0 +1,126 @@
+@function title-size($key) {
+  @if map-has-key($title-size, $key) {
+    @return map-get($title-size, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $title-size.";
+  @return null;
+}
+
+$list-style-type: disc !default;
+$list-margin-left: calculateRem(20) !default;
+$list-margin-top: calculateRem(16) !default;
+
+$title-font-family: 'Lato', sans-serif;
+$title-font-weight: 600 !default;
+$title-line-height: 1.4 !default;
+$title-margin-bottom: calculateRem(7.2) !default;
+
+$subtitle-margin-bottom: calculateRem(16) !default;
+$subtitle-margin-top: calculateRem(-6.4) !default;
+$subtitle-font-weight: 400 !default;
+$subtitle-line-height: $title-line-height !default;
+$subtitle-color: #838383;
+
+$blockquote-border-left: 1px solid #d6d6d6 !default;
+$blockquote-color: $black !default;
+$blockquote-margin: calculateRem(16) 0 0 !default;
+$blockquote-padding: 0.5rem 0 0.5rem 1.25rem !default;
+$cite-font-size: calculateRem(13) !default;
+$cite-color: $black !default;
+
+$abbr-border-bottom: 1px dotted $black !default;
+
+%title {
+  display: block;
+  font-family: $title-font-family;
+  font-weight: $title-font-weight;
+  line-height: $title-line-height;
+  margin-bottom: $title-margin-bottom;
+
+  &:not(.subtitle) + .subtitle {
+    margin-top: $subtitle-margin-top;
+    margin-bottom: $subtitle-margin-bottom;
+  }
+}
+
+$title-sizes: 'very-big-title' h1, 'big-title' h2, 'medium-title' h3, 'title' h4, 'small-title' h5, 'very-small-title' h6;
+
+$title-size: (
+  h1: calculateRem(46),
+  h2: calculateRem(40),
+  h3: calculateRem(30),
+  h4: calculateRem(24),
+  h5: calculateRem(20),
+  h6: calculateRem(16)
+) !default;
+
+ul {
+  list-style-type: $list-style-type;
+  margin-left: $list-margin-left;
+  margin-top: $list-margin-top;
+
+  ul, ol, dl {
+    margin-top: 0;
+  }
+
+  &.has-no-list-style {
+    list-style-type: none;
+  }
+}
+
+ol {
+  margin-left: $list-margin-left;
+  margin-top: $list-margin-top;
+
+  ul, ol {
+    margin-top: 0;
+  }
+}
+
+ul, ol {
+  list-style-position: outside;
+}
+
+dl {
+  dt {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+}
+
+@each $size in $title-sizes {
+  #{nth($size, 2)}, .is-#{nth($size, 1)} {
+    @extend %title;
+    font-size: title-size(nth($size, 2));
+  }
+}
+
+.subtitle {
+  color: $subtitle-color;
+  font-weight: $subtitle-font-weight;
+  line-height: $subtitle-line-height;
+}
+
+blockquote {
+  border-left: $blockquote-border-left;
+  color: $blockquote-color;
+  margin: $blockquote-margin;
+  padding: $blockquote-padding;
+
+  cite {
+    color: $cite-color;
+    display: block;
+    font-size: $cite-font-size;
+
+    &::before {
+      content: "- ";
+    }
+  }
+}
+
+abbr {
+  border-bottom: $abbr-border-bottom;
+  cursor: help;
+  text-decoration: none;
+}

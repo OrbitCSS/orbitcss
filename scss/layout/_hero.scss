@@ -1,0 +1,33 @@
+$hero-padding: 4rem 1.5rem !default;
+$hero-sizes: 'medium' (9rem 1.5rem), 'large' (16rem 1.5rem) !default;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: $hero-padding;
+  }
+
+  &__header, &__footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  @each $size in $hero-sizes {
+    &.is-#{nth($size, 1)} > &__content {
+      padding: nth($size, 2);
+    }
+  }
+
+  &.is-full {
+    min-height: 100vh;
+
+    .hero__content {
+      align-items: center;
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+$col-padding: calculateRem(10) !default;
+$col-margin-top: calculateRem(8) !default;
+$col-margin-bottom: calculateRem(8) !default;
+$max-cols: 12 !default;
+$col-percentage: 100 / $max-cols;
+
+$grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33.333333%, 'two-thirds' 66.666666%, 'full' 100%, 'one-fifth' 20%, 'two-fifths' 40%, 'three-fifths' 60%, 'four-fifths' 80%;
+
+.grid {
+  display: flex !important;
+  flex-wrap: wrap;
+
+  &.has-centered {
+    justify-content: center;
+
+    &.is-vertical {
+      align-items: center;
+    }
+  }
+
+  &.has-end {
+    justify-content: flex-end;
+  }
+
+  &.is-reversed {
+    flex-direction: row-reverse;
+  }
+
+  &.has-spacing {
+    justify-content: space-between;
+  }
+
+  &.has-row-margin {
+    .column {
+      margin-bottom: $col-margin-bottom;
+      margin-top: $col-margin-top;
+    }
+  }
+
+  &.is-vertical {
+    flex-direction: column;
+  }
+
+  .column {
+    box-sizing: border-box;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: $col-padding;
+
+    @include small {
+      flex: none;
+      width: 100%;
+    }
+
+    &.is-end {
+      margin-left: auto;
+    }
+
+    &.is-center {
+      margin: 0 auto;
+    }
+  }
+
+  &.has-no-col-padding > .column {
+    padding: 0;
+  }
+
+  @each $size in $grid-sizes {
+    .column.is-#{nth($size, 1)} {
+      @include medium {
+        flex: none;
+        width: nth($size, 2);
+      }
+    }
+
+    .column.is-mobile-#{nth($size, 1)} {
+      flex: none;
+      width: nth($size, 2);
+    }
+
+    @if(nth($size, 1) != 'full') {
+      .column.is-offset-#{nth($size, 1)} {
+        @include medium {
+          margin-left: nth($size, 2);
+        }
+      }
+
+      .column.is-mobile-offset-#{nth($size, 1)} {
+        margin-left: nth($size, 2);
+      }
+    }
+  }
+
+  .is-shrink {
+    flex: none;
+  }
+
+  @for $i from 1 through $max-cols {
+    .column.is-#{$i} {
+      @include medium {
+        flex: none;
+        width: $col-percentage * $i + %;
+      }
+    }
+
+    .column.is-mobile-#{$i} {
+      flex: none;
+      width: $col-percentage * $i + %;
+    }
+
+    @if($i != $max-cols) {
+      .column.is-offset-#{$i} {
+        @include medium {
+          margin-left: $col-percentage * $i + %;
+        }
+      }
+
+      .column.is-offset-mobile-#{$i} {
+        margin-left: $col-percentage * $i + %;
+      }
+    }
+  }
+
+}

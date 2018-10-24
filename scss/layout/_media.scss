@@ -1,0 +1,45 @@
+$media-border-width: 1px !default;
+$media-border-style: solid !default;
+$media-border-color: #e9ecef !default;
+$media-padding-top: 1rem !default;
+$media-margin-top: 1rem !default;
+
+%media-divide {
+  border-top: $media-border-width $media-border-style $media-border-color;
+  margin-top: $media-padding-top;
+  padding-top: $media-margin-top;
+}
+
+.media {
+  align-items: flex-start;
+  box-sizing: border-box;
+  display: flex;
+
+  & + .media {
+    @extend %media-divide;
+  }
+
+  &__content {
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    & .media {
+      @extend %media-divide;
+    }
+  }
+
+  &__left {
+    margin-right: 1rem;
+  }
+
+  &__right {
+    margin-left: 1rem;
+  }
+
+  &__right, &__left {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
