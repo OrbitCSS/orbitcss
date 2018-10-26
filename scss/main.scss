@@ -26,33 +26,33 @@
   }
 }
 
-@import '/helpers/colors';
-@import '/base/general';
-@import '/helpers/typography';
-@import '/helpers/general';
+@import 'helpers/colors';
+@import 'base/general';
+@import 'helpers/typography';
+@import 'helpers/general';
 
-@import '/layout/section';
-@import '/layout/grid';
-@import '/layout/container';
-@import '/layout/hero';
-@import '/layout/media';
+@import 'layout/section';
+@import 'layout/grid';
+@import 'layout/container';
+@import 'layout/hero';
+@import 'layout/media';
 
-@import '/form/form';
+@import 'form/form';
 
-@import '/elements/panel';
-@import '/elements/button';
-@import '/elements/alert';
-@import '/elements/tags';
-@import '/elements/table';
-@import '/elements/card';
-@import '/elements/modal';
-@import '/elements/progress';
-@import '/elements/image';
-@import '/elements/dropdown';
-@import '/elements/tabs';
+@import 'elements/panel';
+@import 'elements/button';
+@import 'elements/alert';
+@import 'elements/tags';
+@import 'elements/table';
+@import 'elements/card';
+@import 'elements/modal';
+@import 'elements/progress';
+@import 'elements/image';
+@import 'elements/dropdown';
+@import 'elements/tabs';
 
-@import '/navigation/navbar';
-@import '/navigation/pagination';
-@import '/navigation/breadcrumb';
-@import '/navigation/menu';
-@import '/navigation/accordion';
+@import 'navigation/navbar';
+@import 'navigation/pagination';
+@import 'navigation/breadcrumb';
+@import 'navigation/menu';
+@import 'navigation/accordion';
