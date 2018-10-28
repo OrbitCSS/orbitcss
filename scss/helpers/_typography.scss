@@ -57,23 +57,22 @@ $title-size: (
 
 ul {
   list-style-type: $list-style-type;
-  margin-left: $list-margin-left;
-  margin-top: $list-margin-top;
-
-  ul, ol, dl {
-    margin-top: 0;
-  }
 
   &.has-no-list-style {
+    list-style-type: none;
+    margin-left: 0;
+  }
+
+  &.has-no-list-style ul {
     list-style-type: none;
   }
 }
 
-ol {
+ol, ul {
   margin-left: $list-margin-left;
   margin-top: $list-margin-top;
 
-  ul, ol {
+  ul, ol, dl {
     margin-top: 0;
   }
 }

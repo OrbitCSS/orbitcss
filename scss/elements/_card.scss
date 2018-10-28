@@ -4,7 +4,7 @@ $card-border-style: solid !default;
 $card-shadow: 0 0 3px 0 rgba(10, 10, 10, 0.10) !default;
 $card-radius: 6px !default;
 $card-header-background: rgba(0, 0, 0, .03) !default;
-$card-padding: 0.625rem 1rem !default;
+$card-header-padding: 0.625rem 1rem !default;
 $card-content-padding: 1rem !default;
 $card-footer-padding:  0.35rem 1rem !default;
 
@@ -48,7 +48,7 @@ $card-footer-padding:  0.35rem 1rem !default;
     align-items: center;
     background-color: $card-header-background;
     display: flex;
-    padding: $card-padding;
+    padding: $card-header-padding;
 
     .button--close {
       margin-left: auto;

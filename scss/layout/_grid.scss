@@ -7,7 +7,7 @@ $col-percentage: 100 / $max-cols;
 $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33.333333%, 'two-thirds' 66.666666%, 'full' 100%, 'one-fifth' 20%, 'two-fifths' 40%, 'three-fifths' 60%, 'four-fifths' 80%;
 
 .grid {
-  display: flex !important;
+  display: flex;
   flex-wrap: wrap;
 
   &.has-centered {
@@ -74,9 +74,11 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
       }
     }
 
-    .column.is-mobile-#{nth($size, 1)} {
-      flex: none;
-      width: nth($size, 2);
+    @include small {
+      .column.is-mobile-#{nth($size, 1)} {
+        flex: none;
+        width: nth($size, 2);
+      }
     }
 
     @if(nth($size, 1) != 'full') {
@@ -86,8 +88,10 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
         }
       }
 
-      .column.is-mobile-offset-#{nth($size, 1)} {
-        margin-left: nth($size, 2);
+      @include small {
+        .column.is-mobile-offset-#{nth($size, 1)} {
+          margin-left: nth($size, 2);
+        }
       }
     }
   }
@@ -104,9 +108,11 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
       }
     }
 
-    .column.is-mobile-#{$i} {
-      flex: none;
-      width: $col-percentage * $i + %;
+    @include small {
+      .column.is-mobile-#{$i} {
+        flex: none;
+        width: $col-percentage * $i + %;
+      }
     }
 
     @if($i != $max-cols) {
@@ -116,8 +122,10 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
         }
       }
 
-      .column.is-offset-mobile-#{$i} {
-        margin-left: $col-percentage * $i + %;
+      @include small {
+        .column.is-offset-mobile-#{$i} {
+          margin-left: $col-percentage * $i + %;
+        }
       }
     }
   }
