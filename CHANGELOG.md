@@ -4,7 +4,7 @@
 
 ### Bug fixes
 
-* Change CSS ordering to prevent grid visibility overriding the helper visibility classes
+* Changed CSS ordering to prevent grid visibility overriding the helper visibility classes
 * Fixed mobile only column display issue
 
 ### Improvements
