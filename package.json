@@ -23,7 +23,8 @@
     "css",
     "scss",
     "flexbox",
-    "framework"
+    "framework",
+    "sass"
   ],
   "devDependencies": {
     "autoprefixer": "^9.3.0",
