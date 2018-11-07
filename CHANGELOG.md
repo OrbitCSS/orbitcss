@@ -1,5 +1,15 @@
 # OrbitCSS Changelog
 
+## 0.1.2
+
+### Bug fixes
+
+* Added a default statement to the `$title-font-family` variable.
+
+### Improvements
+
+* Added support for a `.is-mobile-column` class. Prevents a column with no pre-defined size from taking on 100% width on mobile devices.
+
 ## 0.1.1
 
 ### Bug fixes

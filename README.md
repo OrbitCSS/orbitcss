@@ -15,12 +15,12 @@ OrbitCSS can be added to your project by adding either of the following [jsDeliv
 
 Compressed CSS
 ```sh
-https://cdn.jsdelivr.net/npm/orbitcss@0.1.0/css/orbit.min.css
+https://cdn.jsdelivr.net/npm/orbitcss@0.1.2/css/orbit.min.css
 ```
 
 Uncompressed CSS
 ```sh
-https://cdn.jsdelivr.net/npm/orbitcss@0.1.0/css/orbit.css
+https://cdn.jsdelivr.net/npm/orbitcss@0.1.2/css/orbit.css
 ```
 
 ### Github
