@@ -11,7 +11,7 @@ $list-style-type: disc !default;
 $list-margin-left: calculateRem(20) !default;
 $list-margin-top: calculateRem(16) !default;
 
-$title-font-family: 'Lato', sans-serif;
+$title-font-family: 'Lato', sans-serif !default;
 $title-font-weight: 600 !default;
 $title-line-height: 1.4 !default;
 $title-margin-bottom: calculateRem(7.2) !default;

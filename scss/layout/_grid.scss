@@ -49,8 +49,10 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
     padding: $col-padding;
 
     @include small {
-      flex: none;
-      width: 100%;
+      &:not(.is-mobile-column) {
+        flex: none;
+        width: 100%;
+      }
     }
 
     &.is-end {

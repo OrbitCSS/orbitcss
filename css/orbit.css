@@ -453,7 +453,7 @@ abbr {
 }
 
 @media (max-width: 768px) {
-  .grid .column {
+  .grid .column:not(.is-mobile-column) {
     flex: none;
     width: 100%;
   }
