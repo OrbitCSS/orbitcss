@@ -1,5 +1,19 @@
 # OrbitCSS Changelog
 
+## 0.1.3
+
+### Bug fixes
+
+* Set default input and select border radius to 0. Select elements had rounded borders on Safari.
+
+### Improvements
+
+* Move accordion.scss to to the elements directory.
+* Added calcColWidth(int) function to the grid.
+* Add column support for the desktop viewport.
+* Added padding to the container element on small viewports.
+
+
 ## 0.1.2
 
 ### Bug fixes

@@ -62,6 +62,7 @@ form, input, textarea, select {
 
 input[type="text"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="password"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="week"], input[type="url"], textarea, select {
   border: $input-border;
+  border-radius: 0;
   box-shadow: $input-shadow;
   box-sizing: border-box;
   font-size: $input-font-size;

@@ -20,7 +20,7 @@ https://cdn.jsdelivr.net/npm/orbitcss@0.1.2/css/orbit.min.css
 
 Uncompressed CSS
 ```sh
-https://cdn.jsdelivr.net/npm/orbitcss@0.1.2/css/orbit.css
+https://cdn.jsdelivr.net/npm/orbitcss@0.1.3/css/orbit.css
 ```
 
 ### Github
