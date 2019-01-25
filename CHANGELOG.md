@@ -1,5 +1,11 @@
 # OrbitCSS Changelog
 
+## 0.1.4
+
+### Bug fixes
+
+* Fix calcColWidth() function converting units to string.
+
 ## 0.1.3
 
 ### Bug fixes

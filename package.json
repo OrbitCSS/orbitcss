@@ -1,6 +1,6 @@
 {
   "name": "orbitcss",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Flexbox based CSS framework",
   "main": "orbit.scss",
   "homepage": "https://orbitcss.com",

@@ -7,7 +7,7 @@ $col-percentage: 100 / $max-cols;
 $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33.333333%, 'two-thirds' 66.666666%, 'full' 100%, 'one-fifth' 20%, 'two-fifths' 40%, 'three-fifths' 60%, 'four-fifths' 80%;
 
 @function calcColWidth($size) {
-  @return $col-percentage * $size + '%';
+  @return $col-percentage * $size * 1%;
 }
 
 .grid {
