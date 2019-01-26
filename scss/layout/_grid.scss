@@ -80,6 +80,16 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
       }
     }
 
+    @if(nth($size, 1) != 'full') {
+      .column.is-offset-#{nth($size, 1)} {
+        @include medium {
+          margin-left: nth($size, 2);
+        }
+      }
+    }
+  }
+
+  @each $size in $grid-sizes {
     @include small {
       .column.is-mobile-#{nth($size, 1)} {
         flex: none;
@@ -93,14 +103,10 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
         width: nth($size, 2);
       }
     }
+  }
 
+  @each $size in $grid-sizes {
     @if(nth($size, 1) != 'full') {
-      .column.is-offset-#{nth($size, 1)} {
-        @include medium {
-          margin-left: nth($size, 2);
-        }
-      }
-
       @include small {
         .column.is-mobile-offset-#{nth($size, 1)} {
           margin-left: nth($size, 2);
@@ -134,13 +140,6 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
       }
     }
 
-    @include large {
-      .column.is-desktop-#{$i} {
-        flex: none;
-        width: calcColWidth($i);
-      }
-    }
-
     @if($i != $max-cols) {
       .column.is-offset-#{$i} {
         @include medium {
@@ -154,6 +153,20 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
         }
       }
 
+    }
+  }
+
+  @for $i from 1 through $max-cols {
+    @include large {
+      .column.is-desktop-#{$i} {
+        flex: none;
+        width: calcColWidth($i);
+      }
+    }
+  }
+
+  @for $i from 1 through $max-cols {
+    @if($i != $max-cols) {
       @include large {
         .column.is-offset-desktop-#{i} {
           margin-left: calcColWidth($i);

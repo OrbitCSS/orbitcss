@@ -1,5 +1,12 @@
 # OrbitCSS Changelog
 
+## 0.1.5
+
+### Bug fixes
+
+* Reorder grid sizes to ensure desktop columns are given priority
+* Remove 100% width from container
+
 ## 0.1.4
 
 ### Bug fixes
