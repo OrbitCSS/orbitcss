@@ -6,7 +6,6 @@ $tab-item-active-color: $link !default;
 $tab-content-padding: 1rem !default;
 
 .tabs {
-  box-sizing: border-box;
   width: 100%;
 
   &.has-centered {
@@ -23,7 +22,7 @@ $tab-content-padding: 1rem !default;
 
   @each $color in $color-palette {
     &.is-#{nth($color, 1)} {
-      .tabs__item.is-active {
+      .tabs__item.is-active, .tabs__item:hover {
         background-color: nth($color, 2);
         border-bottom-color: transparent;
         color: getTextColor(nth($color, 2));
@@ -86,7 +85,7 @@ $tab-content-padding: 1rem !default;
       color: inherit;
     }
 
-    &.is-active {
+    &.is-active, &:hover {
       color: $tab-item-active-color;
       border-bottom: $tab-bar-width solid $tab-item-active-color;
     }

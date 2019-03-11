@@ -75,14 +75,14 @@ $dropdown-arrow-color: #7284ff !default;
   border-top: 0;
   content: " ";
   display: block;
-  height: calculateEm(6);
-  margin-top: -(calculateEm(5));
+  height: 0.625em;
+  margin-top: -0.4em;
   position: absolute;
   right: calculateEm(15);
   top: 50%;
   transform: rotate(-45deg);
   transform-origin: center;
-  width: calculateEm(6);
+  width: 0.625em;
 }
 
 .has-dropdown {

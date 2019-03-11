@@ -11,6 +11,9 @@ $card-footer-padding:  0.35rem 1rem !default;
 .card {
   border: $card-border-width $card-border-style $card-border-color;
   box-shadow: $card-shadow;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &.is-rounded {
     border-radius: $card-radius;
@@ -24,6 +27,7 @@ $card-footer-padding:  0.35rem 1rem !default;
   overflow: hidden;
 
   .card__content {
+    flex-grow: 1;
     overflow: auto;
   }
 
@@ -33,7 +37,6 @@ $card-footer-padding:  0.35rem 1rem !default;
 }
 
 .card, .card--modal {
-  box-sizing: border-box;
 
   .card__image {
     display: block;

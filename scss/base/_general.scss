@@ -61,11 +61,14 @@ p, span, small, i, b, strong {
 }
 
 img {
-  box-sizing: border-box;
   display: block;
   height: auto;
   max-width: 100%;
   position: relative;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
 }
 
 @keyframes spinner {

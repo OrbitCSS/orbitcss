@@ -5,7 +5,6 @@ $panel-padding: calculateRem(16) !default;
 .panel {
   border-radius: $panel-radius;
   box-shadow: $panel-shadow;
-  box-sizing: border-box;
   display: block;
   padding: $panel-padding;
   width: 100%;

@@ -11,8 +11,8 @@ $input-disabled-border: $disabled !default;
 $input-disabled-color: #afafaf !default;
 
 $select-arrow-color: #7284ff !default;
-$select-arrow-height: calculateEm(6);
-$select-arrow-width: calculateEm(6);
+$select-arrow-height: calculateEm(10);
+$select-arrow-width: calculateEm(10);
 $select-multiple-padding: .5rem 1rem !default;
 $select-padding: calculateRem(8) !default;
 
@@ -61,10 +61,10 @@ form, input, textarea, select {
 }
 
 input[type="text"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="password"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="week"], input[type="url"], textarea, select {
+  background-color: $white;
   border: $input-border;
   border-radius: 0;
   box-shadow: $input-shadow;
-  box-sizing: border-box;
   font-size: $input-font-size;
   font-family: inherit;
   line-height: $input-line-height;
@@ -134,7 +134,7 @@ textarea {
     content: " ";
     display: block;
     height: $select-arrow-height;
-    margin-top: -(calculateEm(5));
+    margin-top: -0.4em;
     pointer-events: none;
     position: absolute;
     right: calculateEm(15);
@@ -192,7 +192,6 @@ label:not(:last-child) {
 
   label, span {
     border: $input-border;
-    box-sizing: border-box;
     font-size: 1rem;
     font-family: inherit;
     line-height: 1.5;
@@ -304,7 +303,6 @@ label:not(:last-child) {
 
   input[type="range"] {
     background: transparent;
-    box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;

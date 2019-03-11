@@ -15,12 +15,12 @@ OrbitCSS can be added to your project by adding either of the following [jsDeliv
 
 Compressed CSS
 ```sh
-https://cdn.jsdelivr.net/npm/orbitcss@0.1.2/css/orbit.min.css
+https://cdn.jsdelivr.net/npm/orbitcss@0.1.6/css/orbit.min.css
 ```
 
 Uncompressed CSS
 ```sh
-https://cdn.jsdelivr.net/npm/orbitcss@0.1.3/css/orbit.css
+https://cdn.jsdelivr.net/npm/orbitcss@0.1.6/css/orbit.css
 ```
 
 ### Github
@@ -35,7 +35,7 @@ You can browse the [online documentation here](https://orbitcss.com/documentatio
 ## Contributing
 Help OrbitCSS improve by contributing.
 
-Before opening a pull request, please first discuss the proposed changes via Github issue or email.
+Before opening a pull request, please first discuss the proposed changes via Github issue or <a href="mailto:hello@orbitcss.com">email</a>.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/OrbitCSS/orbitcss/blob/master/LICENSE) file for details

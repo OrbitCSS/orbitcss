@@ -36,7 +36,6 @@ $modal-overlay-background: transparentize(color(black), 0.3);
   &__content {
     background-color: $modal-background;
     border-radius: $modal-radius;
-    box-sizing: border-box;
     position: relative;
     overflow: auto;
     width: $modal-width;

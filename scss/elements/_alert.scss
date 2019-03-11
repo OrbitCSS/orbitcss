@@ -14,7 +14,6 @@ $alert-padding: calculateRem(16) !default;
   border-width: $alert-border-width;
   border-style: $alert-border-style;
   border-radius: $alert-radius;
-  box-sizing: border-box;
   padding: $alert-padding;
   position: relative;
   width: 100%;

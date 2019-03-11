@@ -4,13 +4,10 @@ $container-max-width-full: calc(100% - (#{$container-padding} * 2));
 .container {
   max-width: $container-max-width;
   margin: 0 auto;
+  width: 100%;
 
   &.is-full {
     max-width: $container-max-width-full;
-    padding: 0 $container-padding;
-  }
-
-  @include small {
     padding: 0 $container-padding;
   }
 }

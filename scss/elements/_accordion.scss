@@ -10,7 +10,6 @@ $accordion-content-padding: calculateRem(16) !default;
 
 .accordion {
   border: $accordion-border;
-  box-sizing: border-box;
   width: 100%;
 
   &__list {

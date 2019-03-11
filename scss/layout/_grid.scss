@@ -46,7 +46,6 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   }
 
   .column {
-    box-sizing: border-box;
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 1;
@@ -123,6 +122,18 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
 
   .is-shrink {
     flex: none;
+  }
+
+  @include small {
+    .is-mobile-shrink {
+      flex: none;
+    }
+  }
+
+  @include large {
+    .is-desktop-shrink {
+      flex: none;
+    }
   }
 
   @for $i from 1 through $max-cols {

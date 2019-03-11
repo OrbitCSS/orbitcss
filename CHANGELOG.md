@@ -1,5 +1,67 @@
 # OrbitCSS Changelog
 
+## 0.1.6
+
+### Bug fixes
+
+* Fix put in place to correct the display issue for <code>.is-loading</code> buttons on mobile view.
+
+### Improvements
+
+* Added styling for <code>.tabs__item:hover</code>.
+* Removed the padding from <code>.containers</code> on mobile viewport.
+* <code>100%</code> width has been added back to the <code>.container</code> element.
+* Added the <code>.is-mobile-shrink</code> and <code>.is-desktop-shrink</code> column classes.
+* Changed <code>.margin-top</code> property to <code>-0.4em</code> for both <code>.is-select::after</code> and <code>.has-arrow::after</code>.
+* Changed <code>width</code> and <code>height</code> properties to <code>0.625em</code> for <code>.has-arrow::after</code>.
+* Flex properties added to the <code>.card</code> element to ensure <code>.card__content</code> grows to available space.
+* Added <code>$white</code> background to all form elements.
+* The <code>.box-sizing: border-box</code> property has been applied to all elements.
+
+### Deprecations
+
+* The <code>.is-outline</code> class for the <code>.tabs__item</code> element will be removed in the next patch. Has currently been removed from the documentation.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/utilities/initial-variables.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$select-arrow-height</code>
+      </td>
+      <td>
+        <code>0.375em</code>
+      </td>
+      <td>
+        <code>0.625em</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$select-arrow-width</code>
+      </td>
+      <td>
+        <code>0.375em</code>
+      </td>
+      <td>
+        <code>0.625em</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 0.1.5
 
 ### Bug fixes

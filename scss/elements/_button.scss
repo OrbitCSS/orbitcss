@@ -39,7 +39,6 @@ $button-cross-height: 2px !default;
   align-items: center;
   border-width: $button-border-width;
   border-style: $button-border-style;
-  box-sizing: border-box;
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
@@ -109,9 +108,13 @@ $button-cross-height: 2px !default;
       border-bottom-color: transparent;
       border-radius: 50%;
       content: ' ';
-      height: 1em;
+      display: block;
+      height: 1.2em;
+      left: calc(50% - (1.2em / 2));
       position: absolute;
-      width: 1em;
+      top: calc(50% - (1.2em / 2));
+      width: 1.2em;
+      position: absolute !important;
     }
   }
 
@@ -192,7 +195,6 @@ $button-cross-height: 2px !default;
   background-color: $button-close-background;
   border: none;
   border-radius: 50%;
-  box-sizing: border-box;
   color: $black;
   cursor: pointer;
   display: inline-block;

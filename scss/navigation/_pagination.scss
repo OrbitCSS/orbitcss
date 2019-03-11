@@ -18,7 +18,6 @@ $pagination-bordered-hover: darken($light-grey, 10%) !default;
 
 .pagination {
   align-items: flex-end;
-  box-sizing: border-box;
   display: flex;
 
   ul {
