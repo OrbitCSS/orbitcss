@@ -27,15 +27,6 @@ $tab-content-padding: 1rem !default;
         border-bottom-color: transparent;
         color: getTextColor(nth($color, 2));
       }
-
-      &.is-outline {
-        .tabs__item.is-active {
-          background-color: $white;
-          border-color: nth($color, 2);
-          border-bottom-color: transparent;
-          color: nth($color, 2);
-        }
-      }
     }
   }
 

@@ -52,10 +52,8 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
     padding: $col-padding;
 
     @include small {
-      &:not(.is-mobile-column) {
-        flex: none;
-        width: 100%;
-      }
+      flex: none;
+      width: 100%;
     }
 
     &.is-end {
@@ -120,19 +118,21 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
     }
   }
 
-  .is-shrink {
+  .column.is-shrink {
     flex: none;
   }
 
   @include small {
-    .is-mobile-shrink {
+    .column.is-mobile-shrink {
       flex: none;
+      width: auto;
     }
   }
 
   @include large {
-    .is-desktop-shrink {
+    .column.is-desktop-shrink {
       flex: none;
+      width: auto;
     }
   }
 
