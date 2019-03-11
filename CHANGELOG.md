@@ -1,5 +1,15 @@
 # OrbitCSS Changelog
 
+## 0.1.7
+
+### Bug fixes
+
+* Removed the previously depreciated class .is-mobile-column from grid.sccs.
+
+### Deprecations
+
+* The <code>.is-outline</code> class for the <code>.tabs__item</code> element has been removed.
+
 ## 0.1.6
 
 ### Bug fixes

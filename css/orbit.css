@@ -455,7 +455,7 @@ abbr {
 }
 
 @media (max-width: 768px) {
-  .grid .column:not(.is-mobile-column) {
+  .grid .column {
     flex: none;
     width: 100%;
   }
@@ -845,19 +845,21 @@ abbr {
   }
 }
 
-.grid .is-shrink {
+.grid .column.is-shrink {
   flex: none;
 }
 
 @media (max-width: 768px) {
-  .grid .is-mobile-shrink {
+  .grid .column.is-mobile-shrink {
     flex: none;
+    width: auto;
   }
 }
 
 @media (min-width: 1025px) {
-  .grid .is-desktop-shrink {
+  .grid .column.is-desktop-shrink {
     flex: none;
+    width: auto;
   }
 }
 
@@ -3438,24 +3440,10 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.tabs.is-primary.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #6e45e2;
-  border-bottom-color: transparent;
-  color: #6e45e2;
-}
-
 .tabs.is-warning .tabs__item.is-active, .tabs.is-warning .tabs__item:hover {
   background-color: #ffdd57;
   border-bottom-color: transparent;
   color: #393939;
-}
-
-.tabs.is-warning.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #ffdd57;
-  border-bottom-color: transparent;
-  color: #ffdd57;
 }
 
 .tabs.is-info .tabs__item.is-active, .tabs.is-info .tabs__item:hover {
@@ -3464,24 +3452,10 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.tabs.is-info.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #bfd9fe;
-  border-bottom-color: transparent;
-  color: #bfd9fe;
-}
-
 .tabs.is-danger .tabs__item.is-active, .tabs.is-danger .tabs__item:hover {
   background-color: #ff2b56;
   border-bottom-color: transparent;
   color: #ffffff;
-}
-
-.tabs.is-danger.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #ff2b56;
-  border-bottom-color: transparent;
-  color: #ff2b56;
 }
 
 .tabs.is-success .tabs__item.is-active, .tabs.is-success .tabs__item:hover {
@@ -3490,24 +3464,10 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.tabs.is-success.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #00e3ae;
-  border-bottom-color: transparent;
-  color: #00e3ae;
-}
-
 .tabs.is-black .tabs__item.is-active, .tabs.is-black .tabs__item:hover {
   background-color: #393939;
   border-bottom-color: transparent;
   color: #ffffff;
-}
-
-.tabs.is-black.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #393939;
-  border-bottom-color: transparent;
-  color: #393939;
 }
 
 .tabs.is-dark .tabs__item.is-active, .tabs.is-dark .tabs__item:hover {
@@ -3516,24 +3476,10 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.tabs.is-dark.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #304352;
-  border-bottom-color: transparent;
-  color: #304352;
-}
-
 .tabs.is-night .tabs__item.is-active, .tabs.is-night .tabs__item:hover {
   background-color: #4e4376;
   border-bottom-color: transparent;
   color: #ffffff;
-}
-
-.tabs.is-night.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #4e4376;
-  border-bottom-color: transparent;
-  color: #4e4376;
 }
 
 .tabs.is-white .tabs__item.is-active, .tabs.is-white .tabs__item:hover {
@@ -3542,24 +3488,10 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.tabs.is-white.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  border-bottom-color: transparent;
-  color: #ffffff;
-}
-
 .tabs.is-light .tabs__item.is-active, .tabs.is-light .tabs__item:hover {
   background-color: #eef1f5;
   border-bottom-color: transparent;
   color: #393939;
-}
-
-.tabs.is-light.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #eef1f5;
-  border-bottom-color: transparent;
-  color: #eef1f5;
 }
 
 .tabs.is-light-grey .tabs__item.is-active, .tabs.is-light-grey .tabs__item:hover {
@@ -3568,24 +3500,10 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.tabs.is-light-grey.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #d7d2cc;
-  border-bottom-color: transparent;
-  color: #d7d2cc;
-}
-
 .tabs.is-dark-grey .tabs__item.is-active, .tabs.is-dark-grey .tabs__item:hover {
   background-color: #616161;
   border-bottom-color: transparent;
   color: #ffffff;
-}
-
-.tabs.is-dark-grey.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #616161;
-  border-bottom-color: transparent;
-  color: #616161;
 }
 
 .tabs.is-link .tabs__item.is-active, .tabs.is-link .tabs__item:hover {
@@ -3594,24 +3512,10 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.tabs.is-link.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #495aff;
-  border-bottom-color: transparent;
-  color: #495aff;
-}
-
 .tabs.is-disabled .tabs__item.is-active, .tabs.is-disabled .tabs__item:hover {
   background-color: #f7f7f7;
   border-bottom-color: transparent;
   color: #393939;
-}
-
-.tabs.is-disabled.is-outline .tabs__item.is-active {
-  background-color: #ffffff;
-  border-color: #f7f7f7;
-  border-bottom-color: transparent;
-  color: #f7f7f7;
 }
 
 .tabs.has-borders .tabs__item, .tabs.has-rounded-borders .tabs__item {
