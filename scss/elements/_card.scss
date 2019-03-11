@@ -67,6 +67,7 @@ $card-footer-padding:  0.35rem 1rem !default;
   }
 
   .card__content {
+    flex-grow: 1;
     padding: $card-content-padding;
 
     &.has-no-padding, .has-no-padding > & {
