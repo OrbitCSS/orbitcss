@@ -27,12 +27,6 @@
 <table class="table is-bordered">
   <tbody>
     <tr>
-      <th class="is-light" colspan="3">
-        File
-        <code>sass/utilities/initial-variables.sass</code>
-      </th>
-    </tr>
-    <tr>
       <th>Variable</th>
       <th>From</th>
       <th>To</th>
