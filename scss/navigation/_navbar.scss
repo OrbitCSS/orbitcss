@@ -18,7 +18,7 @@ $top-burger-transition: .5s !default;
 .top {
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   padding: $top-padding;
   position: relative;
   z-index: 40;

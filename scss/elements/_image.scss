@@ -16,6 +16,9 @@ $image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'medium-square' 16
 }
 
 .image {
+  display: flex;
+  flex-direction: column;
+
   &.is-rounded {
     border-radius: $image-radius;
 

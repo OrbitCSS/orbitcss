@@ -8,10 +8,11 @@ $breadcrumb-separator: '/' !default;
 
 .breadcrumb {
   display: flex;
+  flex-flow: column wrap;
 
   ul {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     list-style: none;
     margin: 0;
 
@@ -42,11 +43,11 @@ $breadcrumb-separator: '/' !default;
     }
   }
 
-  &.has-centered {
+  &.has-centered ul {
     justify-content: center;
   }
 
-  &.has-end {
+  &.has-end ul {
     justify-content: flex-end;
   }
 }

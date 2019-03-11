@@ -6,14 +6,12 @@ $hero-sizes: 'medium' (9rem 1.5rem), 'large' (16rem 1.5rem) !default;
   flex-direction: column;
 
   &__content {
-    flex-grow: 1;
-    flex-shrink: 0;
+    flex: auto;
     padding: $hero-padding;
   }
 
   &__header, &__footer {
-    flex-grow: 0;
-    flex-shrink: 0;
+    flex: none;
   }
 
   @each $size in $hero-sizes {

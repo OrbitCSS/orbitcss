@@ -167,9 +167,15 @@ label:not(:last-child) {
   margin-bottom: $label-bottom-margin;
 }
 
-.is-checkbox > label, input[type="checkbox"] + label, input[type="radio"] + label, .is-radio > label {
-  font-weight: 400;
-  margin-bottom: 0;
+.is-checkbox, .is-radio {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+
+  & > label {
+    font-weight: 400;
+    margin-bottom: 0;
+  }
 }
 
 .is-checkbox input[type="checkbox"] + label, .is-radio input[type="radio"] + label {

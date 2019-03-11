@@ -78,7 +78,7 @@ $button-cross-height: 2px !default;
       }
 
       &.is-outline {
-        @include button-color(#ffffff, nth($color, 2), nth($color, 2));
+        @include button-color(transparent, nth($color, 2), nth($color, 2));
         &:hover:not([disabled]) {
           @include button-color(nth($color, 2), transparent);
         }

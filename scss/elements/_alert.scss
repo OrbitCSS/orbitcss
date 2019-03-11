@@ -14,9 +14,10 @@ $alert-padding: calculateRem(16) !default;
   border-width: $alert-border-width;
   border-style: $alert-border-style;
   border-radius: $alert-radius;
+  display: flex;
+  flex-flow: column nowrap;
   padding: $alert-padding;
   position: relative;
-  width: 100%;
   @include alert-color($white, $alert-border-color, $black);
 
   .button--close {

@@ -57,7 +57,7 @@ $tag-addon-radius: $tag-radius !default;
 .is-tag-group, .is-addon-group {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
 
   &.has-end {

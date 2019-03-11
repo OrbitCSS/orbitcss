@@ -1,5 +1,70 @@
 # OrbitCSS Changelog
 
+## 0.2.0
+
+### Improvements
+
+* Improve flex properties for the <code>Card</code> element.
+* Add <code>.is-shrink</code> class to the <code>.card</code> element.
+* Improve flex properties for the <code>Breadcrumb</code> element to ensure additional <code>ul</code> elements are not inline.
+* Move the <code>.has-centered</code> and <code>.has-end</code> from the <code>ul</code> element to the <code>.breadcrumb</code> element.
+* Improve flex properties for the <code>Alert</code> element.
+* Add transparent background to buttons with the <code>.is-outline</code> helper class.
+* Improve flex properties for the <code>Grid</code> system.
+* Add <code>.is-mobile-auto</code> helper class to allow for equal width columns on smaller views.
+* Add flex properties to the <code>.is-checkbox</code> and <code>.is-radio</code> elements.
+* Improve flex properties for the <code>Hero</code> element.
+* Improve flex properties for the <code>Image</code> element.
+* Improve flex properties for the <code>Media</code> element.
+* Remove width property from <code>.menu</code> element.
+* Improve flex properties for the <code>Modal</code> element.
+* Improve flex properties for the <code>Top</code> element.
+* Improve flex properties for the <code>Tabs</code> element.
+* Reorder color variables to support simpler customization.
+
+### Deprecations
+
+* Remove the $container-max-width variable.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$container-padding</code>
+      </td>
+      <td>
+        <code>10px</code>
+      </td>
+      <td>
+        <code>20px</code>
+      </td>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$menu-slidedown-border</code>
+      </td>
+      <td>
+        <code>1px solid #e9ecef</code>
+      </td>
+      <td>
+        <code>1px solid $light-grey</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 0.1.7
 
 ### Bug fixes

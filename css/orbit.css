@@ -415,7 +415,7 @@ abbr {
 
 .grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 .grid.has-centered {
@@ -448,14 +448,12 @@ abbr {
 }
 
 .grid .column {
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: auto;
   padding: 0.625rem;
 }
 
 @media (max-width: 768px) {
-  .grid .column {
+  .grid .column:not(.is-mobile-auto) {
     flex: none;
     width: 100%;
   }
@@ -1320,8 +1318,8 @@ abbr {
 }
 
 .container.is-full {
-  max-width: calc(100% - (10px * 2));
-  padding: 0 10px;
+  max-width: 100%;
+  padding: 0 20px;
 }
 
 .hero {
@@ -1330,14 +1328,12 @@ abbr {
 }
 
 .hero__content {
-  flex-grow: 1;
-  flex-shrink: 0;
+  flex: auto;
   padding: 4rem 1.5rem;
 }
 
 .hero__header, .hero__footer {
-  flex-grow: 0;
-  flex-shrink: 0;
+  flex: none;
 }
 
 .hero.is-medium > .hero__content {
@@ -1369,9 +1365,7 @@ abbr {
 }
 
 .media__content {
-  flex-basis: auto;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: auto;
 }
 
 .media__left {
@@ -1380,12 +1374,6 @@ abbr {
 
 .media__right {
   margin-left: 1rem;
-}
-
-.media__right, .media__left {
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 0;
 }
 
 form, input, textarea, select {
@@ -1505,7 +1493,13 @@ label:not(:last-child) {
   margin-bottom: 0.4rem;
 }
 
-.is-checkbox > label, input[type="checkbox"] + label, input[type="radio"] + label, .is-radio > label {
+.is-checkbox, .is-radio {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.is-checkbox > label, .is-radio > label {
   font-weight: 400;
   margin-bottom: 0;
 }
@@ -1816,7 +1810,7 @@ label:not(:last-child) {
 }
 
 .button.is-primary.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #6e45e2;
   color: #6e45e2;
 }
@@ -1848,7 +1842,7 @@ label:not(:last-child) {
 }
 
 .button.is-warning.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #ffdd57;
   color: #ffdd57;
 }
@@ -1880,7 +1874,7 @@ label:not(:last-child) {
 }
 
 .button.is-info.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #bfd9fe;
   color: #bfd9fe;
 }
@@ -1912,7 +1906,7 @@ label:not(:last-child) {
 }
 
 .button.is-danger.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #ff2b56;
   color: #ff2b56;
 }
@@ -1944,7 +1938,7 @@ label:not(:last-child) {
 }
 
 .button.is-success.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #00e3ae;
   color: #00e3ae;
 }
@@ -1976,7 +1970,7 @@ label:not(:last-child) {
 }
 
 .button.is-black.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #393939;
   color: #393939;
 }
@@ -2008,7 +2002,7 @@ label:not(:last-child) {
 }
 
 .button.is-dark.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #304352;
   color: #304352;
 }
@@ -2040,7 +2034,7 @@ label:not(:last-child) {
 }
 
 .button.is-night.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #4e4376;
   color: #4e4376;
 }
@@ -2072,7 +2066,7 @@ label:not(:last-child) {
 }
 
 .button.is-white.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #ffffff;
   color: #ffffff;
 }
@@ -2104,7 +2098,7 @@ label:not(:last-child) {
 }
 
 .button.is-light.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #eef1f5;
   color: #eef1f5;
 }
@@ -2136,7 +2130,7 @@ label:not(:last-child) {
 }
 
 .button.is-light-grey.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #d7d2cc;
   color: #d7d2cc;
 }
@@ -2168,7 +2162,7 @@ label:not(:last-child) {
 }
 
 .button.is-dark-grey.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #616161;
   color: #616161;
 }
@@ -2200,7 +2194,7 @@ label:not(:last-child) {
 }
 
 .button.is-link.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #495aff;
   color: #495aff;
 }
@@ -2232,7 +2226,7 @@ label:not(:last-child) {
 }
 
 .button.is-disabled.is-outline {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #f7f7f7;
   color: #f7f7f7;
 }
@@ -2390,9 +2384,10 @@ label:not(:last-child) {
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
+  display: flex;
+  flex-flow: column nowrap;
   padding: 1rem;
   position: relative;
-  width: 100%;
   background-color: #ffffff;
   border-color: rgba(10, 10, 10, 0.25);
   color: #393939;
@@ -2772,7 +2767,7 @@ label:not(:last-child) {
 .is-tag-group, .is-addon-group {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
 }
 
@@ -2877,8 +2872,6 @@ label:not(:last-child) {
 .card {
   border: 1px solid rgba(219, 219, 219, 0.36);
   box-shadow: 0 0 3px 0 rgba(10, 10, 10, 0.1);
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
@@ -2888,7 +2881,6 @@ label:not(:last-child) {
 
 .card--modal {
   display: flex;
-  flex-direction: column;
   max-height: calc(100vh - 75px - 50px);
   overflow: hidden;
 }
@@ -2897,8 +2889,13 @@ label:not(:last-child) {
   overflow: auto;
 }
 
-.card--modal .card__header, .card--modal .card__footer, .card--modal .card_image {
-  flex-shrink: 0;
+.card, .card--modal {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card.has-no-padding .card__header, .card.has-no-padding .card__content, .card.has-no-padding .card__footer, .card--modal.has-no-padding .card__header, .card--modal.has-no-padding .card__content, .card--modal.has-no-padding .card__footer {
+  padding: 0;
 }
 
 .card .card__image, .card--modal .card__image {
@@ -2925,17 +2922,17 @@ label:not(:last-child) {
   margin-bottom: 0;
 }
 
-.card .card__header.has-no-padding, .has-no-padding > .card .card__header, .card--modal .card__header.has-no-padding, .has-no-padding > .card--modal .card__header {
-  padding: 0;
-}
-
 .card .card__content, .card--modal .card__content {
-  flex-grow: 1;
+  flex: auto;
   padding: 1rem;
 }
 
-.card .card__content.has-no-padding, .has-no-padding > .card .card__content, .card--modal .card__content.has-no-padding, .has-no-padding > .card--modal .card__content {
-  padding: 0;
+.card.is-shrink, .card--modal.is-shrink {
+  height: auto;
+}
+
+.card.is-shrink .card__content, .card--modal.is-shrink .card__content {
+  flex: initial;
 }
 
 .card .card__footer, .card--modal .card__footer {
@@ -2954,10 +2951,6 @@ label:not(:last-child) {
 
 .card .card__footer button:not(:last-child), .card--modal .card__footer button:not(:last-child) {
   margin-right: 0.4rem;
-}
-
-.card .card__footer.has-no-padding, .has-no-padding > .card .card__footer, .card--modal .card__footer.has-no-padding, .has-no-padding > .card--modal .card__footer {
-  padding: 0;
 }
 
 .modal {
@@ -3017,8 +3010,7 @@ label:not(:last-child) {
 
 .modal.is-full > .modal__content {
   border-radius: 0;
-  height: 100%;
-  height: 100vh;
+  flex: auto;
   width: 100%;
 }
 
@@ -3249,6 +3241,11 @@ label:not(:last-child) {
 
 .progress.is-disabled::-webkit-progress-value {
   background-color: #f7f7f7;
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
 }
 
 .image.is-rounded {
@@ -3548,9 +3545,8 @@ label:not(:last-child) {
   align-items: center;
   border-bottom: 1px solid #e6e6e6;
   display: flex;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  flex-shrink: 0;
+  flex-flow: column wrap;
+  flex: 1 0 auto;
   list-style: none;
   margin: 0;
 }
@@ -3586,7 +3582,7 @@ label:not(:last-child) {
 .top {
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   padding: 1rem 0.75rem;
   position: relative;
   z-index: 40;
@@ -3883,11 +3879,12 @@ label:not(:last-child) {
 
 .breadcrumb {
   display: flex;
+  flex-flow: column wrap;
 }
 
 .breadcrumb ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   list-style: none;
   margin: 0;
 }
@@ -3918,16 +3915,12 @@ label:not(:last-child) {
   padding: 0 0.625rem;
 }
 
-.breadcrumb.has-centered {
+.breadcrumb.has-centered ul {
   justify-content: center;
 }
 
-.breadcrumb.has-end {
+.breadcrumb.has-end ul {
   justify-content: flex-end;
-}
-
-.menu {
-  width: 100%;
 }
 
 .menu__title {

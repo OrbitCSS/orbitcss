@@ -19,9 +19,7 @@ $media-margin-top: 1rem !default;
   }
 
   &__content {
-    flex-basis: auto;
-    flex-grow: 1;
-    flex-shrink: 1;
+    flex:auto;
 
     & .media {
       @extend %media-divide;
@@ -34,11 +32,5 @@ $media-margin-top: 1rem !default;
 
   &__right {
     margin-left: 1rem;
-  }
-
-  &__right, &__left {
-    flex-basis: auto;
-    flex-grow: 0;
-    flex-shrink: 0;
   }
 }

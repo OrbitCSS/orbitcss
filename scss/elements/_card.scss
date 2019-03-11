@@ -11,8 +11,6 @@ $card-footer-padding:  0.35rem 1rem !default;
 .card {
   border: $card-border-width $card-border-style $card-border-color;
   box-shadow: $card-shadow;
-  display: flex;
-  flex-direction: column;
   height: 100%;
 
   &.is-rounded {
@@ -22,20 +20,23 @@ $card-footer-padding:  0.35rem 1rem !default;
 
 .card--modal {
   display: flex;
-  flex-direction: column;
   max-height: calc(100vh - 75px - 50px);
   overflow: hidden;
 
   .card__content {
     overflow: auto;
   }
-
-  .card__header, .card__footer, .card_image {
-    flex-shrink: 0;
-  }
 }
 
 .card, .card--modal {
+  display: flex;
+  flex-flow: column nowrap;
+
+  &.has-no-padding {
+    .card__header, .card__content, .card__footer {
+      padding: 0;
+    }
+  }
 
   .card__image {
     display: block;
@@ -59,18 +60,18 @@ $card-footer-padding:  0.35rem 1rem !default;
     h1, h2, h3, h4, h5, h6, .is-very-big-title, .is-big-title, .is-medium-title, .is-regular-title, .is-small-title, .is-very-small-title {
       margin-bottom: 0;
     }
-
-    &.has-no-padding, .has-no-padding > & {
-      padding: 0;
-    }
   }
 
   .card__content {
-    flex-grow: 1;
+    flex: auto;
     padding: $card-content-padding;
+  }
 
-    &.has-no-padding, .has-no-padding > & {
-      padding: 0;
+  &.is-shrink {
+    height: auto;
+
+    .card__content {
+      flex: initial;
     }
   }
 
@@ -91,10 +92,6 @@ $card-footer-padding:  0.35rem 1rem !default;
       &:not(:last-child) {
         margin-right: 0.4rem;
       }
-    }
-
-    &.has-no-padding, .has-no-padding > & {
-      padding: 0;
     }
   }
 }
