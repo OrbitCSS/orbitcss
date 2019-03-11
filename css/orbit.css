@@ -1,4 +1,4 @@
-/*! Orbit CSS v0.1.0 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v0.1.6 | MIT license | https://orbitcss.com */
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .has-text-primary {
   color: #6e45e2 !important;
@@ -2892,7 +2892,6 @@ label:not(:last-child) {
 }
 
 .card--modal .card__content {
-  flex-grow: 1;
   overflow: auto;
 }
 
@@ -2929,6 +2928,7 @@ label:not(:last-child) {
 }
 
 .card .card__content, .card--modal .card__content {
+  flex-grow: 1;
   padding: 1rem;
 }
 
