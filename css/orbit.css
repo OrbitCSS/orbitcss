@@ -448,7 +448,7 @@ abbr {
 }
 
 .grid .column {
-  flex: auto;
+  flex: 1;
   padding: 0.625rem;
 }
 
@@ -1721,6 +1721,7 @@ label:not(:last-child) {
 }
 
 .accordion__item {
+  background-color: #ffffff;
   width: 100%;
 }
 
@@ -2262,11 +2263,11 @@ label:not(:last-child) {
   border-radius: 50%;
   content: ' ';
   display: block;
-  height: 1.2em;
-  left: calc(50% - (1.2em / 2));
+  height: 1.25em;
+  left: calc(50% - (1.25em / 2));
   position: absolute;
-  top: calc(50% - (1.2em / 2));
-  width: 1.2em;
+  top: calc(50% - (1.25em / 2));
+  width: 1.25em;
   position: absolute !important;
 }
 
@@ -2996,16 +2997,22 @@ label:not(:last-child) {
   }
 }
 
-.modal.is-small > .modal__content {
-  width: 25%;
+@media (min-width: 769px) {
+  .modal.is-small > .modal__content {
+    width: 25%;
+  }
 }
 
-.modal.is-medium > .modal__content {
-  width: 45%;
+@media (min-width: 769px) {
+  .modal.is-medium > .modal__content {
+    width: 45%;
+  }
 }
 
-.modal.is-large > .modal__content {
-  width: 75%;
+@media (min-width: 769px) {
+  .modal.is-large > .modal__content {
+    width: 75%;
+  }
 }
 
 .modal.is-full > .modal__content {
@@ -3545,7 +3552,7 @@ label:not(:last-child) {
   align-items: center;
   border-bottom: 1px solid #e6e6e6;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   flex: 1 0 auto;
   list-style: none;
   margin: 0;

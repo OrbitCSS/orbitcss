@@ -46,7 +46,7 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   }
 
   .column {
-    flex: auto;
+    flex: 1;
     padding: $col-padding;
 
     @include small {

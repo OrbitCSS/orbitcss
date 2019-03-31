@@ -1,3 +1,4 @@
+$accordion-background: $white;
 $accordion-border: 1px solid #e6e6e6 !default;
 $accordion-border-inner: $accordion-border !default;
 $accordion-hover-background: $primary !default;
@@ -18,6 +19,7 @@ $accordion-content-padding: calculateRem(16) !default;
   }
 
   &__item {
+    background-color: $accordion-background;
     width: 100%;
 
     &.is-active .accordion__title {

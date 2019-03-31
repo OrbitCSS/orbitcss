@@ -1,5 +1,19 @@
 # OrbitCSS Changelog
 
+## 0.2.1
+
+### Bug fixes
+
+* Correct the flex-flow for the <code>.tabs__list</code> element.
+* Correct the flex property for the <code>.grid .column</code> element.
+* Fix <code>.is-loading</code> spinner display issue on Chrome/Safari.
+
+### Improvements
+
+* Force 100% width for modals of all sizes on mobile viewport.
+* Add the <code>$accordion-background</code> variable.
+* Add <code>$custom-palette</code> variable to support extending the <code>$color-palette</code> variable.
+
 ## 0.2.0
 
 ### Improvements

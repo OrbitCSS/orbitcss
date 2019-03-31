@@ -47,7 +47,9 @@ $modal-overlay-background: transparentize(color(black), 0.3);
 
     @each $size in $modal-size-variations {
       .modal.is-#{nth($size, 1)} > & {
-        width: nth($size, 2);
+        @include medium {
+          width: nth($size, 2);
+        }
       }
     }
 

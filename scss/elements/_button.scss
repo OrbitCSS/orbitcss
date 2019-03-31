@@ -109,11 +109,11 @@ $button-cross-height: 2px !default;
       border-radius: 50%;
       content: ' ';
       display: block;
-      height: 1.2em;
-      left: calc(50% - (1.2em / 2));
+      height: 1.25em;
+      left: calc(50% - (1.25em / 2));
       position: absolute;
-      top: calc(50% - (1.2em / 2));
-      width: 1.2em;
+      top: calc(50% - (1.25em / 2));
+      width: 1.25em;
       position: absolute !important;
     }
   }

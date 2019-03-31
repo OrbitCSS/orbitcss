@@ -31,6 +31,8 @@ $link: #495aff !default;
 $muted: lighten($dark-grey, 35%) !default;
 $disabled: #f7f7f7 !default;
 
+$custom-palette: () !default;
+
 $color-palette: (
   primary: $primary,
   warning: $warning,
@@ -47,6 +49,8 @@ $color-palette: (
   link: $link,
   disabled: $disabled
 )  !default;
+
+$color-palette: map-merge($color-palette, $custom-palette);
 
 .has-text {
   @each $color in $color-palette {

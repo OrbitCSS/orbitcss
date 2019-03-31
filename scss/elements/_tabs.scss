@@ -64,7 +64,7 @@ $tab-content-padding: 1rem !default;
     align-items: center;
     border-bottom: $tab-bar-width solid $tab-bar-color;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     flex: 1 0 auto;
     list-style: none;
     margin: 0;
