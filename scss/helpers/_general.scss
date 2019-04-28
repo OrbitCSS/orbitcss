@@ -112,8 +112,20 @@
   }
 }
 
-.is-desktop-only {
+.is-tablet-only {
   @include small {
+    display: none !important;
+  }
+}
+
+.is-desktop-only {
+  @media (max-width: calc(#{$large} - 1px)) {
+    display: none !important;
+  }
+}
+
+.is-desktop-x-only {
+  @media (max-width: calc(#{$x-large - 1px})) {
     display: none !important;
   }
 }

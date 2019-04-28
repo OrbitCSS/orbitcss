@@ -4,7 +4,7 @@ $col-margin-bottom: calculateRem(8) !default;
 $max-cols: 12 !default;
 $col-percentage: 100 / $max-cols;
 
-$grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33.333333%, 'two-thirds' 66.666666%, 'full' 100%, 'one-fifth' 20%, 'two-fifths' 40%, 'three-fifths' 60%, 'four-fifths' 80%;
+$grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33.333333%, 'two-thirds' 66.666666%, 'full' 100%, 'one-fifth' 20%, 'two-fifths' 40%, 'three-fifths' 60%, 'four-fifths' 80% !default;
 
 @function calcColWidth($size) {
   @return $col-percentage * $size * 1%;
@@ -46,14 +46,16 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   }
 
   .column {
-    flex: 1;
+    flex: none;
     padding: $col-padding;
+    width: 100%;
 
-    @include small {
-      &:not(.is-mobile-auto) {
-        flex: none;
-        width: 100%;
-      }
+    &.is-mobile-auto {
+      flex: 1;
+    }
+
+    @include medium {
+      flex: 1;
     }
 
     &.is-end {
@@ -70,16 +72,15 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   }
 
   @each $size in $grid-sizes {
-    .column.is-#{nth($size, 1)} {
-      @include medium {
+    @include medium {
+      .column.is-#{nth($size, 1)} {
         flex: none;
         width: nth($size, 2);
       }
     }
-
     @if(nth($size, 1) != 'full') {
-      .column.is-offset-#{nth($size, 1)} {
-        @include medium {
+      @include medium {
+        .column.is-offset-#{nth($size, 1)} {
           margin-left: nth($size, 2);
         }
       }
@@ -89,27 +90,26 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   @each $size in $grid-sizes {
     @include small {
       .column.is-mobile-#{nth($size, 1)} {
-        flex: none;
         width: nth($size, 2);
       }
     }
-
-    @include large {
-      .column.is-desktop-#{nth($size, 1)} {
-        flex: none;
-        width: nth($size, 2);
-      }
-    }
-  }
-
-  @each $size in $grid-sizes {
     @if(nth($size, 1) != 'full') {
       @include small {
         .column.is-mobile-offset-#{nth($size, 1)} {
           margin-left: nth($size, 2);
         }
       }
+    }
+  }
 
+  @each $size in $grid-sizes {
+    @include large {
+      .column.is-desktop-#{nth($size, 1)} {
+        flex: none;
+        width: nth($size, 2);
+      }
+    }
+    @if(nth($size, 1) != 'full') {
       @include large {
         .column.is-desktop-offset-#{nth($size, 1)} {
           margin-left: nth($size, 2);
@@ -118,19 +118,44 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
     }
   }
 
-  .column.is-shrink {
-    flex: none;
+  @each $size in $grid-sizes {
+    @include extra-large {
+      .column.is-desktop-x-#{nth($size, 1)} {
+        flex: none;
+        width: nth($size, 2);
+      }
+    }
+    @if(nth($size, 1) != 'full') {
+      @include extra-large {
+        .column.is-desktop-x-offset-#{nth($size, 1)} {
+          margin-left: nth($size, 2);
+        }
+      }
+    }
+  }
+
+  @include medium {
+    .column.is-shrink {
+      flex: none;
+      width: auto;
+    }
   }
 
   @include small {
     .column.is-mobile-shrink {
-      flex: none;
       width: auto;
     }
   }
 
   @include large {
     .column.is-desktop-shrink {
+      flex: none;
+      width: auto;
+    }
+  }
+
+  @include extra-large {
+    .column.is-desktop-x-shrink {
       flex: none;
       width: auto;
     }
@@ -146,7 +171,6 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
 
     @include small {
       .column.is-mobile-#{$i} {
-        flex: none;
         width: calcColWidth($i);
       }
     }
@@ -174,12 +198,25 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
         width: calcColWidth($i);
       }
     }
-  }
-
-  @for $i from 1 through $max-cols {
     @if($i != $max-cols) {
       @include large {
         .column.is-offset-desktop-#{i} {
+          margin-left: calcColWidth($i);
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through $max-cols {
+    @include extra-large {
+      .column.is-desktop-x-#{$i} {
+        flex: none;
+        width: calcColWidth($i);
+      }
+    }
+    @if($i != $max-cols) {
+      @include extra-large {
+        .column.is-offset-desktop-x-#{i} {
           margin-left: calcColWidth($i);
         }
       }

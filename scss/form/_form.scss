@@ -1,5 +1,6 @@
-$input-border-color: #dbdbdb;
+$input-border-color: #dbdbdb !default;
 $input-border: 1px solid $input-border-color !default;
+$input-border-radius: 0 !default;
 $input-shadow: inset 0 1px 2px rgba(10,10,10,.1) !default;
 $input-font-size: calculateRem(16) !default;
 $input-line-height: 1.5 !default;
@@ -11,8 +12,8 @@ $input-disabled-border: $disabled !default;
 $input-disabled-color: #afafaf !default;
 
 $select-arrow-color: #7284ff !default;
-$select-arrow-height: calculateEm(10);
-$select-arrow-width: calculateEm(10);
+$select-arrow-height: calculateEm(10) !default;
+$select-arrow-width: calculateEm(10) !default;
 $select-multiple-padding: .5rem 1rem !default;
 $select-padding: calculateRem(8) !default;
 
@@ -63,7 +64,7 @@ form, input, textarea, select {
 input[type="text"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="password"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="week"], input[type="url"], textarea, select {
   background-color: $white;
   border: $input-border;
-  border-radius: 0;
+  border-radius: $input-border-radius;
   box-shadow: $input-shadow;
   font-size: $input-font-size;
   font-family: inherit;
@@ -172,18 +173,28 @@ label:not(:last-child) {
   display: flex;
   flex-flow: row wrap;
 
-  & > label {
+  label {
     font-weight: 400;
     margin-bottom: 0;
+  }
+
+  & > span {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+
+    &:not(:last-of-type) {
+      margin-right: 12px;
+    }
   }
 }
 
 .is-checkbox input[type="checkbox"] + label, .is-radio input[type="radio"] + label {
   margin-left: 4px;
-}
 
-.is-radio input[type="radio"]:not(:first-of-type), .is-checkbox input[type="checkbox"]:not(:first-of-type) {
-  margin-left: 12px;
+  &:not(:last-of-type) {
+    margin-right: 12px;
+  }
 }
 
 .is-inline-label {

@@ -1,4 +1,4 @@
-/*! Orbit CSS v0.1.6 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v0.3.0 | MIT license | https://orbitcss.com */
 
 @function calculateRem($size) {
   @return ($size / $font-base)+rem;
@@ -15,13 +15,19 @@
 }
 
 @mixin medium {
-  @media (min-width: #{$medium-min}) {
+  @media (min-width: #{$medium}) {
     @content;
   }
 }
 
 @mixin large {
-  @media (min-width: #{$large-min}) {
+  @media (min-width: #{$large}) {
+    @content;
+  }
+}
+
+@mixin extra-large {
+  @media (min-width: #{$x-large}) {
     @content;
   }
 }

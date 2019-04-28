@@ -65,6 +65,7 @@ $card-footer-padding:  0.35rem 1rem !default;
   .card__content {
     flex: auto;
     padding: $card-content-padding;
+    position: relative;
   }
 
   &.is-shrink {

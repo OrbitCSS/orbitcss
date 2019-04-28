@@ -1,5 +1,57 @@
 # OrbitCSS Changelog
 
+## 0.3.0
+
+### Bug fixes
+
+* Fix the double scrolling issue when using cards in a modal.
+* Add <code>!default</code> to all custom variables that are missing this.
+
+### Improvements
+
+* Add <code>position: relative</code> to <code>.card__content</code> class.
+* Make the modal module mobile-first.
+* Add the <code>$input-border-radius</code> variable for all input, textarea and select elements.
+* Improve the <code>.is-checkbox</code> and <code>.is-radio</code> elements to prevent wrapping.
+* Make the grid module mobile-first.
+* Add the <code>$pagination-background</code> variable.
+* Add the <code>$pagination-bordered-background</code> variable.
+* Make the pagination module mobile-first.
+* Add <code>$medium</code> variable.
+* Add <code>$large</code> variable.
+* Add <code>$x-large</code> variable.
+* Add <code>.is-desktop-x-{size}</code> grid classes.
+* Add <code>.is-desktop-x-only</code> class.
+* Add <code>.is-tablet-only</code> class.
+
+### Deprecations
+
+* <code>$medium-min</code> variable.
+* <code>$large-min</code> variable.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$small-max</code>
+      </td>
+      <td>
+        <code>768px</code>
+      </td>
+      <td>
+        <code>767px</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 0.2.1
 
 ### Bug fixes

@@ -35,14 +35,14 @@ $modal-overlay-background: transparentize(color(black), 0.3);
 
   &__content {
     background-color: $modal-background;
-    border-radius: $modal-radius;
+    border-radius: 0;
     position: relative;
-    overflow: auto;
-    width: $modal-width;
+    overflow: inherit;
+    width: 100%;
 
-    @include small {
-      border-radius: 0;
-      width: 100%;
+    @include medium {
+      border-radius: $modal-radius;
+      width: $modal-width;
     }
 
     @each $size in $modal-size-variations {

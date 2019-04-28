@@ -1,3 +1,4 @@
+$pagination-background: transparent !default;
 $pagination-border: 1px solid transparent !default;
 $pagination-font-size: 0.875rem !default;
 $pagination-color: $black !default;
@@ -11,14 +12,20 @@ $pagination-disabled-opacity: 0.5 !default;
 $pagination-hover-background: #f5f5f5 !default;
 $pagination-rounded: 50px !default;
 $pagination-rounded-margin: 0.25rem !default;
+$pagination-bordered-background: $white !default;
 $pagination-bordered-radius: 4px !default;
 $pagination-bordered: 1px solid $light-grey !default;
 $pagination-bordered-active: $primary !default;
 $pagination-bordered-hover: darken($light-grey, 10%) !default;
 
 .pagination {
-  align-items: flex-end;
   display: flex;
+  flex-direction: column;
+
+  @include medium {
+    align-items: flex-end;
+    flex-direction: row;
+  }
 
   ul {
     display: flex;
@@ -42,6 +49,7 @@ $pagination-bordered-hover: darken($light-grey, 10%) !default;
   }
 
   li {
+    background-color: $pagination-background;
     border: $pagination-border;
     display: inline-block;
     font-size: $pagination-font-size;
@@ -77,10 +85,12 @@ $pagination-bordered-hover: darken($light-grey, 10%) !default;
 
   &.has-border {
     li {
+      background-color: $pagination-bordered-background;
       border: $pagination-bordered;
       border-radius: $pagination-bordered-radius;
 
       &.is-active {
+        background-color: $pagination-active-background;
         border-color: $pagination-bordered-active;
       }
 

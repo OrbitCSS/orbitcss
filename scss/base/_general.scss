@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
 
-$small-max: 768px !default;
-$medium-min: 769px !default;
-$large-min: 1025px !default;
+$small-max: 767px !default;
+$medium: 768px !default;
+$large: 922px !default;
+$x-large: 1200px !default;
 $font-base: 16 !default;
 $body-font-family: 'Roboto', sans-serif !default;
-$body-font-color: $black;
+$body-font-color: $black !default;
 $body-font-size: calculateRem(16) !default;
 $body-font-weight: 400 !default;
 $body-line-height: 1.6 !default;
