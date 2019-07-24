@@ -53,6 +53,10 @@
   &-shadow {
     box-shadow: none !important;
   }
+
+  &-no-wrap {
+    white-space: nowrap;
+  }
 }
 
 .has-padding {

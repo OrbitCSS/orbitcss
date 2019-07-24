@@ -1,5 +1,10 @@
 # [OrbitCSS](https://orbitcss.com)
-OrbitCSS is a flexbox based CSS framework.
+OrbitCSS is a modern CSS framework based on Flexbox.
+
+[![npm](https://img.shields.io/npm/v/orbitcss.svg?color=%236e45e2)](https://www.npmjs.com/package/orbitcss)
+[![npm](https://img.shields.io/npm/l/orbitcss.svg)](https://www.npmjs.com/package/orbitcss)
+
+<a href="https://orbitcss.com"><img src="https://orbitcss.com/img/orbitcss_transparent.png" alt="A modern CSS framework based on Flexbox" style="max-width:100%;" width="600"></a>
 
 ## Getting Started
 You can try out OrbitCSS via one of the methods below:

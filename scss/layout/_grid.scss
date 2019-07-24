@@ -26,10 +26,6 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
     justify-content: flex-end;
   }
 
-  &.is-reversed {
-    flex-direction: row-reverse;
-  }
-
   &.has-spacing {
     justify-content: space-between;
   }

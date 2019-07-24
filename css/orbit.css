@@ -1,4 +1,4 @@
-/*! Orbit CSS v0.3.0 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v0.3.1 | MIT license | https://orbitcss.com */
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .has-text-primary {
   color: #6e45e2 !important;
@@ -177,23 +177,19 @@ img {
 
 @-webkit-keyframes spinner {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes spinner {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -346,6 +342,10 @@ abbr {
   box-shadow: none !important;
 }
 
+.has-no-no-wrap {
+  white-space: nowrap;
+}
+
 .has-padding-only-sides {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -440,10 +440,6 @@ abbr {
 
 .grid.has-end {
   justify-content: flex-end;
-}
-
-.grid.is-reversed {
-  flex-direction: row-reverse;
 }
 
 .grid.has-spacing {
@@ -1742,10 +1738,8 @@ textarea.has-resize-horizontal {
   position: absolute;
   right: 0.9375em;
   top: 50%;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  -webkit-transform-origin: center;
-          transform-origin: center;
+  transform: rotate(-45deg);
+  transform-origin: center;
   width: 0.625em;
 }
 
@@ -2651,10 +2645,8 @@ label:not(:last-child) {
   content: ' ';
   left: 50%;
   position: absolute;
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-          transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform-origin: center center;
   top: 50%;
 }
 
@@ -3167,6 +3159,16 @@ label:not(:last-child) {
   border-radius: 6px;
 }
 
+.card.is-rounded .card__header {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.card.is-rounded .card__footer {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
 .card--modal {
   display: flex;
   max-height: calc(100vh - 75px - 50px);
@@ -3198,6 +3200,7 @@ label:not(:last-child) {
 .card .card__header, .card--modal .card__header {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.03);
+  color: #393939;
   display: flex;
   padding: 0.625rem 1rem;
 }
@@ -3632,10 +3635,9 @@ label:not(:last-child) {
   position: absolute;
   top: 100%;
   text-align: left;
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
+  transform: translateY(-5px);
   transition-duration: 100ms;
-  transition-property: opacity, transform, -webkit-transform;
+  transition-property: opacity, transform;
   visibility: hidden;
   z-index: 10;
 }
@@ -3685,10 +3687,8 @@ label:not(:last-child) {
   position: absolute;
   right: 0.9375em;
   top: 50%;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  -webkit-transform-origin: center;
-          transform-origin: center;
+  transform: rotate(-45deg);
+  transform-origin: center;
   width: 0.625em;
 }
 
@@ -3700,8 +3700,7 @@ label:not(:last-child) {
 .has-dropdown.is-hoverable:hover > .dropdown, .has-dropdown.is-active > .dropdown {
   display: block;
   opacity: 1;
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
+  transform: translateY(0);
   visibility: visible;
 }
 
@@ -4036,8 +4035,7 @@ label:not(:last-child) {
 
 .top.is-mobile-responsive .top__burger.is-active ~ .top__links--mobile ul:not(.dropdown) li.has-dropdown:hover > .dropdown {
   position: relative;
-  -webkit-transform: unset;
-          transform: unset;
+  transform: unset;
   transition-duration: unset;
   transition-property: unset;
 }
@@ -4086,13 +4084,11 @@ label:not(:last-child) {
 }
 
 .top__burger.has-animate.is-active span:first-child {
-  -webkit-transform: rotate(405deg);
-          transform: rotate(405deg);
+  transform: rotate(405deg);
 }
 
 .top__burger.has-animate.is-active span:last-child {
-  -webkit-transform: rotate(-405deg);
-          transform: rotate(-405deg);
+  transform: rotate(-405deg);
 }
 
 .pagination {

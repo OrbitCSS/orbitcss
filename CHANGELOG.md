@@ -1,5 +1,51 @@
 # OrbitCSS Changelog
 
+## 0.3.1
+
+### Improvements
+
+* Add <code>.has-no-wrap</code> helper class. Applies <code>white-space: nowrap</code>.
+* Add border radius to the <code>.card__header</code> and <code>.card__footer</code> elements when the <b>card</b> block has the <code>.is-rounded</code> modifier.
+* Add <code>$card-header-color</code> variable.
+
+### Deprecations
+
+* Remove the <code>.is-reversed</code> grid modifier.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$breadcrumb-disabled-color</code>
+      </td>
+      <td>
+        <code>lighten($dark-grey, 35%)</code>
+      </td>
+      <td>
+        <code>$muted</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$card-header-color</code>
+      </td>
+      <td>
+        <code></code>
+      </td>
+      <td>
+        <code>$black</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 0.3.0
 
 ### Bug fixes
