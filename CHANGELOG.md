@@ -1,5 +1,13 @@
 # OrbitCSS Changelog
 
+## 0.3.2
+
+### Bug fixes
+
+* Correct class name for the <code>.has-no-wrap</code> helper.
+* Add <code>padding-right</code> to <b>select</b> element to prevent text/arrow overlap.
+
+
 ## 0.3.1
 
 ### Improvements
