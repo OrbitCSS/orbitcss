@@ -1,5 +1,29 @@
 # OrbitCSS Changelog
 
+## 0.3.3
+
+### Notes
+
+Before upgrading check the use of the <code>.is-{size}-only</code> and <code>.is-{screen}-offset-{size}</code> helper classes throughout your code and update as per the below improvements.
+
+### Improvements
+
+* Change column offset responsive helpers to read <code>.is-offset-{screen}-{size}</code> instead of <code>.is-{screen}-offset-{size}</code>.
+* Change all of the responsive <code>.is-{screen}-only</code> helpers to display only for the given view port (not larger).
+* Add <code>.is-tablet-up</code> helper to display on the medium and up viewport.
+* Add <code>.is-tablet-down</code> helper to display on the medium and small viewports.
+* Add <code>.is-desktop-up</code> helper to display on the large and up viewport.
+* Add <code>.is-desktop-down</code> helper to display on the large, medium and small viewports.
+* Add <code>.is-desktop-auto</code> helper.
+* Add <code>.is-desktop-x-auto</code> helper.
+* Create the <code>column-size()</code> mixin to make column sizing easier to manage.
+* Reduce overall size of <code>orbit.css</code> and <code>orbit.min.css</code>.
+
+### Bug fixes
+
+* Fix typo in the column offset responsive helpers.
+
+
 ## 0.3.2
 
 ### Bug fixes
