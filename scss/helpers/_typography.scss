@@ -10,6 +10,7 @@
 $list-style-type: disc !default;
 $list-margin-left: calculateRem(20) !default;
 $list-margin-top: calculateRem(16) !default;
+$list-item-padding: 0 !default;
 
 $title-font-family: 'Lato', sans-serif !default;
 $title-font-weight: 600 !default;
@@ -63,8 +64,13 @@ ul {
     margin-left: 0;
   }
 
-  &.has-no-list-style ul {
+  &.is-inline-list {
+    display: flex;
     list-style-type: none;
+
+    & > li:not(:last-child) {
+      margin-right: 0.5rem;
+    }
   }
 }
 
@@ -74,6 +80,10 @@ ol, ul {
 
   ul, ol, dl {
     margin-top: 0;
+  }
+
+  li {
+    padding: $list-item-padding;
   }
 }
 
@@ -122,4 +132,14 @@ abbr {
   border-bottom: $abbr-border-bottom;
   cursor: help;
   text-decoration: none;
+}
+
+a {
+  .has-link-inherit > & {
+    color: inherit;
+  }
+
+  &.is-hover-underline:hover {
+    text-decoration: underline;
+  }
 }

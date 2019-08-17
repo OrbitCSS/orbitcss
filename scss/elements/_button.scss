@@ -64,7 +64,7 @@ $button-cross-height: 2px !default;
     width: 100%;
   }
 
-  &:hover {
+  &:hover, &.is-active {
     border-left-color: $button-hover-border;
     border-right-color: $button-hover-border;
     border-color: $button-hover-border;
@@ -73,13 +73,13 @@ $button-cross-height: 2px !default;
   @each $color in $color-palette {
     &.is-#{nth($color, 1)} {
       @include button-color(nth($color, 2), transparent);
-      &:hover:not(.is-outline):not([disabled]) {
+      &:hover:not(.is-outline):not([disabled]), &.is-active {
         background-color: darken(nth($color, 2), 5%);
       }
 
       &.is-outline {
         @include button-color(transparent, nth($color, 2), nth($color, 2));
-        &:hover:not([disabled]) {
+        &:hover:not([disabled]), &.is-active {
           @include button-color(nth($color, 2), transparent);
         }
 

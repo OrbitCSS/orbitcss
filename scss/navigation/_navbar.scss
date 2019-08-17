@@ -9,8 +9,8 @@ $top-social-margin: 0 6px !default;
 $top-social-color: inherit !default;
 $top-burger-height: 14px !default;
 $top-burger-width: 16px !default;
-$top-burger-color: $white !default;
-$top-burger-bar-height: 2px !default;
+$top-burger-color: inherit !default;
+$top-burger-bar-height: 1px !default;
 $top-burger-bar-width: 100% !default;
 $top-burger-transition: .5s !default;
 
@@ -216,10 +216,10 @@ $top-burger-transition: .5s !default;
     width: $top-burger-width;
 
     span {
-      background-color: $top-burger-color;
+      border-color: $top-burger-color;
+      border-style: solid;
+      border-width: $top-burger-bar-height;
       display: block;
-      height: $top-burger-bar-height;
-      width: $top-burger-bar-width;
       transition: $top-burger-transition;
     }
 

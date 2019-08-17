@@ -93,6 +93,12 @@ input[type="text"], input[type="color"], input[type="date"], input[type="datetim
   }
 }
 
+input[type="date"], input[type="datetime-local"] {
+  &::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+}
+
 input, textarea {
   padding: $input-padding;
 }
@@ -237,14 +243,22 @@ label:not(:last-child) {
 
   label, span, input, .button {
     margin: 0;
-    &:not(:first-child) {
-      border-left-color: transparent;
+    &:not(:last-child) {
+      border-right: none;
+    }
+
+    &:focus + * {
+      border-left-color: $input-focus-border;
     }
   }
 
-  .is-select:not(:first-child) {
+  .is-select:not(:last-child) {
     select {
-      border-left-color: transparent;
+      border-right-color: transparent;
+    }
+
+    &:focus-within + * {
+      border-left-color: $input-focus-border;
     }
   }
 }

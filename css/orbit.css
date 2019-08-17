@@ -1,4 +1,4 @@
-/*! Orbit CSS v0.4.0 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v0.4.1 | MIT license | https://orbitcss.com */
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .has-text-primary {
   color: #6e45e2 !important;
@@ -215,8 +215,13 @@ ul.has-no-list-style {
   margin-left: 0;
 }
 
-ul.has-no-list-style ul {
+ul.is-inline-list {
+  display: flex;
   list-style-type: none;
+}
+
+ul.is-inline-list > li:not(:last-child) {
+  margin-right: 0.5rem;
 }
 
 ol, ul {
@@ -226,6 +231,10 @@ ol, ul {
 
 ol ul, ol ol, ol dl, ul ul, ul ol, ul dl {
   margin-top: 0;
+}
+
+ol li, ul li {
+  padding: 0;
 }
 
 ul, ol {
@@ -288,6 +297,14 @@ abbr {
   border-bottom: 1px dotted #393939;
   cursor: help;
   text-decoration: none;
+}
+
+.has-link-inherit > a {
+  color: inherit;
+}
+
+a.is-hover-underline:hover {
+  text-decoration: underline;
 }
 
 .is-block {
@@ -465,6 +482,10 @@ abbr {
 
 .grid.is-vertical {
   flex-direction: column;
+}
+
+.grid.is-flex-start {
+  align-content: flex-start;
 }
 
 .grid .column {
@@ -1232,6 +1253,10 @@ input[type="text"].has-error, input[type="color"].has-error, input[type="date"].
   background-color: rgba(255, 43, 86, 0.1);
 }
 
+input[type="date"]::-webkit-datetime-edit-fields-wrapper, input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
 input, textarea {
   padding: 0.5rem;
 }
@@ -1378,12 +1403,20 @@ label:not(:last-child) {
   margin: 0;
 }
 
-.is-input-group label:not(:first-child), .is-input-group span:not(:first-child), .is-input-group input:not(:first-child), .is-input-group .button:not(:first-child) {
-  border-left-color: transparent;
+.is-input-group label:not(:last-child), .is-input-group span:not(:last-child), .is-input-group input:not(:last-child), .is-input-group .button:not(:last-child) {
+  border-right: none;
 }
 
-.is-input-group .is-select:not(:first-child) select {
-  border-left-color: transparent;
+.is-input-group label:focus + *, .is-input-group span:focus + *, .is-input-group input:focus + *, .is-input-group .button:focus + * {
+  border-left-color: #bfd9fe;
+}
+
+.is-input-group .is-select:not(:last-child) select {
+  border-right-color: transparent;
+}
+
+.is-input-group .is-select:not(:last-child):focus-within + * {
+  border-left-color: #bfd9fe;
 }
 
 .is-switch {
@@ -1618,7 +1651,7 @@ label:not(:last-child) {
   width: 100%;
 }
 
-.button:hover {
+.button:hover, .button.is-active {
   border-left-color: #c1b9af;
   border-right-color: #c1b9af;
   border-color: #c1b9af;
@@ -1630,7 +1663,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-primary:hover:not(.is-outline):not([disabled]) {
+.button.is-primary:hover:not(.is-outline):not([disabled]), .button.is-primary.is-active {
   background-color: #5d2fdf;
 }
 
@@ -1640,7 +1673,7 @@ label:not(:last-child) {
   color: #6e45e2;
 }
 
-.button.is-primary.is-outline:hover:not([disabled]) {
+.button.is-primary.is-outline:hover:not([disabled]), .button.is-primary.is-outline.is-active {
   background-color: #6e45e2;
   border-color: transparent;
   color: #ffffff;
@@ -1662,7 +1695,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-warning:hover:not(.is-outline):not([disabled]) {
+.button.is-warning:hover:not(.is-outline):not([disabled]), .button.is-warning.is-active {
   background-color: #ffd83e;
 }
 
@@ -1672,7 +1705,7 @@ label:not(:last-child) {
   color: #ffdd57;
 }
 
-.button.is-warning.is-outline:hover:not([disabled]) {
+.button.is-warning.is-outline:hover:not([disabled]), .button.is-warning.is-outline.is-active {
   background-color: #ffdd57;
   border-color: transparent;
   color: #393939;
@@ -1694,7 +1727,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-info:hover:not(.is-outline):not([disabled]) {
+.button.is-info:hover:not(.is-outline):not([disabled]), .button.is-info.is-active {
   background-color: #a6cafe;
 }
 
@@ -1704,7 +1737,7 @@ label:not(:last-child) {
   color: #bfd9fe;
 }
 
-.button.is-info.is-outline:hover:not([disabled]) {
+.button.is-info.is-outline:hover:not([disabled]), .button.is-info.is-outline.is-active {
   background-color: #bfd9fe;
   border-color: transparent;
   color: #393939;
@@ -1726,7 +1759,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-danger:hover:not(.is-outline):not([disabled]) {
+.button.is-danger:hover:not(.is-outline):not([disabled]), .button.is-danger.is-active {
   background-color: #ff1242;
 }
 
@@ -1736,7 +1769,7 @@ label:not(:last-child) {
   color: #ff2b56;
 }
 
-.button.is-danger.is-outline:hover:not([disabled]) {
+.button.is-danger.is-outline:hover:not([disabled]), .button.is-danger.is-outline.is-active {
   background-color: #ff2b56;
   border-color: transparent;
   color: #ffffff;
@@ -1758,7 +1791,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-success:hover:not(.is-outline):not([disabled]) {
+.button.is-success:hover:not(.is-outline):not([disabled]), .button.is-success.is-active {
   background-color: #00ca9a;
 }
 
@@ -1768,7 +1801,7 @@ label:not(:last-child) {
   color: #00e3ae;
 }
 
-.button.is-success.is-outline:hover:not([disabled]) {
+.button.is-success.is-outline:hover:not([disabled]), .button.is-success.is-outline.is-active {
   background-color: #00e3ae;
   border-color: transparent;
   color: #ffffff;
@@ -1790,7 +1823,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-black:hover:not(.is-outline):not([disabled]) {
+.button.is-black:hover:not(.is-outline):not([disabled]), .button.is-black.is-active {
   background-color: #2c2c2c;
 }
 
@@ -1800,7 +1833,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-black.is-outline:hover:not([disabled]) {
+.button.is-black.is-outline:hover:not([disabled]), .button.is-black.is-outline.is-active {
   background-color: #393939;
   border-color: transparent;
   color: #ffffff;
@@ -1822,7 +1855,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-dark:hover:not(.is-outline):not([disabled]) {
+.button.is-dark:hover:not(.is-outline):not([disabled]), .button.is-dark.is-active {
   background-color: #273642;
 }
 
@@ -1832,7 +1865,7 @@ label:not(:last-child) {
   color: #304352;
 }
 
-.button.is-dark.is-outline:hover:not([disabled]) {
+.button.is-dark.is-outline:hover:not([disabled]), .button.is-dark.is-outline.is-active {
   background-color: #304352;
   border-color: transparent;
   color: #ffffff;
@@ -1854,7 +1887,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-night:hover:not(.is-outline):not([disabled]) {
+.button.is-night:hover:not(.is-outline):not([disabled]), .button.is-night.is-active {
   background-color: #433a66;
 }
 
@@ -1864,7 +1897,7 @@ label:not(:last-child) {
   color: #4e4376;
 }
 
-.button.is-night.is-outline:hover:not([disabled]) {
+.button.is-night.is-outline:hover:not([disabled]), .button.is-night.is-outline.is-active {
   background-color: #4e4376;
   border-color: transparent;
   color: #ffffff;
@@ -1886,7 +1919,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-white:hover:not(.is-outline):not([disabled]) {
+.button.is-white:hover:not(.is-outline):not([disabled]), .button.is-white.is-active {
   background-color: #f2f2f2;
 }
 
@@ -1896,7 +1929,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-white.is-outline:hover:not([disabled]) {
+.button.is-white.is-outline:hover:not([disabled]), .button.is-white.is-outline.is-active {
   background-color: #ffffff;
   border-color: transparent;
   color: #393939;
@@ -1918,7 +1951,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-light:hover:not(.is-outline):not([disabled]) {
+.button.is-light:hover:not(.is-outline):not([disabled]), .button.is-light.is-active {
   background-color: #dee4ec;
 }
 
@@ -1928,7 +1961,7 @@ label:not(:last-child) {
   color: #eef1f5;
 }
 
-.button.is-light.is-outline:hover:not([disabled]) {
+.button.is-light.is-outline:hover:not([disabled]), .button.is-light.is-outline.is-active {
   background-color: #eef1f5;
   border-color: transparent;
   color: #393939;
@@ -1950,7 +1983,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-light-grey:hover:not(.is-outline):not([disabled]) {
+.button.is-light-grey:hover:not(.is-outline):not([disabled]), .button.is-light-grey.is-active {
   background-color: #ccc5be;
 }
 
@@ -1960,7 +1993,7 @@ label:not(:last-child) {
   color: #d7d2cc;
 }
 
-.button.is-light-grey.is-outline:hover:not([disabled]) {
+.button.is-light-grey.is-outline:hover:not([disabled]), .button.is-light-grey.is-outline.is-active {
   background-color: #d7d2cc;
   border-color: transparent;
   color: #393939;
@@ -1982,7 +2015,7 @@ label:not(:last-child) {
   color: #ffffff;
 }
 
-.button.is-dark-grey:hover:not(.is-outline):not([disabled]) {
+.button.is-dark-grey:hover:not(.is-outline):not([disabled]), .button.is-dark-grey.is-active {
   background-color: #545454;
 }
 
@@ -1992,7 +2025,7 @@ label:not(:last-child) {
   color: #616161;
 }
 
-.button.is-dark-grey.is-outline:hover:not([disabled]) {
+.button.is-dark-grey.is-outline:hover:not([disabled]), .button.is-dark-grey.is-outline.is-active {
   background-color: #616161;
   border-color: transparent;
   color: #ffffff;
@@ -2014,7 +2047,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-link:hover:not(.is-outline):not([disabled]) {
+.button.is-link:hover:not(.is-outline):not([disabled]), .button.is-link.is-active {
   background-color: #3043ff;
 }
 
@@ -2024,7 +2057,7 @@ label:not(:last-child) {
   color: #495aff;
 }
 
-.button.is-link.is-outline:hover:not([disabled]) {
+.button.is-link.is-outline:hover:not([disabled]), .button.is-link.is-outline.is-active {
   background-color: #495aff;
   border-color: transparent;
   color: #393939;
@@ -2046,7 +2079,7 @@ label:not(:last-child) {
   color: #393939;
 }
 
-.button.is-disabled:hover:not(.is-outline):not([disabled]) {
+.button.is-disabled:hover:not(.is-outline):not([disabled]), .button.is-disabled.is-active {
   background-color: #eaeaea;
 }
 
@@ -2056,7 +2089,7 @@ label:not(:last-child) {
   color: #f7f7f7;
 }
 
-.button.is-disabled.is-outline:hover:not([disabled]) {
+.button.is-disabled.is-outline:hover:not([disabled]), .button.is-disabled.is-outline.is-active {
   background-color: #f7f7f7;
   border-color: transparent;
   color: #393939;
@@ -3598,10 +3631,10 @@ label:not(:last-child) {
 }
 
 .top__burger span {
-  background-color: #ffffff;
+  border-color: inherit;
+  border-style: solid;
+  border-width: 1px;
   display: block;
-  height: 2px;
-  width: 100%;
   transition: 0.5s;
 }
 

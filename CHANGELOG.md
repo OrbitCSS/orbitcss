@@ -1,5 +1,73 @@
 # OrbitCSS Changelog
 
+## 0.4.1
+
+### Improvements
+
+* Add <code>.is-active</code> helper to button element.
+* Add <code>.is-flex-start</code> helper to the grid element.
+* Add <code>.has-link-inherit</code> helper to force child link elements to inherit the text color of the parent.
+* Add <code>.is-hover-underline</code> helper.
+* New variable <code>$list-item-padding</code> to set the padding on <code>li</code> elements in ordered and unordered lists.
+* Add <code>.is-inline-list</code> helper to the unordered list element.
+* Set burger bar color based on border color instead of background color.
+
+### Bug fixes
+
+* Make <code>$card-header-color</code> variable overridable.
+* Fix border display on focus state for form elements within an input group.
+* Fix variable height bug for form elements within an input group in Chrome.
+* Nested unordered lists no longer inherit the <code>list-style-type</code> styling of a parent unordered list with the <code>.has-no-list-style</code> helper.
+
+### Deprecations
+
+* <code>$top-burger-bar-width</code> variable.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$list-item-padding</code>
+      </td>
+      <td>
+        <code></code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$top-burger-bar-height</code>
+      </td>
+      <td>
+        <code>2px</code>
+      </td>
+      <td>
+        <code>2px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$top-burger-color</code>
+      </td>
+      <td>
+        <code>$white</code>
+      </td>
+      <td>
+        <code>inherit</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 0.4.0
 
 ### Notes

@@ -54,6 +54,10 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
     flex-direction: column;
   }
 
+  &.is-flex-start {
+    align-content: flex-start;
+  }
+
   .column {
     flex: none;
     padding: $col-padding;
