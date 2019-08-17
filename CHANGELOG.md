@@ -1,5 +1,16 @@
 # OrbitCSS Changelog
 
+## 0.4.2
+
+### Improvements
+
+* Move the <code>a</code> element into <code>typography.scss</code>.
+
+### Bug fixes
+
+* Fix <code>.has-link-inherit</code> not applying to deeper nested links.
+* Correct typo in changelog for v0.4.1.
+
 ## 0.4.1
 
 ### Improvements
@@ -51,7 +62,7 @@
         <code>2px</code>
       </td>
       <td>
-        <code>2px</code>
+        <code>1px</code>
       </td>
     </tr>
     <tr>

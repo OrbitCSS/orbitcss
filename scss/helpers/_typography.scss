@@ -135,7 +135,10 @@ abbr {
 }
 
 a {
-  .has-link-inherit > & {
+  color: $link;
+  text-decoration: none;
+
+  .has-link-inherit & {
     color: inherit;
   }
 

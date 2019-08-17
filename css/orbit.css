@@ -1,4 +1,4 @@
-/*! Orbit CSS v0.4.1 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v0.4.2 | MIT license | https://orbitcss.com */
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .has-text-primary {
   color: #6e45e2 !important;
@@ -151,11 +151,6 @@ hr {
   margin: 20px 0;
 }
 
-a {
-  color: #495aff;
-  text-decoration: none;
-}
-
 p {
   margin-bottom: .65rem;
 }
@@ -299,7 +294,12 @@ abbr {
   text-decoration: none;
 }
 
-.has-link-inherit > a {
+a {
+  color: #495aff;
+  text-decoration: none;
+}
+
+.has-link-inherit a {
   color: inherit;
 }
 
