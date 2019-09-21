@@ -21,7 +21,7 @@ $subtitle-margin-bottom: calculateRem(16) !default;
 $subtitle-margin-top: calculateRem(-6.4) !default;
 $subtitle-font-weight: 400 !default;
 $subtitle-line-height: $title-line-height !default;
-$subtitle-color: #838383;
+$subtitle-color: #838383 !default;
 
 $blockquote-border-left: 1px solid #d6d6d6 !default;
 $blockquote-color: $black !default;

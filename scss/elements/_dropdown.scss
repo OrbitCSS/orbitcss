@@ -16,7 +16,7 @@ $dropdown-arrow-color: #7284ff !default;
 .dropdown {
   background-color: $dropdown-background;
   border: $dropdown-border;
-  border-radius: 6px;
+  border-radius: $dropdown-radius;
   box-shadow: $dropdown-shadow;
   cursor: auto;
   left: 0;
@@ -64,7 +64,7 @@ $dropdown-arrow-color: #7284ff !default;
 }
 
 .has-arrow {
-  padding-right: 35px !important;
+  padding-right: calculateEm(35) !important;
   position: relative;
 }
 

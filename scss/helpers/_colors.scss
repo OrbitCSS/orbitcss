@@ -6,6 +6,7 @@
   @return null;
 }
 
+// This does not always yield perfect results. Know a better solution? Please contribute!
 @function getTextColor($color) {
   @if(lightness($color) > 60) {
     @return color(black);

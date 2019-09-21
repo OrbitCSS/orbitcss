@@ -90,13 +90,13 @@ $tag-addon-radius: $tag-radius !default;
 
     &.is-rounded > .tag {
       &:last-child {
-        border-top-right-radius: $tag-radius;
-        border-bottom-right-radius: $tag-radius;
+        border-top-right-radius: $tag-addon-radius;
+        border-bottom-right-radius: $tag-addon-radius;
       }
 
       &:first-child {
-        border-bottom-left-radius: $tag-radius;
-        border-top-left-radius: $tag-radius;
+        border-bottom-left-radius: $tag-addon-radius;
+        border-top-left-radius: $tag-addon-radius;
       }
     }
   }

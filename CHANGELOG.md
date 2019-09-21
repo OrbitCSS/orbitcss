@@ -1,5 +1,62 @@
 # OrbitCSS Changelog
 
+## 0.4.3
+
+### Bug fixes
+
+* <code>$dropdown-radius</code> now actually changes the border radius for a dropdown element.
+* <code>$tag-addon-radius</code> now controls the border radius for tags in addon groups.
+* <code>$slider-track-height</code> now correctly sets the height for the <code>sliderTrack()</code> mixin.
+* Remove redundant <code>$top-burger-bar-width</code> variable from the navbar module.
+* <code>$subtitle-color</code> now editable.
+* Burger menu now has the correct width when <code>.is-active</code> helper is active.
+* Labels and spans in input groups now resize correctly when the <code>$font-base</code> variable is changed.
+* Switches now resize correctly when the <code>$font-base</code> variable is changed.
+* Corrected padding on the dropdown element when the <code>.has-arrow</code> is active and the <code>$font-base</code> variable has been changed.
+* Corrected positioning of select element's arrow when the <code>$font-base</code> variable has been changed.
+
+### Improvements
+* Removed <code>margin-right</code> from any button using the <code>.is-full</code> helper in a button group.
+* Added the <code>$label-font-size</code> and <code>$label-line-height</code> variables for form label customization.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$label-font-size</code>
+      </td>
+      <td>
+        <code></code>
+      </td>
+      <td>
+        <code>calculateRem(16)</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$label-line-height</code>
+      </td>
+      <td>
+        <code></code>
+      </td>
+      <td>
+        <code>1.6</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Notes
+
+* The <code>.is-small</code> helper for the switch element will be removed in version 0.5.0. The small version of the switch does not benefit the framework and is too specific.
+
 ## 0.4.2
 
 ### Improvements

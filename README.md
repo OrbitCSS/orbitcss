@@ -37,6 +37,9 @@ https://github.com/OrbitCSS/orbitcss/tree/master/css
 ## Documentation
 You can browse the [online documentation here](https://orbitcss.com/documentation).
 
+## Examples
+Check out the [examples page](https://orbitcss.com/examples) for samples and templates to kickstart your next project.
+
 ## Contributing
 Help OrbitCSS improve by contributing.
 

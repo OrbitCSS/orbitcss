@@ -221,6 +221,7 @@ $top-burger-transition: .5s !default;
       border-width: $top-burger-bar-height;
       display: block;
       transition: $top-burger-transition;
+      width: 100%;
     }
 
     &.has-animate.is-active {

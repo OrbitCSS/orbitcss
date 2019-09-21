@@ -158,7 +158,7 @@ $button-cross-height: 2px !default;
 }
 
 .is-button-group {
-  & > .button:not(:last-child) {
+  & > .button:not(.is-full):not(:last-child) {
     margin-right: $button-group-gap;
   }
 
