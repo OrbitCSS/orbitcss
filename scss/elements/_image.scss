@@ -31,6 +31,10 @@ $image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'medium-square' 16
     border: $image-thumb-border;
     border-radius: $image-thumb-radius;
 
+    &.is-rounded {
+      border-radius: $image-radius;
+    }
+
     img {
       padding: $image-thumb-padding;
     }

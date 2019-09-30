@@ -61,7 +61,7 @@ $color-palette: map-merge($color-palette, $custom-palette);
   }
 
   &-muted {
-    color: $muted;
+    color: $muted !important;
   }
 }
 

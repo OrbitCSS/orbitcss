@@ -1,4 +1,4 @@
-/*! Orbit CSS v0.4.3 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v0.4.4 | MIT license | https://orbitcss.com */
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .has-text-primary {
   color: #6e45e2 !important;
@@ -57,7 +57,7 @@
 }
 
 .has-text-muted {
-  color: #bababa;
+  color: #bababa !important;
 }
 
 .has-bg-primary {
@@ -198,6 +198,9 @@ h1, .is-very-big-title, h2, .is-big-title, h3, .is-medium-title, h4, .is-title, 
 
 h1:not(.subtitle) + .subtitle, .is-very-big-title:not(.subtitle) + .subtitle, h2:not(.subtitle) + .subtitle, .is-big-title:not(.subtitle) + .subtitle, h3:not(.subtitle) + .subtitle, .is-medium-title:not(.subtitle) + .subtitle, h4:not(.subtitle) + .subtitle, .is-title:not(.subtitle) + .subtitle, h5:not(.subtitle) + .subtitle, .is-small-title:not(.subtitle) + .subtitle, h6:not(.subtitle) + .subtitle, .is-very-small-title:not(.subtitle) + .subtitle {
   margin-top: -0.4rem;
+}
+
+h1 + .subtitle:last-of-type, .is-very-big-title + .subtitle:last-of-type, h2 + .subtitle:last-of-type, .is-big-title + .subtitle:last-of-type, h3 + .subtitle:last-of-type, .is-medium-title + .subtitle:last-of-type, h4 + .subtitle:last-of-type, .is-title + .subtitle:last-of-type, h5 + .subtitle:last-of-type, .is-small-title + .subtitle:last-of-type, h6 + .subtitle:last-of-type, .is-very-small-title + .subtitle:last-of-type {
   margin-bottom: 1rem;
 }
 
@@ -213,6 +216,15 @@ ul.has-no-list-style {
 ul.is-inline-list {
   display: flex;
   list-style-type: none;
+  margin: 0;
+}
+
+ul.is-inline-list.has-centered {
+  justify-content: center;
+}
+
+ul.is-inline-list.has-end {
+  justify-content: flex-end;
 }
 
 ul.is-inline-list > li:not(:last-child) {
@@ -345,6 +357,14 @@ a.is-hover-underline:hover {
 
 .has-no-padding-bottom {
   padding-bottom: 0 !important;
+}
+
+.has-no-padding-left {
+  padding-left: 0 !important;
+}
+
+.has-no-padding-right {
+  padding-right: 0 !important;
 }
 
 .has-no-margin {
@@ -2197,7 +2217,7 @@ label:not(:last-child) {
   background-color: rgba(57, 57, 57, 0.23);
   border: none;
   border-radius: 50%;
-  color: #393939;
+  color: inherit;
   cursor: pointer;
   display: inline-block;
   height: 1.5rem;
@@ -2210,16 +2230,14 @@ label:not(:last-child) {
   background: none;
 }
 
-.button--close.has-no-background::before, .button--close.has-no-background::after {
-  background-color: #393939;
-}
-
 .button--close:not(.has-no-background):hover {
   background-color: rgba(57, 57, 57, 0.41);
 }
 
 .button--close::before, .button--close::after {
-  background-color: #ffffff;
+  border-color: inherit;
+  border-style: solid;
+  border-width: 1px;
   content: ' ';
   left: 50%;
   position: absolute;
@@ -2229,13 +2247,11 @@ label:not(:last-child) {
 }
 
 .button--close::after {
-  height: 2px;
   width: 50%;
 }
 
 .button--close::before {
   height: 50%;
-  width: 2px;
 }
 
 .alert {
@@ -3128,6 +3144,10 @@ label:not(:last-child) {
   border-radius: 6px;
 }
 
+.image.is-thumbnail.is-rounded {
+  border-radius: 50%;
+}
+
 .image.is-thumbnail img {
   padding: 0.25rem;
 }
@@ -3624,6 +3644,7 @@ label:not(:last-child) {
 }
 
 .top__burger {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 14px;

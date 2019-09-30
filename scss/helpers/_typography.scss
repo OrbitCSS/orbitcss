@@ -41,6 +41,9 @@ $abbr-border-bottom: 1px dotted $black !default;
 
   &:not(.subtitle) + .subtitle {
     margin-top: $subtitle-margin-top;
+  }
+
+  & + .subtitle:last-of-type {
     margin-bottom: $subtitle-margin-bottom;
   }
 }
@@ -67,6 +70,16 @@ ul {
   &.is-inline-list {
     display: flex;
     list-style-type: none;
+    margin: 0;
+
+    &.has-centered {
+      justify-content: center;
+    }
+
+    &.has-end {
+      justify-content: flex-end;
+    }
+
 
     & > li:not(:last-child) {
       margin-right: 0.5rem;

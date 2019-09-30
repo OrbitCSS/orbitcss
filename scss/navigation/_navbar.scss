@@ -208,6 +208,7 @@ $top-burger-transition: .5s !default;
 
   // Burger menu //
   &__burger {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     height: $top-burger-height;

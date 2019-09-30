@@ -1,5 +1,59 @@
 # OrbitCSS Changelog
 
+## 0.4.4
+
+### Bug fixes
+
+* Corrected bottom margin when using multiple subtitles after a title element.
+* Dropdown element arrow now calculating EMs based on font base size.
+* Removed the margin on ul elements using the <code>.is-inline-list</code> helper.
+* Using the <code>.is-rounded</code> and <code>.is-thumbnail</code> helpers together now forces the rounded border radius.
+* Avoid <code>.has-text-muted</code> being overriden by adding <code>!important</code>.
+
+### Improvements
+* Added <code>.has-centered</code> and <code>.has-end</code> alignment helpers for the ul element.
+* Added <code>.has-no-padding-left</code> and <code>.has-no-padding-right</code> general helper classes.
+* Added pointer cursor to the burger menu.
+* Changed the structure of the <code>.button--close</code> element to support color inheritance.
+
+### Variable changes
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$button-cross-width</code>
+      </td>
+      <td>
+        <code>2px</code>
+      </td>
+      <td>
+        <code>1px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$button-cross-color</code>
+      </td>
+      <td>
+        <code>$white</code>
+      </td>
+      <td>
+        <code>inherit</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Deprecations
+
+* <code>$button-cross-height</code> variable.
+
 ## 0.4.3
 
 ### Bug fixes

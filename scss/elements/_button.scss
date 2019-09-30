@@ -25,9 +25,8 @@ $button-close-background: rgba(57, 57, 57, 0.23) !default;
 $button-close-height: calculateRem(24) !default;
 $button-close-width: calculateRem(24) !default;
 $button-close-hover: rgba(57, 57, 57, 0.41) !default;
-$button-cross-color: $white !default;
-$button-cross-width: 2px !default;
-$button-cross-height: 2px !default;
+$button-cross-color: inherit !default;
+$button-cross-width: 1px !default;
 
 @mixin button-color($background, $border, $color: getTextColor($background)) {
   background-color: $background;
@@ -195,7 +194,7 @@ $button-cross-height: 2px !default;
   background-color: $button-close-background;
   border: none;
   border-radius: 50%;
-  color: $black;
+  color: $button-cross-color;
   cursor: pointer;
   display: inline-block;
   height: $button-close-height;
@@ -205,10 +204,6 @@ $button-cross-height: 2px !default;
 
   &.has-no-background {
     background: none;
-
-    &::before, &::after {
-      background-color: $black;
-    }
   }
 
   &:not(.has-no-background):hover {
@@ -216,7 +211,9 @@ $button-cross-height: 2px !default;
   }
 
   &::before, &::after {
-    background-color: $button-cross-color;
+    border-color: inherit;
+    border-style: solid;
+    border-width: $button-cross-width;
     content: ' ';
     left: 50%;
     position: absolute;
@@ -226,12 +223,10 @@ $button-cross-height: 2px !default;
   }
 
   &::after {
-    height: $button-cross-height;
     width: 50%;
   }
 
   &::before {
     height: 50%;
-    width: $button-cross-width;
   }
 }
