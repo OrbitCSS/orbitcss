@@ -67,13 +67,6 @@
   }
 }
 
-.has-padding {
-  &-only-sides {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-}
-
 .has-text {
   &-left {
     text-align: left !important;
@@ -116,6 +109,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.has {
+  &-start {
+    justify-content: flex-start !important;
+  }
+
+  &-centered {
+    justify-content: center !important;
+  }
+
+  &-end {
+    justify-content: flex-end !important;
+  }
 }
 
 @include medium {

@@ -23,7 +23,7 @@ $hero-sizes: 'medium' (9rem 1.5rem), 'large' (16rem 1.5rem) !default;
   &.is-full {
     min-height: 100vh;
 
-    .hero__content {
+    & > .hero__content {
       align-items: center;
       display: flex;
     }

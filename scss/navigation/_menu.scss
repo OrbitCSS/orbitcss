@@ -34,21 +34,29 @@ $menu-slidedown-item-padding: 0 calculateRem(12) !default;
     list-style: none;
     margin: 0;
 
-    .is-active > a {
+    li.is-active:not(.menu__slidedown), .menu__slidedown.is-active > :first-child {
       background-color: $menu-list-active-background;
       color: $menu-list-active-color;
     }
 
     li {
-      a {
-        color: $menu-list-color;
-        cursor: pointer;
-        display: block;
-        line-height: $menu-list-line-height;
-        padding: $menu-list-padding;
-      }
+      color: $menu-list-color;
+      line-height: $menu-list-line-height;
 
-      &:not(.is-active) > a:hover {
+      > a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    li:not(.menu__slidedown) {
+      cursor: pointer;
+      padding: $menu-list-padding;
+
+      &:not(.is-active):hover {
         background-color: $menu-list-hover;
       }
     }
@@ -60,11 +68,20 @@ $menu-slidedown-item-padding: 0 calculateRem(12) !default;
   }
 
   &__slidedown {
-    ul.is-open {
+    & > :first-child {
+      display: block;
+      padding: $menu-list-padding;
+    }
+
+    &:not(.is-active) > :first-child:hover {
+      background-color: $menu-list-hover;
+    }
+
+    &.is-active > ul {
       display: block;
     }
 
-    ul {
+    & > ul {
       border-left: $menu-slidedown-border;
       list-style: none;
       display: none;
@@ -74,16 +91,11 @@ $menu-slidedown-item-padding: 0 calculateRem(12) !default;
       li {
         padding: $menu-slidedown-item-padding;
 
-        &.is-active > a {
+        &.is-active {
           background-color: $menu-list-hover;
           color: $menu-list-color;
         }
       }
     }
-  }
-
-  .button {
-    margin: 0;
-    width: 100%;
   }
 }

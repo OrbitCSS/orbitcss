@@ -7,6 +7,7 @@ $pseudo-fill-classes: -moz-progress-bar, -webkit-progress-value, -ms-fill;
 
 .progress {
   border: none;
+  display: flex;
   height: $progress-height;
   margin-bottom: $progress-margin-bottom;
   -webkit-appearance: none;

@@ -1,5 +1,138 @@
 # OrbitCSS Changelog
 
+## v1.0.0
+
+### Core changes
+* Reorganised structure of the **scss** folder. Helpers have been moved into the **base** folder as these are all part of OrbitCSS's base core.
+* <code>/helpers/general.scss</code> can now be found at <code>/base/helpers.scss</code>.
+* An **include all** file has been added for each folder allowing developers to include the entire contents instead of each single file.
+*  The **switch** and **slider** elements have been separated into two modules independently from the general form module.
+* The **media** module has been moved to the **elements** directory.
+* <code>/navigation/navbar</code> has been renamed to <code>/navigation/top</code>.
+* <code>.has-start</code>, <code>.has-centered</code> and <code>.has-end</code> helpers have been added to the OrbitCSS global helpers. These will align child flex content using the CSS <code>justify-content</code> property.
+* Core functions and mixins moved to their own file at <code>/base/functions.scss</code>.
+* The <code>.has-padding-only-sides</code> global helper has been removed. Replace existing implementations with <code>class="has-no-padding-top has-no-padding-bottom"</code>.
+* New mixin <code>element-color</code> has been added. Read more about how to use it in the [OrbitCSS documentation](https://orbitcss.com/documentation/getting-started/customization).
+
+### Typography
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the <code>ul.is-inline-list</code> helper. As these are now global helpers, any previous use will function as normal and no changes are required.
+* All link elements now implement <code>text-decoration: underline;</code> on **hover** state. Previously this was controlled via use of the <code>.is-hover-underline</code> helper.
+* Removed the <code>.is-hover-underline</code> helper.
+
+### Form
+* Form module has been split up unto three modules for the general form content, switch and slider.
+* The <code>.is-small</code> helper for the **switch** module has been removed. If you still require this class you can copy the code from a previous version of OrbitCSS.
+* The <code>.upload</code> element has been removed. This should have never existed and predates initial OrbitCSS releases. Use the <code>.is-file-input</code> element class instead.
+
+### Grid
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the **grid** element. As these are now global helpers any previous use will function as normal and no changes are required.
+
+### Breadcrumb
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the **breadcrumb** element. As this previously applied to the child <code>ul</code> element you will now have to add these helpers directly to the <code>ul</code> element. For example replace:
+<pre><code>&lt;nav class="breadcrumb has-centered"&gt;
+&#9;&lt;ul&gt;...&lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+WITH
+<pre><code>&lt;nav class="breadcrumb"&gt;
+&#9;&lt;ul class="has-centered"&gt;...&lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+### Top
+* Module renamed from **navbar** to **top**.
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the **top** element. As this previously applied to the child <code>.container</code> element (only when one was present) you will now have to add these helpers directly to the <code>.container</code> element. For example replace:
+<pre><code>&lt;nav class="top has-centered"&gt;
+&#9;&lt;div class="container"&gt;...&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+WITH
+<pre><code>&lt;nav class="top"&gt;
+&#9;&lt;div class="container has-centered"&gt;...&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+* Added <code>$top-link-hover-decoration</code> variable. Allows you to add underline styling to top links.
+* Added <code>$top-link-hover-color</code> variable. Allows you to set a text color for links in the hover state.
+* Added <code>$top-link-active-background</code> variable. Allows you to set a background color for links that are in the active state via the is-active helper.
+* Moved the <code>.is-active</code> helper up to the <code>li</code> element instead of the actual <code>a</code> element. This allows for active styling to be applied to list items that are not actually links.
+* Removed the <code>.is-even</code> helper due to lack of browser support for <code>justify-content: space-evenly</code>.
+* Remove the <code>.is-neat</code> helper. It's use case was too specific.
+* Previously all <code>ul</code> elements would be hidden on small view ports. This is no longer the case and all elements are visible without the use of the <code>.is-mobile-responsive</code> helper.
+* Added <code>$top-social-padding</code> variable. This is applied directly to the <code>.top__social</code> element.
+* Overhauled the <code>.is-mobile-responsive</code> helper. All <code>.top__links</code> and <code>.top__social</code> elements will stack neatly when on small view port. Content can be triggered by adding <code>.is-open</code> to the <code>.top</code> element.
+* The <code>.top__burger</code> element has been overhauled. Only one span is required within the element:
+<pre><code>&lt;div class="top__burger"&gt;
+&#9;&lt;span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+* Added <code>$top-burger-padding</code> variable. This is applied directly to the <code>.top__burger</code> element.
+* Removed the <code>$top-burger-bar-width</code> variable.
+* Added <code>$top-burger-bar-gap</code> variable. This defines the spacing between each of the bars in the burger.
+* Removed <code>.top__links--mobile</code> modifier.
+* Added the <code>.top__buttons</code> element. This will provide clean styling for buttons in the nav bar.
+* Added <code>$top-button-padding</code> variable. This is applied directly to the <code>.top__buttons</code> element.
+
+### Pagination
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the **pagination** element. As these are now global helpers any previous use will function as normal and no changes are required.
+* Padding now applies to the <code>li</code> element instead of the nested link element.
+
+### Alert
+* The <code>alert-color</code> mixin has been removed. Any implementation of it should now make use of the global <code>element-color</code> mixin.
+* The <code>$alert-radius</code> has been updated to 0. This removes rounded corners on the alert element by default.
+
+### Button
+* The <code>button-color</code> mixin has been removed. Any implementation of it should now make use of the global <code>element-color</code> mixin.
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the <code>.is-button-group</code> and <code>.is-addon-group</code> elements. As these are now global helpers any previous use will function as normal and no changes are required.
+
+### Card
+* The <code>.has-no-padding</code> helper has been removed from the **card** element. As this previously removed the padding from the child **header**, **content** and **footer** you will have to add <code>.has-no-padding</code> to each of these elements individually.
+* Removed the <code>.card--modal</code> modifier. **Card** elements can now just be placed directly in the modal.
+* Removed the <code>.is-rounded</code> helper class and changed the default value of the <code>$card-radius</code> variable to 0.
+
+### Modal
+* The <code>$modal-overlay-background</code> variable can now be overridden.
+* Removed the <code>.card--modal</code> modifier. **Card** elements can now just be placed directly in the modal.
+* Removed the <code>.has-padding</code> helper from the <code>.modal__content</code> element. Padding is now set as the default and can be overridden with the global <code>.has-no-padding</code> helper.
+* Set the default value of the <code>$modal-radius</code> variable to 0.
+
+### Tabs
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the **tabs** element. As this previously applied to the child <code>.tabs__list</code> element you will now have to add these helpers directly to the <code>.tabs__list</code> element. For example replace:
+<pre><code>&lt;div class="tabs has-centered"&gt;
+&#9;&lt;ul class="tabs__list"&gt;...&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+WITH
+<pre><code>&lt;div class="tabs"&gt;
+&#9;&lt;ul class="tabs__list has-centered"&gt;...&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+* Remove the <code>.has-rounded-borders</code> helper from the <code>.tabs__item</code> element. Border radius can now be controlled with the **$tab-border-radius** variable.
+* Added the <code>$tab-border-radius</code> variable with a default value of **0**. This variable can be used to control the border radius of the tab list items.
+
+### Tags
+* The <code>tag-color</code> mixin has been removed. Any implementation of it should now make use of the global <code>element-color</code> mixin.
+* <code>.has-centered</code> and <code>.has-end</code> helpers have been removed from the <code>.is-tag-group</code> and <code>.is-addon-group</code> elements. As these are now global helpers any previous use will function as normal and no changes are required.
+
+### Menu
+* The <code>.link__list</code> <code>a</code> styling has been moved to the <code>li</code> element. This allows for list items that do not have links. The exception is <code>.menu__slidedown</code> elements. The styling will isntead be inherited by the first child.
+* Remove the 100% width and no margin default that was applied to all buttons within a menu.
+* Removed the <code>.is-open</code> modifier on the slide down menu. To trigger an open state; only the <code>.is-active</code> modifier needs to be applied to the parent item.
+* Restructure to prevent nested content inheriting the properties of the core menu elements.
+
+### Section
+* Added <code>1rem</code> left & right padding to all 3 section sizes.
+
+### Accordion
+* Removed the <code>.is-open</code> modifier on the <code>.accordion__content</code> element. To trigger an open state; the <code>.is-active</code> modifier needs to be applied to a direct parent of the <code>.accordion__content</code> element.
+
+### Table
+* Removed the <code>.has-scroll</code> helper.
+* Added <code>.is-table-container</code> element. Wrapping a table with this class will enable horizontal scrolling.
+
+### Dropdown
+* Changed the default value of the <code>$dropdown-radius</code> variable to 0.
+* Removed the margin override from dropdown buttons.
+
+### Bug fixes
+* Flex is now only applied to elements with <code>.hero__content</code> who are a direct descendant of the <code>.hero.is-full</code> element.
+* Using <code>.is-end</code> and <code>.is-center</code> will only apply to direct descendants of the <code>.card__footer</code> element and not all descendants.
+* Span and label styling is only applied to direct descendants of <code>.is-input-group</code> element. This was causing elements such as buttons using icons to display incorrectly.
+
+***
+
 ## 0.4.4
 
 ### Bug fixes

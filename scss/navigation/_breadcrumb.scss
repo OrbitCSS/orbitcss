@@ -42,12 +42,4 @@ $breadcrumb-separator: '/' !default;
       padding: $breadcrumb-separator-padding;
     }
   }
-
-  &.has-centered ul {
-    justify-content: center;
-  }
-
-  &.has-end ul {
-    justify-content: flex-end;
-  }
 }

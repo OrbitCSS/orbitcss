@@ -28,12 +28,6 @@ $button-close-hover: rgba(57, 57, 57, 0.41) !default;
 $button-cross-color: inherit !default;
 $button-cross-width: 1px !default;
 
-@mixin button-color($background, $border, $color: getTextColor($background)) {
-  background-color: $background;
-  border-color: $border;
-  color: $color;
-}
-
 .button {
   align-items: center;
   border-width: $button-border-width;
@@ -47,7 +41,11 @@ $button-cross-width: 1px !default;
   margin-bottom: $button-margin-bottom;
   padding: $button-padding;
   text-align: $button-text-align;
-  @include button-color($button-background, $button-border-color, $button-color);
+  @include element-color($button-background, $button-border-color, $button-color);
+
+  &:hover, a {
+    text-decoration: none;
+  }
 
   &.is-rounded {
     border-radius: $button-radius;
@@ -71,15 +69,15 @@ $button-cross-width: 1px !default;
 
   @each $color in $color-palette {
     &.is-#{nth($color, 1)} {
-      @include button-color(nth($color, 2), transparent);
+      @include element-color(nth($color, 2), transparent);
       &:hover:not(.is-outline):not([disabled]), &.is-active {
         background-color: darken(nth($color, 2), 5%);
       }
 
       &.is-outline {
-        @include button-color(transparent, nth($color, 2), nth($color, 2));
+        @include element-color(transparent, nth($color, 2), nth($color, 2));
         &:hover:not([disabled]), &.is-active {
-          @include button-color(nth($color, 2), transparent);
+          @include element-color(nth($color, 2), transparent);
         }
 
         &.is-loading::after {
@@ -141,15 +139,6 @@ $button-cross-width: 1px !default;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-
-  &.has-end {
-    justify-content: flex-end;
-  }
-
-  &.has-centered {
-    justify-content: center;
-  }
 
   .button {
     margin-bottom: $button-margin-bottom;
@@ -171,8 +160,12 @@ $button-cross-width: 1px !default;
   & > .button {
     margin-right: 0;
 
-    &:not(:last-child) {
-      border-right: none;
+    &:not(:first-of-type) {
+      border-left-width: $button-border-width / 2;
+    }
+
+    &:not(:last-of-type) {
+      border-right-width: $button-border-width / 2;
     }
   }
 

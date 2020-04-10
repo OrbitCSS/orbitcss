@@ -3,60 +3,43 @@ $tab-bar-width: 1px !default;
 $tab-item-padding: 0.75rem 1rem 0.5rem !default;
 $tab-item-color: $black !default;
 $tab-item-active-color: $link !default;
+$tab-border-radius: 6px !default;
 $tab-content-padding: 1rem !default;
 
 .tabs {
   width: 100%;
 
-  &.has-centered {
-    .tabs__list {
-      justify-content: center;
-    }
-  }
-
-  &.has-end {
-    .tabs__list {
-      justify-content: flex-end;
-    }
-  }
-
   @each $color in $color-palette {
     &.is-#{nth($color, 1)} {
       .tabs__item.is-active, .tabs__item:hover {
-        background-color: nth($color, 2);
-        border-bottom-color: transparent;
-        color: getTextColor(nth($color, 2));
+        @include element-color(nth($color, 2), transparent);
       }
     }
   }
 
-  &.has-borders, &.has-rounded-borders {
-    .tabs__item {
+  &.has-borders {
+    .tabs__item, .tabs__title {
       border-color: #e6e6e6;
       border-width: 1px 0 1px 1px;
 
+      &:first-of-type {
+        border-radius: $tab-border-radius 0 0;
+      }
+
       &:last-of-type {
+        border-radius: 0 $tab-border-radius 0 0;
         border-width: 1px;
+      }
+
+      &:only-of-type {
+        border-radius: $tab-border-radius $tab-border-radius 0 0;
       }
     }
 
     .tabs__content {
       border: 1px solid #e6e6e6;
+      border-radius: 0 0 $tab-border-radius $tab-border-radius;
       border-width: 0 1px 1px;
-    }
-  }
-
-  &.has-rounded-borders {
-    .tabs__item:first-of-type {
-      border-radius: 6px 0 0;
-    }
-
-    .tabs__item:last-of-type {
-      border-radius: 0 6px 0;
-    }
-
-    .tabs__content {
-      border-radius: 0 0 6px 6px;
     }
   }
 
@@ -70,17 +53,6 @@ $tab-content-padding: 1rem !default;
     margin: 0;
   }
 
-  &__item {
-    a {
-      color: inherit;
-    }
-
-    &.is-active, &:hover {
-      color: $tab-item-active-color;
-      border-bottom: $tab-bar-width solid $tab-item-active-color;
-    }
-  }
-
   &__title, &__item {
     border-color: transparent;
     border-style: solid;
@@ -89,6 +61,21 @@ $tab-content-padding: 1rem !default;
     display: block;
     margin-bottom: -1px;
     padding: $tab-item-padding;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__item {
+    &.is-active, &:hover {
+      color: $tab-item-active-color;
+      border-bottom: $tab-bar-width solid $tab-item-active-color;
+    }
   }
 
   &__content {

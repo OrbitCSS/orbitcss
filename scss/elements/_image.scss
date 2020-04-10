@@ -19,24 +19,20 @@ $image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'medium-square' 16
   display: flex;
   flex-direction: column;
 
+  &.is-thumbnail {
+    border: $image-thumb-border;
+    border-radius: $image-thumb-radius;
+
+    img {
+      padding: $image-thumb-padding;
+    }
+  }
+
   &.is-rounded {
     border-radius: $image-radius;
 
     img {
       border-radius: inherit;
-    }
-  }
-
-  &.is-thumbnail {
-    border: $image-thumb-border;
-    border-radius: $image-thumb-radius;
-
-    &.is-rounded {
-      border-radius: $image-radius;
-    }
-
-    img {
-      padding: $image-thumb-padding;
     }
   }
 

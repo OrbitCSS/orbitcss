@@ -1,14 +1,8 @@
 $alert-border-color: rgba(10, 10, 10, 0.25) !default;
 $alert-border-style: solid !default;
 $alert-border-width: 1px !default;
-$alert-radius: 4px !default;
+$alert-radius: 0 !default;
 $alert-padding: calculateRem(16) !default;
-
-@mixin alert-color($background, $border, $color: getTextColor($background)) {
-  background-color: $background;
-  border-color: $border;
-  color: $color;
-}
 
 .alert {
   border-width: $alert-border-width;
@@ -18,7 +12,7 @@ $alert-padding: calculateRem(16) !default;
   flex-flow: column nowrap;
   padding: $alert-padding;
   position: relative;
-  @include alert-color($white, $alert-border-color, $black);
+  @include element-color($white, $alert-border-color, $black);
 
   .button--close {
     position: absolute;
@@ -28,10 +22,10 @@ $alert-padding: calculateRem(16) !default;
 
   @each $color in $color-palette {
     &.is-#{nth($color, 1)} {
-      @include alert-color(transparentize(nth($color, 2), 0.8), $alert-border-color, $black);
+      @include element-color(transparentize(nth($color, 2), 0.8), $alert-border-color, $black);
 
       &.is-outline {
-        @include alert-color($white, nth($color, 2), nth($color, 2));
+        @include element-color($white, nth($color, 2), nth($color, 2));
       }
     }
   }

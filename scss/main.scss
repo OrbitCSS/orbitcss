@@ -1,64 +1,7 @@
-/*! Orbit CSS v0.4.4 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v1.0 | MIT license | https://orbitcss.com */
 
-@function calculateRem($size) {
-  @return ($size / $font-base)+rem;
-}
-
-@function calculateEm($size) {
-  @return ($size / $font-base)+em;
-}
-
-@mixin small {
-  @media (max-width: #{$small-max}) {
-    @content;
-  }
-}
-
-@mixin medium {
-  @media (min-width: #{$medium}) {
-    @content;
-  }
-}
-
-@mixin large {
-  @media (min-width: #{$large}) {
-    @content;
-  }
-}
-
-@mixin extra-large {
-  @media (min-width: #{$x-large}) {
-    @content;
-  }
-}
-
-@import './helpers/colors';
-@import './base/general';
-@import './helpers/typography';
-@import './helpers/general';
-
-@import './layout/section';
-@import './layout/grid';
-@import './layout/container';
-@import './layout/hero';
-@import './layout/media';
-
-@import './form/form';
-
-@import './elements/panel';
-@import './elements/accordion';
-@import './elements/button';
-@import './elements/alert';
-@import './elements/tags';
-@import './elements/table';
-@import './elements/card';
-@import './elements/modal';
-@import './elements/progress';
-@import './elements/image';
-@import './elements/dropdown';
-@import './elements/tabs';
-
-@import './navigation/navbar';
-@import './navigation/pagination';
-@import './navigation/breadcrumb';
-@import './navigation/menu';
+@import './base/all';
+@import './layout/all';
+@import './form/all';
+@import './navigation/all';
+@import './elements/all';

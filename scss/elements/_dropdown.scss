@@ -1,6 +1,6 @@
 $dropdown-background: $white !default;
 $dropdown-border: 1px solid rgba(205, 205, 205, 0.34) !default;
-$dropdown-radius: 6px !default;
+$dropdown-radius: 0 !default;
 $dropdown-shadow: 0 6px 6px rgba(10, 10, 10, 0.16) !default;
 $dropdown-min-width: 12rem !default;
 $dropdown-padding: 10px 0 !default;
@@ -40,15 +40,8 @@ $dropdown-arrow-color: #7284ff !default;
     cursor: pointer;
     padding: $dropdown-link-padding;
 
-    a {
-      color: inherit;
-      display: block;
-      width: 100%;
-    }
-
     &:hover {
       background-color: $dropdown-link-hover;
-      border-radius: 0;
     }
   }
 
@@ -63,37 +56,24 @@ $dropdown-arrow-color: #7284ff !default;
   }
 }
 
-.has-arrow {
-  padding-right: calculateEm(35) !important;
-  position: relative;
-}
-
-.has-arrow::after {
-  border: 3px solid $dropdown-arrow-color;
-  border-radius: 2px;
-  border-right: 0;
-  border-top: 0;
-  content: " ";
-  display: block;
-  height: 0.625em;
-  margin-top: calculateEm(-6.4);
-  position: absolute;
-  right: calculateEm(15);
-  top: 50%;
-  transform: rotate(-45deg);
-  transform-origin: center;
-  width: 0.625em;
-}
-
 .has-dropdown {
   display: inline-flex;
   position: relative;
 
-  &.is-hoverable:hover > .dropdown, &.is-active > .dropdown {
+  a {
+    color: inherit;
     display: block;
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  &.is-hoverable:hover, &.is-active {
+    & > .dropdown {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
   }
 
   &.is-right {
@@ -103,7 +83,25 @@ $dropdown-arrow-color: #7284ff !default;
     }
   }
 
-  .button {
-    margin-bottom: 0.25rem !important;
+  .has-arrow, &.has-arrow {
+    padding-right: calculateEm(35) !important;
+    position: relative;
+
+    &::after {
+      border: 3px solid $dropdown-arrow-color;
+      border-radius: 2px;
+      border-right: 0;
+      border-top: 0;
+      content: " ";
+      display: block;
+      height: 0.625em;
+      margin-top: calculateEm(-6.4);
+      position: absolute;
+      right: calculateEm(15);
+      top: 50%;
+      transform: rotate(315deg);
+      transform-origin: center;
+      width: 0.625em;
+    }
   }
 }

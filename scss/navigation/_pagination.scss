@@ -32,14 +32,6 @@ $pagination-bordered-hover: darken($light-grey, 10%) !default;
     margin: 0;
   }
 
-  &.has-centered {
-    justify-content: center;
-  }
-
-  &.has-end {
-    justify-content: flex-end;
-  }
-
   .is-center {
     margin: 0 auto;
   }
@@ -51,20 +43,19 @@ $pagination-bordered-hover: darken($light-grey, 10%) !default;
   li {
     background-color: $pagination-background;
     border: $pagination-border;
-    display: inline-block;
-    font-size: $pagination-font-size;
     cursor: pointer;
     color: $pagination-color;
+    display: inline-block;
+    font-size: $pagination-font-size;
     line-height: $pagination-line-height;
     justify-content: center;
     margin: $pagination-margin;
+    padding: $pagination-padding;
+    padding-bottom: $pagination-padding-bottom;
     text-align: center;
 
     a {
       color: inherit;
-      display: block;
-      padding: $pagination-padding;
-      padding-bottom: $pagination-padding-bottom;
     }
 
     &.is-active {

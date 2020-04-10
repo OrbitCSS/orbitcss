@@ -28,15 +28,9 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   flex-flow: row wrap;
 
   &.has-centered {
-    justify-content: center;
-
     &.is-vertical {
       align-items: center;
     }
-  }
-
-  &.has-end {
-    justify-content: flex-end;
   }
 
   &.has-spacing {

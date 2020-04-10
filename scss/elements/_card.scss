@@ -2,7 +2,7 @@ $card-border-color: rgba(219, 219, 219, 0.36) !default;
 $card-border-width: 1px !default;
 $card-border-style: solid !default;
 $card-shadow: 0 0 3px 0 rgba(10, 10, 10, 0.10) !default;
-$card-radius: 6px !default;
+$card-radius: 0 !default;
 $card-header-background: rgba(0, 0, 0, .03) !default;
 $card-header-color: $black !default;
 $card-header-padding: 0.625rem 1rem !default;
@@ -12,42 +12,9 @@ $card-footer-padding:  0.35rem 1rem !default;
 .card {
   border: $card-border-width $card-border-style $card-border-color;
   box-shadow: $card-shadow;
-  height: 100%;
-
-  &.is-rounded {
-    border-radius: $card-radius;
-
-    .card__header {
-      border-top-left-radius: $card-radius;
-      border-top-right-radius: $card-radius;
-    }
-
-    .card__footer {
-      border-bottom-left-radius: $card-radius;
-      border-bottom-right-radius: $card-radius;
-    }
-  }
-}
-
-.card--modal {
-  display: flex;
-  max-height: calc(100vh - 75px - 50px);
-  overflow: hidden;
-
-  .card__content {
-    overflow: auto;
-  }
-}
-
-.card, .card--modal {
   display: flex;
   flex-flow: column nowrap;
-
-  &.has-no-padding {
-    .card__header, .card__content, .card__footer {
-      padding: 0;
-    }
-  }
+  height: 100%;
 
   .card__image {
     display: block;
@@ -61,6 +28,8 @@ $card-footer-padding:  0.35rem 1rem !default;
   .card__header {
     align-items: center;
     background-color: $card-header-background;
+    border-top-left-radius: $card-radius;
+    border-top-right-radius: $card-radius;
     color: $card-header-color;
     display: flex;
     padding: $card-header-padding;
@@ -90,14 +59,16 @@ $card-footer-padding:  0.35rem 1rem !default;
 
   .card__footer {
     align-items: center;
+    border-bottom-left-radius: $card-radius;
+    border-bottom-right-radius: $card-radius;
     display: flex;
     padding: $card-footer-padding;
 
-    .is-end {
+    & > .is-end {
       margin-left: auto;
     }
 
-    .is-center {
+    & > .is-center {
       margin: auto;
     }
 

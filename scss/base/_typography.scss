@@ -1,12 +1,3 @@
-@function title-size($key) {
-  @if map-has-key($title-size, $key) {
-    @return map-get($title-size, $key);
-  }
-
-  @warn "Unknown `#{$key}` in $title-size.";
-  @return null;
-}
-
 $list-style-type: disc !default;
 $list-margin-left: calculateRem(20) !default;
 $list-margin-top: calculateRem(16) !default;
@@ -71,15 +62,6 @@ ul {
     display: flex;
     list-style-type: none;
     margin: 0;
-
-    &.has-centered {
-      justify-content: center;
-    }
-
-    &.has-end {
-      justify-content: flex-end;
-    }
-
 
     & > li:not(:last-child) {
       margin-right: 0.5rem;
@@ -149,13 +131,14 @@ abbr {
 
 a {
   color: $link;
+  cursor: pointer;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   .has-link-inherit & {
     color: inherit;
-  }
-
-  &.is-hover-underline:hover {
-    text-decoration: underline;
   }
 }

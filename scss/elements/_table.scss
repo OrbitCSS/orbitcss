@@ -73,14 +73,11 @@ $table-small-padding: calculateRem(4) calculateRem(8) !default;
       padding: $table-small-padding;
     }
   }
+}
 
-  &.has-scroll {
-    display: block;
-    overflow-x: auto;
-
-    thead tr {
-      white-space: nowrap;
-    }
-  }
-
+.is-table-container {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-x: auto;
+  width: 100%;
 }
