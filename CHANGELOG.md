@@ -1,5 +1,16 @@
 # OrbitCSS Changelog
 
+## v1.0.1
+
+### Improvements
+* Add <code>$input-background-color</code> variable. Use this to override the default **$white** background color on form elements.
+* Add <code>$input-color</code> variable. Use this to override the default **inherit** text color on form elements.
+
+### Bug fixes
+* Corrected **.top__links** li element not applying by removing rogue comma.
+* The <code>$top-link-hover-decoration</code> variable now applies to any nested link elements.
+* <code>.top__burger</code> now sits in the top right corner when the **.is-mobile-responsive** modifier is being used.
+
 ## v1.0.0
 
 ### Core changes
