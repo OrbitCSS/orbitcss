@@ -6,7 +6,7 @@ $menu-title-case: uppercase !default;
 
 $menu-list-color: $black !default;
 $menu-list-line-height: 1.5 !default;
-$menu-list-padding:.5rem 1.5rem !default;
+$menu-list-padding: calculateRem(8) calculateRem(24) !default;
 $menu-list-active-background: $primary !default;
 $menu-list-active-color: getTextColor($primary) !default;
 $menu-list-hover: rgba(192, 192, 192, 0.09) !default;
@@ -14,10 +14,10 @@ $menu-list-hover: rgba(192, 192, 192, 0.09) !default;
 $menu-divider: 1px solid #e9ecef !default;
 $menu-divider-margin: calculateRem(8) !default;
 
-$menu-slidedown-border: 1px solid #e9ecef !default;
-$menu-slidedown-margin: calculateRem(12) !default;
-$menu-slidedown-padding-left: calculateRem(12) !default;
-$menu-slidedown-item-padding: 0 calculateRem(12) !default;
+$menu-expandable-border: 1px solid #e9ecef !default;
+$menu-expandable-margin: calculateRem(12) !default;
+$menu-expandable-padding-left: calculateRem(12) !default;
+$menu-expandable-item-padding: 0 calculateRem(12) !default;
 
 .menu {
 
@@ -34,7 +34,7 @@ $menu-slidedown-item-padding: 0 calculateRem(12) !default;
     list-style: none;
     margin: 0;
 
-    li.is-active:not(.menu__slidedown), .menu__slidedown.is-active > :first-child {
+    & > li.is-active:not(.is-expandable) > a, li.is-expandable.is-active > :first-child, li:not(.is-expandable) li.is-active > a {
       background-color: $menu-list-active-background;
       color: $menu-list-active-color;
     }
@@ -50,14 +50,58 @@ $menu-slidedown-item-padding: 0 calculateRem(12) !default;
           text-decoration: none;
         }
       }
+
+      &.is-expandable {
+        & > :first-child {
+          display: block;
+          padding: $menu-list-padding;
+        }
+
+        &:not(.is-active) > :first-child:hover {
+          background-color: $menu-list-hover;
+        }
+
+        &.is-active > ul {
+          display: block;
+        }
+
+        & > ul {
+          border-left: $menu-expandable-border;
+          list-style: none;
+          display: none;
+          margin: $menu-expandable-margin;
+          padding-left: $menu-expandable-padding-left;
+
+          li {
+            padding: $menu-expandable-item-padding;
+
+            &.is-active {
+              a {
+                background-color: $menu-list-hover;
+                color: $menu-list-color;
+              }
+            }
+          }
+        }
+      }
+
+      &:not(.is-expandable) {
+        ul {
+          list-style: none;
+        }
+      }
     }
 
-    li:not(.menu__slidedown) {
+    li:not(.is-expandable) {
       cursor: pointer;
-      padding: $menu-list-padding;
 
-      &:not(.is-active):hover {
-        background-color: $menu-list-hover;
+      &:not(.is-active) > a:hover {
+         background-color: $menu-list-hover;
+      }
+
+      a {
+        display: block;
+        padding: $menu-list-padding;
       }
     }
   }
@@ -67,35 +111,4 @@ $menu-slidedown-item-padding: 0 calculateRem(12) !default;
     margin: $menu-divider-margin;
   }
 
-  &__slidedown {
-    & > :first-child {
-      display: block;
-      padding: $menu-list-padding;
-    }
-
-    &:not(.is-active) > :first-child:hover {
-      background-color: $menu-list-hover;
-    }
-
-    &.is-active > ul {
-      display: block;
-    }
-
-    & > ul {
-      border-left: $menu-slidedown-border;
-      list-style: none;
-      display: none;
-      margin: $menu-slidedown-margin;
-      padding-left: $menu-slidedown-padding-left;
-
-      li {
-        padding: $menu-slidedown-item-padding;
-
-        &.is-active {
-          background-color: $menu-list-hover;
-          color: $menu-list-color;
-        }
-      }
-    }
-  }
 }

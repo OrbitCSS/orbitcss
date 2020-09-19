@@ -60,6 +60,7 @@ ul {
 
   &.is-inline-list {
     display: flex;
+    flex-flow: row wrap;
     list-style-type: none;
     margin: 0;
 
@@ -90,6 +91,10 @@ dl {
   dt {
     font-weight: bold;
     margin-bottom: 0.3rem;
+  }
+
+  dd ~ dt {
+    margin-top: 0.3rem;
   }
 }
 

@@ -7,16 +7,16 @@ OrbitCSS is a modern CSS framework based on Flexbox.
 <a href="https://orbitcss.com"><img src="https://orbitcss.com/img/orbitcss_transparent.png" alt="A modern CSS framework based on Flexbox" style="max-width:100%;" width="600"></a>
 
 ## Getting Started
-You can try out OrbitCSS via one of the methods below:
+You can install OrbitCSS via one of the methods below:
 
 ### NPM
-OrbitCSS is available on NPM and includes all of the source Sass along with the compiled CSS.
+You can install OrbitCSS with NPM. This will give you all of the Sass files along with the compiled CSS.
 ```sh
 npm install orbitcss
 ```
 
 ### CDN Links
-OrbitCSS can be added to your project by adding either of the following [jsDelivr](https://cdn.jsdelivr.net/) URL's to a link tag within your project.
+Use the [jsDelivr](https://cdn.jsdelivr.net/) CDN to include OrbitCSS directly into your project.
 
 Compressed CSS
 ```sh
@@ -29,7 +29,7 @@ https://cdn.jsdelivr.net/npm/orbitcss/css/orbit.css
 ```
 
 ### Github
-The complied CSS can be downloaded via Github.
+You can download the repository directly from Github (you are here right now!).
 ```sh
 https://github.com/OrbitCSS/orbitcss/tree/master/css
 ```

@@ -139,6 +139,7 @@ $button-cross-width: 1px !default;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 
   .button {
     margin-bottom: $button-margin-bottom;
@@ -152,6 +153,10 @@ $button-cross-width: 1px !default;
 
   & > .is-addon-group:not(:last-child) {
     margin-right: $button-group-gap;
+  }
+
+  & > .is-addon-group {
+    width: auto;
   }
 }
 

@@ -4,8 +4,7 @@ $image-thumb-radius: 6px !default;
 $image-thumb-padding: 0.25rem !default;
 $image-tile-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2) !default;
 $image-tile-radius: 6px !default;
-$image-square-size: 128px !default;
-$image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'medium-square' 160px, 'large-square' 208px !default;
+$image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'square' 128px, 'medium-square' 160px, 'large-square' 208px !default;
 
 @mixin imageBoxSize($width, $height: $width) {
   height: $height;
@@ -46,10 +45,6 @@ $image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'medium-square' 16
     img {
       border-radius: inherit;
     }
-  }
-
-  &.is-square {
-    @include imageBoxSize($image-square-size);
   }
 
   @each $size in $image-square-sizes {

@@ -1,26 +1,57 @@
-$tab-bar-color: #e6e6e6 !default;
-$tab-bar-width: 1px !default;
+$tab-border-color: #e6e6e6 !default;
+$tab-border-width: 1px !default;
 $tab-item-padding: 0.75rem 1rem 0.5rem !default;
 $tab-item-color: $black !default;
 $tab-item-active-color: $link !default;
-$tab-border-radius: 6px !default;
+$tab-border-radius: 0 !default;
 $tab-content-padding: 1rem !default;
 
 .tabs {
   width: 100%;
 
-  @each $color in $color-palette {
-    &.is-#{nth($color, 1)} {
-      .tabs__item.is-active, .tabs__item:hover {
-        @include element-color(nth($color, 2), transparent);
+  &__list {
+    align-items: center;
+    border-bottom: $tab-border-width solid $tab-border-color;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 auto;
+    list-style: none;
+    margin: 0;
+
+    @each $color in $color-palette {
+      .is-#{nth($color, 1)} > & {
+        li.is-active, li:hover {
+          @include element-color(nth($color, 2), transparent);
+        }
       }
     }
-  }
 
-  &.has-borders {
-    .tabs__item, .tabs__title {
-      border-color: #e6e6e6;
-      border-width: 1px 0 1px 1px;
+    li {
+      border-color: transparent;
+      border-style: solid;
+      border-width: $tab-border-width;
+      color: $tab-item-color;
+      margin-bottom: -$tab-border-width;
+
+      a {
+        color: inherit;
+        display: block;
+        padding: $tab-item-padding;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      &.is-active, &:hover {
+        color: $tab-item-active-color;
+        border-bottom: $tab-border-width solid $tab-item-active-color;
+      }
+    }
+
+    .has-border > & li {
+      border-color: $tab-border-color;
+      border-width: $tab-border-width 0 $tab-border-width $tab-border-width;
 
       &:first-of-type {
         border-radius: $tab-border-radius 0 0;
@@ -28,53 +59,12 @@ $tab-content-padding: 1rem !default;
 
       &:last-of-type {
         border-radius: 0 $tab-border-radius 0 0;
-        border-width: 1px;
+        border-width: $tab-border-width;
       }
 
       &:only-of-type {
         border-radius: $tab-border-radius $tab-border-radius 0 0;
       }
-    }
-
-    .tabs__content {
-      border: 1px solid #e6e6e6;
-      border-radius: 0 0 $tab-border-radius $tab-border-radius;
-      border-width: 0 1px 1px;
-    }
-  }
-
-  &__list {
-    align-items: center;
-    border-bottom: $tab-bar-width solid $tab-bar-color;
-    display: flex;
-    flex-flow: row wrap;
-    flex: 1 0 auto;
-    list-style: none;
-    margin: 0;
-  }
-
-  &__title, &__item {
-    border-color: transparent;
-    border-style: solid;
-    border-width: $tab-bar-width;
-    color: $tab-item-color;
-    display: block;
-    margin-bottom: -1px;
-    padding: $tab-item-padding;
-
-    a {
-      color: inherit;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-
-  &__item {
-    &.is-active, &:hover {
-      color: $tab-item-active-color;
-      border-bottom: $tab-bar-width solid $tab-item-active-color;
     }
   }
 
@@ -85,5 +75,12 @@ $tab-content-padding: 1rem !default;
     &.is-open {
       display: block;
     }
+
+    .has-border > & {
+      border: 1px solid $tab-border-color;
+      border-radius: 0 0 $tab-border-radius $tab-border-radius;
+      border-width: 0 $tab-border-width $tab-border-width;
+    }
   }
+
 }

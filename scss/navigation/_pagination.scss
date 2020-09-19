@@ -50,12 +50,17 @@ $pagination-bordered-hover: darken($light-grey, 10%) !default;
     line-height: $pagination-line-height;
     justify-content: center;
     margin: $pagination-margin;
-    padding: $pagination-padding;
-    padding-bottom: $pagination-padding-bottom;
     text-align: center;
 
     a {
       color: inherit;
+      display: block;
+      padding: $pagination-padding;
+      padding-bottom: $pagination-padding-bottom;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     &.is-active {

@@ -81,6 +81,16 @@
   }
 }
 
+.has-font {
+  &-normal {
+    font-weight: normal !important;
+  }
+
+  &-bold {
+    font-weight: bold !important;
+  }
+}
+
 .is-margin-center {
   margin: 0 auto !important;
 }
@@ -92,16 +102,6 @@
 
   &-right {
     float: right;
-  }
-}
-
-.has-font {
-  &-normal {
-    font-weight: normal !important;
-  }
-
-  &-bold {
-    font-weight: bold !important;
   }
 }
 

@@ -49,7 +49,7 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   }
 
   &.is-flex-start {
-    align-content: flex-start;
+    align-items: flex-start;
   }
 
   .column {

@@ -1,9 +1,9 @@
 $modal-background: $white !default;
 $modal-radius: 0 !default;
 $modal-width: 600px !default;
-$modal-size-variations: 'small' 25%, 'medium' 45%, 'large' 75% !default;
 $modal-padding: 1rem !default;
 $modal-overlay-background: transparentize($black, 0.3) !default;
+$modal-size-variations: 'small' 25%, 'medium' 45%, 'large' 75% !default;
 
 .modal {
   display: none;

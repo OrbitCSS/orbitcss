@@ -1,5 +1,54 @@
 # OrbitCSS Changelog
 
+## v1.1.0
+
+### Notes
+Apologies for the necessary deprecations.
+
+### Improvements
+
+* Items within a list using the <code>is-inline-list</code> modifier will now wrap.
+* Added a **top-margin** of **0.3rem** to <code>dt</code> elements that are preceded by a <code>dd</code> element. This adds a little more breathing room.
+* Removed the **_form.scss** module. This should have been removed version 1.0.
+* Removed **bottom-margin** from **heading** tags when used in a <code>top__brand</code> element.
+* Removed the redundant **form/form.scss** file.
+* Removed **absolute positioning** from the <code>top__burger</code> element when the <code>is-mobile-responsive</code> modifier is active.
+* Added 'square' to the <code>$image-square-sizes</code> list and removed the <code>$image-square-size</code> variable.
+* Changed the default value of <code>$tab-border-radius</code> to <b>0</b>. Previous value was <b>6px</b>.
+* Added <code>is-loading</code> modifier to the <code>is-select</code> container.
+* New form variable <code>$select-loading-animation</code> with value <b>spinner .8s linear infinite</b>.
+* New form variable <code>$select-loading-width</code> with value <b>2px</b>.
+* New form variable <code>$select-loading-color</code> with value <b>$light-grey</b>.
+
+
+### Bug fixes
+
+* Tab list item padding was being applied to the <code>li</code> element instead of the <code>a</code> element. All content within a tab list item must be placed within the <code>a</code> element.
+* The <code>is-flex-start</code> **grid** modifier is now using the <code>align-items</code> CSS property instead of <code>align-content</code>.
+* Menu list item padding was being applied to the <code>li</code> element instead of the <code>a</code> element. All content within a menu list item must be placed within the <code>a</code> element.
+* Removed the on hover underline for <code>a</code> elements in <code>pagination</code> list items.
+* Pagination list item padding was being applied to the <code>li</code> element instead of the <code>a</code> element. All content within a pagination list item must be placed within the <code>a</code> element.
+* The <code>is-active</code> modifier now works on <code>top__burger</code> elements that do not have the <code>has-animate</code> modifier.
+* The <code>top__burger</code> element now appears vertically centered within the **top bar**.
+* The <code>is-mobile-response.is-open</code> modifier did not work on **top** elements with **containers**. This has been corrected.
+* Active list items within the <code>is-expandable</code> list now use the correct background color.
+* Button addon groups where taking up 100% width when nested within a button group. These have been corrected to auto width.
+* Tag groups and addons now have 100% width.
+
+### Deprecations
+* The <code>tabs__title</code> element will be removed this patch. Please use a regular list item or create your own title element.
+* The <code>tabs__item</code> element will be removed this patch. To create a tabs list item you only need a regular <code>li</code> element within a list that contains the <code>tabs__list</code> class.
+* The <code>has-borders</code> modifier in the **tabs** module has been replaced with <code>has-border</code>.
+* The <code>$tab-bar-color</code> variable will be removed and replaced with <code>$tab-border-color</code>. The default value remains the same.
+* The <code>$tab-bar-width</code> variable will be removed and replaced with <code>$tab-border-width</code>. The default value remains the same.
+* The <code>menu__slidedown</code> element will be removed this patch. Please use the <code>is-expandable</code> modifier instead.
+* The <code>$menu-slidedown-border</code> variable will be removed this patch and replaced with <code>$menu-expandable-border</code>. The default value remains the same.
+* The <code>$menu-slidedown-margin</code> variable will be removed this patch and replaced with <code>$menu-expandable-margin</code>. The default value remains the same.
+* The <code>$menu-slidedown-padding-left</code> variable will be removed this patch and replaced with <code>$menu-expandable-padding-left</code>. The default value remains the same.
+* The <code>$menu-slidedown-item-padding</code> variable will be removed this patch and replaced with <code>$menu-expandable-item-padding</code>. The default value remains the same.
+* The <code>$image-square-size</code> variable has been removed. You can edit this value with the <code>$image-square-sizes</code> variable instead.
+
+
 ## v1.0.1
 
 ### Improvements

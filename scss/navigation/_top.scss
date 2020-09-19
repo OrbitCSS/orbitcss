@@ -39,6 +39,10 @@ $top-burger-transition: .5s !default;
     align-items: center;
     display: flex;
     padding: $top-brand-padding;
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 0;
+    }
   }
 
   &.is-static {
@@ -69,11 +73,12 @@ $top-burger-transition: .5s !default;
       border-radius: $top-link-radius;
       color: $top-link-color;
       cursor: pointer;
-      padding: $top-link-padding;
       position: relative;
 
       a {
         color: inherit;
+        display: block;
+        padding: $top-link-padding;
       }
 
       &.is-active {
@@ -130,7 +135,6 @@ $top-burger-transition: .5s !default;
         border-style: solid;
         content: '';
         cursor: pointer;
-        transition: $top-burger-transition;
         width: 100%;
       }
 
@@ -145,7 +149,15 @@ $top-burger-transition: .5s !default;
       }
     }
 
-    &.has-animate.is-active, .is-mobile-responsive.is-open > & {
+    &.has-animate {
+      span {
+        &:before, &:after {
+          transition: $top-burger-transition;
+        }
+      }
+    }
+
+    &.is-active, .is-mobile-responsive.is-open > & {
       justify-content: center;
 
       span {
@@ -170,6 +182,10 @@ $top-burger-transition: .5s !default;
     @include small {
       flex-flow: row wrap;
 
+      .container {
+        flex-flow: row wrap;
+      }
+
       .top__brand {
         & + .top__links, & + .top__social, .top__buttons {
           padding-top: 1rem;
@@ -183,6 +199,7 @@ $top-burger-transition: .5s !default;
       }
 
       .top__links, .top__social, .top__buttons {
+        order: 2;
         width: 100%;
 
         &:first-of-type {
@@ -244,9 +261,6 @@ $top-burger-transition: .5s !default;
 
       .top__burger {
         padding: $top-padding;
-        position: absolute;
-        right: 0;
-        top: 0;
       }
     }
 

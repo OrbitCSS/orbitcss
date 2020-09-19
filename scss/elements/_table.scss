@@ -77,7 +77,7 @@ $table-small-padding: calculateRem(4) calculateRem(8) !default;
 
 .is-table-container {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   overflow-x: auto;
   width: 100%;
 }
