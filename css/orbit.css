@@ -1,4 +1,4 @@
-/*! Orbit CSS v1.1.0 | MIT license | https://orbitcss.com */
+/*! Orbit CSS v1.1.1 | MIT license | https://orbitcss.com */
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .has-text-primary {
   color: #6e45e2 !important;
@@ -1278,7 +1278,6 @@ textarea.has-resize-horizontal {
   padding-right: 2rem;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
 }
 
@@ -1449,7 +1448,6 @@ label:not(:last-child) {
   background: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
   width: 100%;
 }
@@ -3318,7 +3316,6 @@ label:not(:last-child) {
   -webkit-appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
   width: 100%;
 }

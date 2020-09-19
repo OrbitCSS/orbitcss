@@ -1,5 +1,10 @@
 # OrbitCSS Changelog
 
+## v1.1.1
+
+### Notes
+Forgot to update version number in compiled css. This is a trivial patch - but it needs to be done.
+
 ## v1.1.0
 
 ### Notes
