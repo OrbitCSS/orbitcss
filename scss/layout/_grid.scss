@@ -38,7 +38,7 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
   }
 
   &.has-row-margin {
-    .column {
+    > .column {
       margin-bottom: $col-margin-bottom;
       margin-top: $col-margin-top;
     }
