@@ -1,22 +1,33 @@
 $switch-outer-radius: 20px !default;
 $switch-inner-radius: 15px !default;
-$switch-background: #dbdbdb !default;
-$switch-checked-background: $primary !default;
+$switch-background: createColor(#dbdbdb) !default;
+$switch-checked-background: var(--color-primary) !default;
 $switch-height: calculateRem(32) !default;
 $switch-width: calculateRem(64) !default;
-$switch-toggle-background: $white !default;
+$switch-toggle-background: var(--color-white) !default;
 $switch-toggle-height: calculateRem(24) !default;
 $switch-toggle-width: calculateRem(24) !default;
 
 .is-switch {
+  --track-rounded-radius: 20px;
+  --toggle-rounded-radius: 15px;
+  --track-radius: 0;
+  --toggle-radius: 0;
+  --track-background-color: #{$switch-background};
+  --toggle-background-color: #{$switch-toggle-background};
+  --track-height: #{$switch-height};
+  --track-width: #{$switch-width};
+  --toggle-height: #{$switch-toggle-height};
+  --toggle-width: #{$switch-toggle-width};
+
   line-height: 0.8;
 
   &.is-rounded {
     label {
-      border-radius: $switch-outer-radius;
+      --track-radius: var(--track-rounded-radius);
 
       &::after {
-        border-radius: $switch-inner-radius;
+        --toggle-radius: var(--toggle-rounded-radius);
       }
     }
   }
@@ -28,31 +39,34 @@ $switch-toggle-width: calculateRem(24) !default;
   }
 
   input:checked ~ label {
-    background-color: $switch-checked-background;
+    --track-background-color: #{$switch-checked-background};
+
     &::after {
       left: calculateRem(36);
     }
   }
 
   label {
-    background: $switch-background;
+    background-color: var(--track-background-color);
+    border-radius: var(--track-radius);
     cursor: pointer;
     display: inline-block;
-    height: $switch-height;
+    height: var(--track-height);
     position: relative;
     transition: all 0.25s ease-out;
-    width: $switch-width;
+    width: var(--track-width);
 
     &::after {
       content: '';
-      background: $switch-toggle-background;
+      background-color: var(--toggle-background-color);
+      border-radius: var(--toggle-radius);
       display: block;
       left: calculateRem(4);
-      height: $switch-toggle-height;
+      height: var(--toggle-height);
       position: absolute;
       top: calculateRem(4);
       transition: all 0.25s ease-out;
-      width: $switch-toggle-width;
+      width: var(--toggle-width);
     }
   }
 }

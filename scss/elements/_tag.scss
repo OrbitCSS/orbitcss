@@ -1,32 +1,42 @@
-$tag-background: #f3f3f3 !default;
+$tag-background: createColor(#f3f3f3) !default;
 $tag-border-color: transparent !default;
-$tag-border-style: solid !default;
 $tag-border-width: 1px !default;
-$tag-color: $black !default;
+$tag-color: var(--color-black) !default;
 $tag-font-size: calculateRem(13) !default;
 $tag-line-height: 1.6 !default;
 $tag-height: calculateRem(25.6) !default;
-$tag-radius: 6px !default;
+$tag-radius: 0 !default;
+
 $tag-group-gap: calculateRem(6.4) !default;
 $tag-group-margin: calculateRem(6.4) !default;
-$tag-addon-radius: $tag-radius !default;
+$tag-addon-radius: 6px !default;
 
 .tag {
+  --background-color: #{$tag-background};
+  --font-color: #{$tag-color};
+  --border-color: #{$tag-border-color};
+  --border-width: #{$tag-border-width};
+  --border-radius: #{$tag-radius};
+  --font-size: #{$tag-font-size};
+  --line-height: #{$tag-line-height};
+  --height: #{$tag-height};
+
   align-items: center;
-  border-style: $tag-border-style;
-  border-width: $tag-border-width;
+  border-style: solid;
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
   display: inline-flex;
-  font-size: $tag-font-size;
-  height: $tag-height;
+  font-size: var(--font-size);
+  height: var(--height);
   justify-content: center;
-  line-height: $tag-line-height;
+  line-height: var(--line-height);
   padding: 0 0.5rem;
   text-align: center;
   white-space: nowrap;
-  @include element-color($tag-background, $tag-border-color, $tag-color);
+  @include element-color(var(--background-color), var(--border-color), var(--font-color));
 
   &.is-rounded {
-    border-radius: $tag-radius;
+    --border-radius: 6px;
   }
 
   &.is-full {
@@ -35,10 +45,14 @@ $tag-addon-radius: $tag-radius !default;
 
   @each $color in $color-palette {
     &.is-#{nth($color, 1)} {
-      @include element-color(nth($color, 2), transparent);
+      --background-color: var(--color-#{nth($color, 1)});
+      --border-color: transparent;
+      --font-color: var(--color-#{nth($color, 1)}-text);
 
       &.is-outline {
-        @include element-color($white, nth($color, 2), nth($color, 2));
+        --background-color: var(--color-white);
+        --border-color: var(--color-#{nth($color, 1)});
+        --font-color: var(--color-#{nth($color, 1)});
       }
     }
   }
@@ -49,23 +63,27 @@ $tag-addon-radius: $tag-radius !default;
 }
 
 .is-tag-group, .is-addon-group {
+  --margin: #{$tag-group-margin};
+
   align-items: center;
   display: flex;
   flex-flow: row wrap;
   width: 100%;
 
   .tag {
-    margin-bottom: $tag-group-margin;
+    margin-bottom: var(--margin);
   }
 }
 
 .is-tag-group {
+  --gap: #{$tag-group-gap};
+
   & > .tag:not(:last-child) {
-    margin-right: $tag-group-gap;
+    margin-right: var(--gap);
   }
 
   & > .is-addon-group:not(:last-child) {
-    margin-right: $tag-group-gap;
+    margin-right: var(--gap);
   }
 
   & > .is-addon-group {
@@ -74,19 +92,19 @@ $tag-addon-radius: $tag-radius !default;
 }
 
 .is-addon-group {
-  & > .tag {
-    margin-right: 0;
-  }
+  --addon-border-radius: #{$tag-addon-radius};
 
   &.is-rounded > .tag {
+    margin-right: 0;
+
     &:last-child {
-      border-top-right-radius: $tag-addon-radius;
-      border-bottom-right-radius: $tag-addon-radius;
+      border-top-right-radius: var(--addon-border-radius);
+      border-bottom-right-radius: var(--addon-border-radius);
     }
 
     &:first-child {
-      border-bottom-left-radius: $tag-addon-radius;
-      border-top-left-radius: $tag-addon-radius;
+      border-bottom-left-radius: var(--addon-border-radius);
+      border-top-left-radius: var(--addon-border-radius);
     }
   }
 }

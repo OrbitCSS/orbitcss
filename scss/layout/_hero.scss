@@ -1,13 +1,21 @@
 $hero-padding: 4rem 1.5rem !default;
 $hero-sizes: 'medium' (9rem 1.5rem), 'large' (16rem 1.5rem) !default;
+$hero-background-color: var(--color-white) !default;
+$hero-color: var(--color-black) !default;
 
 .hero {
+  --padding: #{$hero-padding  };
+  --background-color: #{$hero-background-color};
+  --font-color: #{$hero-color};
+
   display: flex;
   flex-direction: column;
 
   &__content {
+    background-color: var(--background-color);
+    color: var(--font-color);
     flex: auto;
-    padding: $hero-padding;
+    padding: var(--padding);
   }
 
   &__header, &__footer {

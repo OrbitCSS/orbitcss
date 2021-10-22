@@ -1,9 +1,11 @@
+@use "sass:math";
+
 @function calculateRem($size) {
-  @return ($size / $font-base)+rem;
+  @return (math.div($size, $font-base))+rem;
 }
 
 @function calculateEm($size) {
-  @return ($size / $font-base)+em;
+  @return (math.div($size, $font-base))+em;
 }
 
 @mixin small {
@@ -30,22 +32,39 @@
   }
 }
 
-@function color($key) {
-  @if map-has-key($color-palette, $key) {
-    @return map-get($color-palette, $key);
+@function createColor($value) {
+  @if($color-type == hsl) {
+    @return createHSLColor($value);
   }
-  @warn "Unknown `#{$key}` in $colors.";
+  @else if($color-type == rgba) {
+    @return createRGBAColor($value);
+  }
+  @else if($color-type == hex) {
+    @return createHexColor($value);
+  }
+  @warn "Invalid color type: `#{$color-type}`.";
   @return null;
 }
 
-// This does not always yield perfect results. Know a better solution? Please contribute!
-@function getTextColor($color) {
-  @if(lightness($color) > 60) {
-    @return color(black);
-  }
-  @else {
-    @return color(white);
-  }
+@function createHSLColor($value) {
+  $hue: hue($value);
+  $saturation: saturation($value);
+  $lightness: lightness($value);
+  $alpha: alpha($value);
+  @return unquote("hsl(#{$hue}, #{$saturation}, #{$lightness}, #{$alpha})");
+}
+
+@function createRGBAColor($value) {
+  $red: red($value);
+  $green: green($value);
+  $blue: blue($value);
+  $alpha: alpha($value);
+  @return unquote("rgba(#{$red}, #{$green}, #{$blue}, #{$alpha})");
+}
+
+@function createHexColor($value) {
+  $hex: ie_hex_str($value);
+  @return unquote("#" + str_slice($hex, 4));
 }
 
 @mixin element-color($background, $border, $color: getTextColor($background)) {
@@ -54,11 +73,12 @@
   color: $color;
 }
 
-@function title-size($key) {
-  @if map-has-key($title-size, $key) {
-    @return map-get($title-size, $key);
+// This does not always yield perfect results. Know a better solution? Please contribute!
+@function getTextColor($color) {
+  @if(lightness($color) > 60) {
+    @return var(--color-black);
   }
-
-  @warn "Unknown `#{$key}` in $title-size.";
-  @return null;
+  @else {
+    @return var(--color-white);
+  }
 }

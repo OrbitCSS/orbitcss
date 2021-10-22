@@ -1,16 +1,22 @@
-$accordion-background: $white !default;
-$accordion-border: 1px solid #e6e6e6 !default;
-$accordion-border-inner: $accordion-border !default;
-$accordion-hover-background: $primary !default;
-$accordion-hover-color: getTextColor($primary) !default;
-$accordion-active-background: $primary !default;
-$accordion-active-color: getTextColor($primary) !default;
-$accordion-title-color: $black !default;
+$accordion-background: var(--color-white) !default;
+$accordion-border-width: 1px !default;
+$accordion-border-color: createColor(#e6e6e6) !default;
+$accordion-hover-background: var(--color-light) !default;
+$accordion-hover-color: var(--color-light-text) !default;
+$accordion-active-background: var(--color-primary) !default;
+$accordion-active-color: var(--color-primary-text) !default;
+$accordion-title-color: var(--color-black) !default;
+$accordion-title-background-color: transparent !default;
 $accordion-title-padding: calculateRem(12) calculateRem(16) !default;
 $accordion-content-padding: calculateRem(16) !default;
+$accordion-content-color: var(--color-black) !default;
+$accordion-content-background: var(--color-white) !default;
 
 .accordion {
-  border: $accordion-border;
+  --border-color: #{$accordion-border-color};
+  --border-width: #{$accordion-border-width};
+
+  border: var(--border-color) solid var(--border-width);
   display: block;
   width: 100%;
 
@@ -22,26 +28,38 @@ $accordion-content-padding: calculateRem(16) !default;
   }
 
   &__item {
-    background-color: $accordion-background;
+    --background-color: #{$accordion-background};
+
+    background-color: var(--background-color);
 
     &:not(:last-of-type) {
       .accordion__title, .accordion__content {
-        border-bottom: $accordion-border-inner;
+        border-bottom: var(--border-width) solid var(--border-color);
       }
     }
 
     &:last-of-type {
       .accordion__content {
-        border-top: $accordion-border-inner;
+        border-top: var(--border-width) solid var(--border-color);
       }
     }
   }
 
   &__title {
-    color: $accordion-title-color;
+    --background-color: #{$accordion-title-background-color};
+    --font-color: #{$accordion-title-color};
+    --padding: #{$accordion-title-padding};
+
+    --active-background-color: #{$accordion-active-background};
+    --active-font-color:  #{$accordion-active-color};
+    --hover-background-color: #{$accordion-hover-background};
+    --hover-font-color: #{$accordion-hover-color};
+
+    background-color: var(--background-color);
+    color: var(--font-color);
     cursor: pointer;
     display: block;
-    padding: $accordion-title-padding;
+    padding: var(--padding);
     position: relative;
 
     a {
@@ -52,21 +70,27 @@ $accordion-content-padding: calculateRem(16) !default;
       text-decoration: none;
     }
 
-    &:not(.is-active):hover {
-      background-color: $accordion-hover-background;
-      color: $accordion-hover-color;
+    :not(.is-active) > &:hover {
+      --background-color: var(--hover-background-color);
+      --font-color: var(--hover-font-color);
     }
 
     .is-active > & {
-      background-color: $accordion-active-background;
-      color: $accordion-active-color;
+      --background-color: var(--active-background-color);
+      --font-color: var(--active-font-color);
     }
   }
 
   &__content {
+    --background-color: #{$accordion-content-background};
+    --font-color: #{$accordion-content-color};
+    --padding: #{$accordion-content-padding};
+
+    background-color: var(--background-color);
     border-top: none;
+    color: var(--font-color);
     display: none;
-    padding: $accordion-content-padding;
+    padding: var(--padding);
 
     .is-active > & {
       display: block;

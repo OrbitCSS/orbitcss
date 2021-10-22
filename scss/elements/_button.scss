@@ -1,59 +1,85 @@
 $button-type-sizes: 'small' calculateRem(12), 'large' calculateRem(22) !default;
 
-$button-background: $white !default;
-$button-border-color: $light-grey !default;
+$button-background: var(--color-white) !default;
+$button-border-color: var(--color-light-grey) !default;
 $button-border-width: 1px !default;
-$button-border-style: solid !default;
-$button-color: $black !default;
+$button-color: var(--color-black) !default;
 $button-font-size: calculateRem(16) !default;
 $button-line-height: 1.6 !default;
 $button-margin-bottom: calculateRem(6.4) !default;
 $button-padding: calculateRem(8) calculateRem(12) !default;
-$button-text-align: center !default;
-$button-hover-border: darken($light-grey, 10%) !default;
-$button-radius: 6px !default;
+$button-transition: border-color 0.2s ease, background-color 0.3s ease !default;
+$button-hover-border: var(--color-light-grey-darker) !default;
+$button-hover-background: $button-background !default;
+$button-hover-color: $button-color !default;
+$button-radius: 0 !default;
+$button-rounded-radius: 6px !default;
 
-$button-loading-animation: spinner .8s linear infinite !default;
+$button-loading-speed: 0.8s !default;
 $button-loading-width: 2px !default;
-$button-loading-color: $light-grey !default;
+$button-loading-color: var(--color-light-grey) !default;
 
-$button-addon-radius: 6px !default;
+$button-addon-radius: $button-rounded-radius !default;
 
 $button-group-gap: calculateRem(6.4) !default;
 
-$button-close-background: rgba(57, 57, 57, 0.23) !default;
+$button-close-background: createColor(rgba(57, 57, 57, 0.23)) !default;
 $button-close-height: calculateRem(24) !default;
 $button-close-width: calculateRem(24) !default;
-$button-close-hover: rgba(57, 57, 57, 0.41) !default;
+$button-close-hover: createColor(rgba(57, 57, 57, 0.41)) !default;
 $button-cross-color: inherit !default;
 $button-cross-width: 1px !default;
 
 .button {
+  --border-width: #{$button-border-width};
+  --border-color: #{$button-border-color};
+  --font-size: #{$button-font-size};
+  --line-height: #{$button-line-height};
+  --margin-bottom: #{$button-margin-bottom};
+  --padding: #{$button-padding};
+  --transition: #{$button-transition};
+  --background-color: #{$button-background};
+  --font-color: #{$button-color};
+  --button-radius: #{$button-radius};
+
+  --hover-background-color: #{$button-hover-background};
+  --hover-font-color: #{$button-hover-color};
+  --hover-border-color: #{$button-hover-border};
+
   align-items: center;
-  border-width: $button-border-width;
-  border-style: $button-border-style;
+  border-width: var(--border-width);
+  border-style: solid;
+  border-radius: var(--button-radius);
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
-  font-size: $button-font-size;
+  font-size: var(--font-size);
   justify-content: center;
-  line-height: $button-line-height;
-  margin-bottom: $button-margin-bottom;
-  padding: $button-padding;
-  text-align: $button-text-align;
-  @include element-color($button-background, $button-border-color, $button-color);
+  line-height: var(--line-height);
+  margin-bottom: var(--margin-bottom);
+  padding: var(--padding);
+  text-align: center;
+  transition: var(--transition);
 
   &:hover, a {
     text-decoration: none;
   }
 
+  @include element-color(var(--background-color), var(--border-color), var(--font-color));
+
+  &:hover, &:focus, &:active, &.is-active {
+    --background-color: var(--hover-background-color);
+    --border-color: var(--hover-border-color);
+    --font-color: var(--hover-font-color);
+  }
+
   &.is-rounded {
-    border-radius: $button-radius;
+    --button-radius: #{$button-rounded-radius};
   }
 
   @each $size in $button-type-sizes {
     &.is-#{nth($size, 1)} {
-      font-size: nth($size, 2);
+      --font-size: #{nth($size, 2)};
     }
   }
 
@@ -61,46 +87,52 @@ $button-cross-width: 1px !default;
     width: 100%;
   }
 
-  &:hover, &.is-active {
-    border-left-color: $button-hover-border;
-    border-right-color: $button-hover-border;
-    border-color: $button-hover-border;
-  }
-
   @each $color in $color-palette {
-    &.is-#{nth($color, 1)} {
-      @include element-color(nth($color, 2), transparent);
-      &:hover:not(.is-outline):not([disabled]), &.is-active {
-        background-color: darken(nth($color, 2), 5%);
+    &.is-#{nth($color, 1)}:not(.is-outline) {
+      --background-color: var(--color-#{nth($color, 1)});
+      --border-color: transparent;
+      --font-color: var(--color-#{nth($color, 1)}-text);
+
+      &:hover:not([disabled]), &.is-active {
+        --background-color: var(--color-#{nth($color, 1)}-darker);
       }
 
-      &.is-outline {
-        @include element-color(transparent, nth($color, 2), nth($color, 2));
-        &:hover:not([disabled]), &.is-active {
-          @include element-color(nth($color, 2), transparent);
-        }
+      &.is-loading::after {
+        border-right-color: var(--color-#{nth($color, 1)}-text);
+        border-top-color: var(--color-#{nth($color, 1)}-text);
+      }
+    }
 
-        &.is-loading::after {
-          border-right-color: nth($color, 2);
-          border-top-color: nth($color, 2);
-        }
+    &.is-#{nth($color, 1)}.is-outline {
+      --background-color: transparent;
+      --border-color: var(--color-#{nth($color, 1)});
+      --font-color: var(--color-#{nth($color, 1)});
+
+      &:hover:not([disabled]), &.is-active {
+        --background-color: var(--color-#{nth($color, 1)});
+        --border-color: transparent;
+        --font-color: var(--color-#{nth($color, 1)}-text);
       }
 
-      &:not(.is-outline).is-loading::after {
-        border-right-color: getTextColor(nth($color, 2));
-        border-top-color: getTextColor(nth($color, 2));
+      &.is-loading::after {
+        border-right-color: var(--color-#{nth($color, 1)});
+        border-top-color: var(--color-#{nth($color, 1)});
       }
     }
   }
 
   &.is-loading {
+    --loading-speed: #{$button-loading-speed};
+    --loading-width: #{$button-loading-width};
+    --loading-color: #{$button-loading-color};
+
     color: transparent !important;
     pointer-events: none;
     position: relative;
 
     &::after {
-      animation: $button-loading-animation;
-      border: $button-loading-width solid $button-loading-color;
+      animation: spinner var(--loading-speed) linear infinite;
+      border: var(--loading-width) solid var(--loading-color);
       border-left-color: transparent;
       border-bottom-color: transparent;
       border-radius: 50%;
@@ -140,19 +172,17 @@ $button-cross-width: 1px !default;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-
-  .button {
-    margin-bottom: $button-margin-bottom;
-  }
 }
 
 .is-button-group {
+  --gap: #{$button-group-gap};
+
   & > .button:not(.is-full):not(:last-child) {
-    margin-right: $button-group-gap;
+    margin-right: var(--gap);
   }
 
   & > .is-addon-group:not(:last-child) {
-    margin-right: $button-group-gap;
+    margin-right: var(--gap);
   }
 
   & > .is-addon-group {
@@ -160,58 +190,66 @@ $button-cross-width: 1px !default;
   }
 }
 
-
 .is-addon-group {
+  --addon-radius: #{$button-addon-radius};
   & > .button {
     margin-right: 0;
 
     &:not(:first-of-type) {
-      border-left-width: $button-border-width / 2;
+      border-left-width: calc(var(--border-width) / 2);
     }
 
     &:not(:last-of-type) {
-      border-right-width: $button-border-width / 2;
+      border-right-width: calc(var(--border-width) / 2);
     }
   }
 
   &.is-rounded .button {
     &:last-child {
-      border-top-right-radius: $button-addon-radius;
-      border-bottom-right-radius: $button-addon-radius;
+      border-top-right-radius: var(--addon-radius);
+      border-bottom-right-radius: var(--addon-radius);
     }
 
     &:first-child {
-      border-bottom-left-radius: $button-addon-radius;
-      border-top-left-radius: $button-addon-radius;
+      border-bottom-left-radius: var(--addon-radius);
+      border-top-left-radius: var(--addon-radius);
     }
   }
 }
 
 .button--close {
+  --background-color: #{$button-close-background};
+  --icon-color: #{$button-cross-color};
+  --height: #{$button-close-height};
+  --width: #{$button-close-width};
+  --icon-width: #{$button-cross-width};
+
+  --hover-background-color: #{$button-close-hover};
+
   align-items: center;
-  background-color: $button-close-background;
+  background-color: var(--background-color);
   border: none;
   border-radius: 50%;
-  color: $button-cross-color;
+  color: var(--icon-color);
   cursor: pointer;
   display: inline-block;
-  height: $button-close-height;
+  height: var(--height);
   position: relative;
   text-align: center;
-  width: $button-close-width;
+  width: var(--width);
 
   &.has-no-background {
-    background: none;
+    --background-color: transparent;
   }
 
   &:not(.has-no-background):hover {
-    background-color: $button-close-hover;
+    --background-color: var(--hover-background-color);
   }
 
   &::before, &::after {
     border-color: inherit;
     border-style: solid;
-    border-width: $button-cross-width;
+    border-width: var(--icon-width);
     content: ' ';
     left: 50%;
     position: absolute;

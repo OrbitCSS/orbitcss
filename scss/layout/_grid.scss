@@ -1,8 +1,10 @@
+@use "sass:math";
+
 $col-padding: calculateRem(10) !default;
 $col-margin-top: calculateRem(8) !default;
 $col-margin-bottom: calculateRem(8) !default;
 $max-cols: 12 !default;
-$col-percentage: 100 / $max-cols;
+$col-percentage: math.div(100, $max-cols);
 
 $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33.333333%, 'two-thirds' 66.666666%, 'full' 100%, 'one-fifth' 20%, 'two-fifths' 40%, 'three-fifths' 60%, 'four-fifths' 80% !default;
 
@@ -12,8 +14,8 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
 
 @mixin column-size($size, $max-size, $width, $screen)  {
   .column.is#{$screen}-#{$size} {
+    --width: #{$width};
     flex: none;
-    width: $width;
   }
 
   @if($size != $max-size) {
@@ -24,6 +26,17 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
 }
 
 .grid {
+  --col-padding: #{$col-padding};
+  --col-margin-top: #{$col-margin-top};
+  --col-margin-bottom: #{$col-margin-bottom};
+  --col-width: 100%;
+
+  .column {
+    --margin: var(--col-margin-top) 0 var(--col-margin-bottom) 0;
+    --padding: var(--col-padding);
+    --width: var(--col-width);
+  }
+
   display: flex;
   flex-flow: row wrap;
 
@@ -39,8 +52,7 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
 
   &.has-row-margin {
     .column {
-      margin-bottom: $col-margin-bottom;
-      margin-top: $col-margin-top;
+      margin: var(--margin);
     }
   }
 
@@ -54,8 +66,8 @@ $grid-sizes: 'one-quarter' 25%, 'half' 50%, 'three-quarters' 75%, 'one-third' 33
 
   .column {
     flex: none;
-    padding: $col-padding;
-    width: 100%;
+    padding: var(--padding);
+    width: var(--width);
 
     &.is-mobile-auto {
       flex: 1;

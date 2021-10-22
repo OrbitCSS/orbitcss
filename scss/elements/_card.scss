@@ -1,20 +1,29 @@
-$card-border-color: rgba(219, 219, 219, 0.36) !default;
+$card-border-color: createColor(rgba(219, 219, 219, 0.36)) !default;
 $card-border-width: 1px !default;
-$card-border-style: solid !default;
-$card-shadow: 0 0 3px 0 rgba(10, 10, 10, 0.10) !default;
+$card-shadow: 0 0 3px 0 createColor(rgba(10, 10, 10, 0.10)) !default;
 $card-radius: 0 !default;
-$card-header-background: rgba(0, 0, 0, .03) !default;
-$card-header-color: $black !default;
+$card-header-background: createColor(rgba(0, 0, 0, .03)) !default;
+$card-header-color: var(--color-black) !default;
 $card-header-padding: 0.625rem 1rem !default;
 $card-content-padding: 1rem !default;
 $card-footer-padding:  0.35rem 1rem !default;
 
 .card {
-  border: $card-border-width $card-border-style $card-border-color;
-  box-shadow: $card-shadow;
+  --border-color: #{$card-border-color};
+  --border-width: #{$card-border-width};
+  --border-radius: #{$card-radius};
+  --box-shadow: #{$card-shadow};
+
+  border: var(--border-color) solid var(--border-width);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
+
+  .card__header, .card__image, .card__content, .card__footer {
+    --padding: 0;
+    padding: var(--padding);
+  }
 
   .card__image {
     display: block;
@@ -26,13 +35,16 @@ $card-footer-padding:  0.35rem 1rem !default;
   }
 
   .card__header {
+    --background-color: #{$card-header-background};
+    --font-color: #{$card-header-color};
+    --padding: #{$card-header-padding};
+
     align-items: center;
-    background-color: $card-header-background;
-    border-top-left-radius: $card-radius;
-    border-top-right-radius: $card-radius;
-    color: $card-header-color;
+    background-color: var(--card-header-background-color);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    color: var(--font-color);
     display: flex;
-    padding: $card-header-padding;
 
     .button--close {
       margin-left: auto;
@@ -44,8 +56,9 @@ $card-footer-padding:  0.35rem 1rem !default;
   }
 
   .card__content {
+    --padding: #{$card-content-padding};
+
     flex: auto;
-    padding: $card-content-padding;
     position: relative;
   }
 
@@ -58,11 +71,12 @@ $card-footer-padding:  0.35rem 1rem !default;
   }
 
   .card__footer {
+    --padding: #{$card-footer-padding};
+
     align-items: center;
-    border-bottom-left-radius: $card-radius;
-    border-bottom-right-radius: $card-radius;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
     display: flex;
-    padding: $card-footer-padding;
 
     & > .is-end {
       margin-left: auto;

@@ -1,85 +1,119 @@
-$tab-border-color: #e6e6e6 !default;
+$tab-border-color: createColor(#e6e6e6) !default;
 $tab-border-width: 1px !default;
 $tab-item-padding: 0.75rem 1rem 0.5rem !default;
-$tab-item-color: $black !default;
-$tab-item-active-color: $link !default;
+$tab-item-background: var(--color-white) !default;
+$tab-item-color: var(--color-black) !default;
+$tab-item-active-color: var(--color-link) !default;
+$tab-item-active-background: var(--color-white) !default;
+$tab-item-hover-color: var(--color-link) !default;
+$tab-item-hover-background: var(--color-white) !default;
 $tab-border-radius: 0 !default;
 $tab-content-padding: 1rem !default;
+$tab-content-background: transparent !default;
+$tab-content-color: var(--color-black) !default;
 
 .tabs {
   width: 100%;
 
   &__list {
+    --border-color: #{$tab-border-color};
+    --border-width: #{$tab-border-width};
+    --border-radius: #{$tab-border-radius};
+    --background-color: #{$tab-item-background};
+    --font-color: #{$tab-item-color};
+    --item-padding: #{$tab-item-padding};
+
+    --active-background-color: #{$tab-item-active-background};
+    --active-font-color: #{$tab-item-active-color};
+    --hover-background-color: #{$tab-item-hover-background};
+    --hover-font-color: #{$tab-item-hover-color};
+
     align-items: center;
-    border-bottom: $tab-border-width solid $tab-border-color;
+    background-color: var(--background-color);
+    border-bottom: var(--border-width) solid var(--border-color);
     display: flex;
     flex-flow: row wrap;
     flex: 1 0 auto;
     list-style: none;
     margin: 0;
 
-    @each $color in $color-palette {
-      .is-#{nth($color, 1)} > & {
-        li.is-active, li:hover {
-          @include element-color(nth($color, 2), transparent);
-        }
-      }
-    }
-
     li {
       border-color: transparent;
       border-style: solid;
-      border-width: $tab-border-width;
-      color: $tab-item-color;
-      margin-bottom: -$tab-border-width;
+      border-width: var(--border-width);
+      color: var(--font-color);
+      margin-bottom: calc(var(--border-width) * -1);
 
       a {
         color: inherit;
         display: block;
-        padding: $tab-item-padding;
+        padding: var(--item-padding);
 
         &:hover {
           text-decoration: none;
         }
       }
 
-      &.is-active, &:hover {
-        color: $tab-item-active-color;
-        border-bottom: $tab-border-width solid $tab-item-active-color;
+      &.is-active {
+        --background-color: var(--active-background-color);
+        --font-color: var(--active-font-color);
+      }
+
+      &:hover:not(.is-active) {
+        --background-color: var(--hover-background-color);
+        --font-color: var(--hover-font-color);
+      }
+    }
+
+    @each $color in $color-palette {
+      .is-#{nth($color, 1)} > & {
+        li.is-active, li:hover {
+          background-color: var(--color-#{nth($color, 1)});
+          --font-color: var(--color-#{nth($color, 1)}-text);
+        }
       }
     }
 
     .has-border > & li {
-      border-color: $tab-border-color;
-      border-width: $tab-border-width 0 $tab-border-width $tab-border-width;
+      border-color: var(--border-color);
+      border-width: var(--border-width) 0 var(--border-width) var(--border-width);
 
       &:first-of-type {
-        border-radius: $tab-border-radius 0 0;
+        border-radius: var(--border-radius) 0 0;
       }
 
       &:last-of-type {
-        border-radius: 0 $tab-border-radius 0 0;
-        border-width: $tab-border-width;
+        border-radius: 0 var(--border-radius) 0 0;
+        border-width: var(--border-width);
       }
 
       &:only-of-type {
-        border-radius: $tab-border-radius $tab-border-radius 0 0;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
       }
     }
   }
 
   &__content {
+    --border-color: #{$tab-border-color};
+    --border-width: #{$tab-border-width};
+    --border-radius: #{$tab-border-radius};
+    --padding: #{$tab-content-padding};
+    --background-color: #{$tab-content-background};
+    --font-color: #{$tab-content-color};
+
+    background-color: var(--background-color);
+    color: var(--font-color);
     display: none;
-    padding: $tab-content-padding;
+    padding: var(--padding);
 
     &.is-open {
       display: block;
     }
 
     .has-border > & {
-      border: 1px solid $tab-border-color;
-      border-radius: 0 0 $tab-border-radius $tab-border-radius;
-      border-width: 0 $tab-border-width $tab-border-width;
+      border: 1px solid var(--border-color);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      border-width: 0 var(--border-width) var(--border-width);
     }
   }
 

@@ -1,27 +1,34 @@
-$slider-thumb-color: $primary !default;
+$slider-thumb-color: var(--color-primary) !default;
 $slider-thumb-radius: 20px !default;
 $slider-thumb-height: 1.5rem !default;
 $slider-thumb-width: 1.5rem !default;
 $slider-track-height: 8.4px !default;
-$slider-track-background: #dbdbdb !default;
+$slider-track-background: createColor(#dbdbdb) !default;
 
 @mixin sliderThumb() {
-  height: $slider-thumb-height;
-  width: $slider-thumb-width;
-  border-radius: $slider-thumb-radius;
-  background: $slider-thumb-color;
+  height: var(--thumb-height);
+  width: var(--thumb-width);
+  border-radius: var(--thumb-radius);
+  background-color: var(--thumb-color);
   cursor: pointer;
   margin-top: -8px;
 }
 
 @mixin sliderTrack() {
   width: 100%;
-  height: $slider-track-height;
+  height: var(--track-height);
   cursor: pointer;
-  background: $slider-track-background;
+  background-color: var(--track-background-color);
 }
 
 .is-slider {
+  --thumb-color: #{$slider-thumb-color};
+  --thumb-radius: #{$slider-thumb-radius};
+  --thumb-height: #{$slider-thumb-height};
+  --thumb-width: #{$slider-thumb-width};
+  --track-height: #{$slider-track-height};
+  --track-background-color: #{$slider-track-background};
+
   width: 100%;
 
   input[type="range"] {

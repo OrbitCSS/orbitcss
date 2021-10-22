@@ -1,5 +1,175 @@
 # OrbitCSS Changelog
 
+## v2.0
+
+### Core changes
+
+* Removed node-sass package in favor of dart-sass.
+* Added support for CSS variables. Customization of your theme can now be done without using SASS.
+* Added <code>createColor()</code> function. It takes a color as a parameter and returns a formatted color based on the value of the <code>$color-type</code> variable. Supported values are 'hsl', 'rgba' and 'hex'. This ensures consistency throughout the framework.
+* Added <code>createHSLColor($color)</code> function. This accepts any CSS color value and returns the HSL equivalent.
+* Added <code>createRGBAColor($color)</code> function. This accepts any CSS color value and returns the RGBA equivalent.
+* Added <code>createHexColor($color)</code> function. This accepts any CSS color value and returns the HEX equivalent.
+* Removed a handful of functions from *_function.scss*. See the deprecations section for a full list.
+* Added <code>$color-type</code> variable to *_colors.scss*. This variable controls the framework wide format for colors to be generated. Supported values are 'hsl', 'rgba' and 'hex'.
+* Removed **link** and **disabled** from the <code>$color-palette</code> list. These colors still exist and can be referenced as per usual.
+* CSS variables added for each color along with a lighter and darker version, a text color and an alert color.
+* Replaced most variables in *_general.scss* with CSS variables.
+* Added <code>has-no-transition</code> helper to the global helpers. It sets the transition property of an element to **none**.
+* Add CSS variable support to typography module.
+* Add CSS variable support to Container module.
+* Add CSS variable support to Grid module.
+* Replaced <code>$hero-padding</code> variable with CSS variable equivalent.
+* Add CSS variable support to Section module.
+* Add CSS variable support to Form module.
+* Add CSS variable support to the Breadcrumb module.
+* Add CSS variable support to the Menu module.
+* Add CSS variable support to the Pagination module.
+* Add CSS variable support to the Top module.
+* Add CSS variable for all modules in the Elements section.
+
+### Colors
+* Add `$secondary` color variable.
+* Add *secondary* key to `$color-palette` variable.
+* Add *$color-type* variable. Valid values are hsl, rgba and hex. This variable sets the compiled type of all colors.
+* Removed *link* and *disabled* from the `$color-palette` variable.
+
+### Typography
+* *title* and *subtitle* changed to *heading* and *subheading*. Variables updated to reflect this change.
+
+### Hero
+* Add `$hero-background-color` variable.
+* Add `$hero-color` variable.
+* Controls for background and font color added to the *.hero__content* element.
+
+### Form
+* Add `$input-error-background` variable.
+* Add `$input-error-border-color` variable.
+* Add `$input-error-color` variable.
+* Various element color changes.
+* Remove `$select-arrow-height` variable.
+* Remove `$input-border` variable.
+* Add `$input-border-width` variable.
+* Add `$select-loading-speed` variable.
+* Add `$select-loading-width` variable.
+* Add `$select-loading-color` variable.
+
+### Top (Navbar)
+* Add `$top-shadow` variable.
+* Add `$top-brand-color` variable.
+* Add `$top-brand-max-logo-width` variable.
+* Added a max width control to images within the *top__brand* element.
+* Add `$top-link-background` variable.
+* Add `$top-social-hover-color` variable.
+* Remove `$top-burger-height` variable.
+* Change the transition speed of the *top__burger* element.
+
+### Menu
+* Add `$menu-list-background` variable.
+* Remove `$menu-list-hover` variable.
+* Add `$menu-list-hover-background` variable.
+* Add `$menu-list-hover-color` variable.
+* Remove `$menu-divider` variable.
+* Add `$menu-divider-width` variable.
+* Add `$menu-divider-color` variable.
+* Remove `$menu-expandable-border` variable.
+* Add `$menu-expandable-border-width` variable.
+* Add `$menu-expandable-border-color` variable.
+
+### Pagination
+* Remove `$pagination-border` variable.
+* Add `$pagination-border-color` variable.
+* Add `$pagination-border-width` variable.
+* Add `$pagination-border-radius` variable.
+* Add `$pagination-hover-color` variable.
+* Rename `$pagination-rounded` variable to `$pagination-rounded-radius`.
+* Add `$pagination-bordered-color` variable.
+* Remove `$pagination-bordered` variable.
+* Add `$pagination-bordered-border-color` variable.
+* Rename `$pagination-bordered-active` variable to `$pagination-bordered-active-background`.
+* Add `$pagination-bordered-active-border-color` variable.
+* Add `$pagination-bordered-active-color` variable.
+* Remove `$pagination-bordered-hover` variable.
+* Add `$pagination-bordered-hover-background` variable.
+* Add `$pagination-bordered-hover-border-color` variable.
+* Add `$pagination-bordered-hover-color` variable.
+
+### Accordion
+* Remove `$accordion-border` variable.
+* Add `$accordion-border-width` variable.
+* Add `$accordion-border-color` variable.
+* Add `$accordion-title-background-color` variable.
+* Add `$accordion-content-color` variable.
+* Add `$accordion-content-background` variable.
+* Various element color changes.
+
+### Alert
+* Add `$alert-background-color` variable.
+* Add `$alert-color` variable.
+
+### Button
+* Remove `$button-border-style` variable.
+* Remove `$button-text-align` variable.
+* Add `$button-hover-background` variable.
+* Add `$button-hover-color` variable.
+* Add `$button-rounded-radius` variable.
+* Remove `$button-loading-animation` variable.
+* Add `$button-loading-speed` variable.
+
+### Card
+* Remove `$card-border-style` variable.
+
+### Dropdown
+* Remove `$dropdown-border` variable.
+* Add `$dropdown-color` variable.
+* Add `$dropdown-border-width` variable.
+* Add `$dropdown-border-color` variable.
+* Rename `$dropdown-radius` variable to `$dropdown-border-radius`.
+* Rename `$dropdown-link-hover` variable to `$dropdown-link-hover-background`.
+* Add `$dropdown-link-hover-color` variable.
+* Various element color changes.
+
+### Image
+* Remove `$image-thumb-border` variable.
+* Add `$image-thumb-border-width` variable.
+* Add `$image-thumb-border-color` variable.
+
+### Media
+* Remove `$media-border-style` variable.
+
+### Modal
+* Add `$modal-color` variable.
+
+### Table
+* Add `$table-background-color` variable.
+* Add `$table-color` variable.
+
+### Tabs
+* Add `$tab-item-background` variable.
+* Add `$tab-item-active-background` variable.
+* Add `$tab-item-hover-color` variable.
+* Add `$tab-item-hover-background` variable.
+* Add `$tab-content-background` variable.
+* Add `$tab-content-color` variable.
+
+### Tag
+* Remove `$tag-border-style` variable.
+
+### New Sass variables
+* `$theme-font-color`
+* `$theme-background-color`
+* `$secondary`
+
+### Removed Sass variables
+* `$body-font-color`
+
+### Minor changes
+* Added `top: 0` to static top (navbar) element.
+
+### Deprecations
+* Removed <code>color($key)</code> function.
+* Removed <code>title-size($key)</code> function.
+
 ## v1.1.1
 
 ### Notes

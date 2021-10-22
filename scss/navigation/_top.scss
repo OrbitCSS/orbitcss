@@ -1,33 +1,49 @@
 $top-padding: 1rem 0.75rem !default;
+$top-shadow: none !default;
+
 $top-brand-padding: 0 0.65rem !default;
+$top-brand-color: inherit !default;
+$top-brand-max-logo-width: 200px !default;
+
 $top-link-radius: 6px !default;
 $top-link-padding: 0.3125rem 0.9375rem !default;
 $top-link-color: inherit !default;
-$top-link-hover-background: rgba(169, 169, 169, 0.15) !default;
+$top-link-background: transparent !default;
+$top-link-hover-background: createColor(rgba(169, 169, 169, 0.15)) !default;
 $top-link-hover-color: inherit !default;
-$top-link-hover-decoration: none !default;
 $top-link-active-background: transparent !default;
-$top-link-active-color: $top-link-hover-color !default;
+$top-link-active-color: inherit !default;
+
 $top-social-padding: 0 0.65rem !default;
 $top-social-margin: 0 6px !default;
 $top-social-color: inherit !default;
+$top-social-hover-color: inherit !default;
+
 $top-button-padding: 0 0.65rem !default;
-$top-burger-height: 14px !default;
+
+$top-burger-color: inherit !default;
 $top-burger-width: 20px !default;
 $top-burger-padding: 0 0.65rem !default;
-$top-burger-color: inherit !default;
 $top-burger-bar-height: 2px !default;
 $top-burger-bar-gap: 4px !default;
-$top-burger-transition: .5s !default;
-
+$top-burger-transition: 0.75s !default;
 
 .top {
+  --padding: #{$top-padding};
+  --box-shadow: #{$top-shadow};
+
   align-items: center;
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-flow: row nowrap;
-  padding: $top-padding;
+  padding: var(--padding);
   position: relative;
   z-index: 40;
+
+  &__brand, &__links, &__buttons, &__social, &__burger {
+    --padding: 0;
+    padding: var(--padding);
+  }
 
   & > .container {
     align-items: center;
@@ -36,17 +52,26 @@ $top-burger-transition: .5s !default;
   }
 
   &__brand {
+    --padding: #{$top-brand-padding};
+    --font-color: #{$top-brand-color};
+    --max-width: #{$top-brand-max-logo-width};
+
     align-items: center;
+    color: var(--font-color);
     display: flex;
-    padding: $top-brand-padding;
 
     h1, h2, h3, h4, h5, h6 {
       margin-bottom: 0;
+    }
+
+    img {
+      max-width: var(--max-width);
     }
   }
 
   &.is-static {
     position: fixed;
+    top: 0;
     width: 100%;
   }
 
@@ -54,14 +79,8 @@ $top-burger-transition: .5s !default;
     margin-left: auto;
   }
 
-  ul:not(.dropdown) {
-    display: inline-flex;
-    list-style: none;
-    margin: 0;
-  }
-
   &__buttons {
-    padding: $top-button-padding;
+    --padding: #{$top-button-padding};
 
     .button, .is-button-group .button {
       margin-bottom: 0;
@@ -69,42 +88,80 @@ $top-burger-transition: .5s !default;
   }
 
   &__links {
-    ul li:not(.dropdown__link) {
-      border-radius: $top-link-radius;
-      color: $top-link-color;
+    --background-color: #{$top-link-background};
+    --font-color: #{$top-link-color};
+    --border-radius: #{$top-link-radius};
+    --link-padding: #{$top-link-padding};
+
+    --hover-background-color: #{$top-link-hover-background};
+    --hover-font-color: #{$top-link-hover-color};
+    --active-background-color: #{$top-link-active-background};
+    --active-font-color: #{$top-link-active-color};
+
+    ul:not(.dropdown) > li {
+      background-color: var(--background-color);
+      border-radius: var(--border-radius);
+      color: var(--font-color);
       cursor: pointer;
       position: relative;
+      white-space: nowrap;
 
       a {
         color: inherit;
         display: block;
-        padding: $top-link-padding;
+        padding: var(--link-padding);
+      }
+
+      &.has-dropdown a {
+        padding-right: 0;
       }
 
       &.is-active {
-        background-color: $top-link-active-background;
-        color: $top-link-active-color;
+        --background-color: var(--active-background-color);
+        --font-color: var(--active-font-color);
       }
 
       &:hover {
-        background-color: $top-link-hover-background;
-        color: $top-link-hover-color;
-        text-decoration: $top-link-hover-decoration;
+        --background-color: var(--hover-background-color);
+        --font-color: var(--hover-font-color);
+        text-decoration: none;
 
         a {
           text-decoration: inherit;
         }
       }
     }
+
+    & > ul {
+      display: inline-flex;
+      flex-flow: row wrap;
+      list-style: none;
+      margin: 0;
+    }
   }
 
   &__social {
-    padding: $top-social-padding;
+    --padding: #{$top-social-padding};
+    --font-color: #{$top-social-color};
+    --item-margin: #{$top-social-margin};
+
+    --hover-font-color: #{$top-social-hover-color};
+
+    & > ul {
+      display: inline-flex;
+      flex-flow: row wrap;
+      list-style: none;
+      margin: 0;
+    }
 
     li {
-      color: $top-social-color;
-      margin: $top-social-margin;
+      color: var(--font-color);
+      margin: var(--item-margin);
       position: relative;
+
+      &:hover {
+        --font-color: var(--hover-font-color);
+      }
 
       &:first-of-type {
         margin-left: 0;
@@ -121,17 +178,23 @@ $top-burger-transition: .5s !default;
   }
 
   &__burger {
+    --font-color: #{$top-burger-color};
+    --padding: #{$top-burger-padding};
+    --width: #{$top-burger-width};
+    --bar-height: #{$top-burger-bar-height};
+    --bar-gap: #{$top-burger-bar-gap};
+    --transition-speed: #{$top-burger-transition};
+
     display: flex;
-    padding: $top-burger-padding;
 
     span {
       display: flex;
       flex-flow: column;
       position: relative;
-      width: $top-burger-width;
+      width: var(--width);
 
       &:before, &:after {
-        border-color: inherit;
+        border-color: var(--font-color);
         border-style: solid;
         content: '';
         cursor: pointer;
@@ -139,27 +202,25 @@ $top-burger-transition: .5s !default;
       }
 
       &:before {
-        border-width: $top-burger-bar-height 0 $top-burger-bar-height;
-        padding-bottom: $top-burger-bar-gap;
+        border-width: var(--bar-height) 0 var(--bar-height);
+        padding-bottom: var(--bar-gap);
       }
 
       &:after {
-        border-width: 0 0 $top-burger-bar-height;
-        padding-top: $top-burger-bar-gap;
+        border-width: 0 0 var(--bar-height);
+        padding-top: var(--bar-gap);
       }
     }
 
     &.has-animate {
       span {
         &:before, &:after {
-          transition: $top-burger-transition;
+          transition: var(--transition-speed);
         }
       }
     }
 
-    &.is-active, .is-mobile-responsive.is-open > & {
-      justify-content: center;
-
+    &.is-active {
       span {
         &:before, &:after {
           padding: 0;
@@ -167,7 +228,7 @@ $top-burger-transition: .5s !default;
         }
 
         &:before {
-          border-width: $top-burger-bar-height 0 0;
+          border-width: var(--bar-height) 0 0;
           transform: rotate(405deg);
         }
 
@@ -178,93 +239,109 @@ $top-burger-transition: .5s !default;
     }
   }
 
-  &.is-mobile-responsive {
-    @include small {
+  @mixin responsive-top {
+    flex-flow: row wrap;
+
+    .container {
       flex-flow: row wrap;
+    }
 
-      .container {
-        flex-flow: row wrap;
-      }
-
-      .top__brand {
-        & + .top__links, & + .top__social, .top__buttons {
-          padding-top: 1rem;
-        }
-      }
-
-      &:not(.is-open) {
-        .top__links, .top__social, .top__buttons {
-          display: none;
-        }
-      }
-
-      .top__links, .top__social, .top__buttons {
-        order: 2;
-        width: 100%;
-
-        &:first-of-type {
-          padding-top: 1rem;
-        }
-
-        ul:not(.dropdown) {
-          display: flex;
-          width: 100%;
-        }
-      }
-
-      .top__links {
-        ul {
-          flex-direction: column;
-          padding: 0.5rem 0;
-        }
-
-        .has-dropdown {
-          display: flex;
-          flex-direction: column;
-
-          &.is-hoverable:hover, &.is-active {
-            background-color: transparent;
-
-            &.has-arrow::after {
-              top: 17px;
-            }
-
-            & > .dropdown {
-              background-color: transparent;
-              border: none;
-              border-radius: 0;
-              box-shadow: none;
-              position: relative;
-            }
-          }
-
-          .dropdown__link {
-            &:hover {
-              background-color: $top-link-hover-background;
-            }
-          }
-        }
-      }
-
-      .top__social {
-        padding: 0;
-
-        ul {
-          flex-direction: row;
-          padding: 0.5rem 0.9375rem;
-        }
-      }
-
-      .top__buttons {
-        padding: 0.5rem 0.9375rem;
-      }
-
-      .top__burger {
-        padding: $top-padding;
+    .top__brand {
+      & + .top__links, & + .top__social, .top__buttons {
+        padding-top: 1rem;
       }
     }
 
+    &:not(.is-open) {
+      .top__links, .top__social, .top__buttons {
+        display: none;
+      }
+    }
+
+    .top__links, .top__social, .top__buttons {
+      order: 2;
+      width: 100%;
+
+      &:first-of-type {
+        padding-top: 1rem;
+      }
+
+      ul:not(.dropdown) {
+        display: flex;
+        width: 100%;
+      }
+    }
+
+    .top__links {
+      ul {
+        flex-direction: column;
+        padding: 0.5rem 0;
+      }
+
+      .has-dropdown {
+        display: flex;
+        flex-direction: column;
+
+        &.is-hoverable:hover, &.is-active {
+          background-color: transparent;
+
+          &.has-arrow::after {
+            top: 17px;
+          }
+
+          & > .dropdown {
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            position: relative;
+          }
+        }
+
+        .dropdown__link {
+          &:hover {
+            background-color: var(--hover-background-color);
+          }
+        }
+      }
+    }
+
+    .top__social {
+      --padding: 0;
+
+      ul {
+        flex-direction: row;
+        padding: 0.5rem 0.9375rem;
+      }
+    }
+
+    .top__buttons {
+      --padding: 0.5rem 0.9375rem;
+    }
+
+    .top__burger {
+      --padding: #{$top-padding};
+    }
+  }
+
+  &.is-mobile-responsive {
+    @include small {
+      @include responsive-top;
+    }
+
     @include medium {
+      .top__burger {
+        display: none;
+      }
+    }
+  }
+
+  &.is-tablet-responsive {
+    @media (max-width: calc(#{$large} - 1px)) {
+      @include responsive-top;
+    }
+
+    @include large {
       .top__burger {
         display: none;
       }

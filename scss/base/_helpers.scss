@@ -65,6 +65,10 @@
   &-wrap {
     white-space: nowrap;
   }
+
+  &-transition {
+    transition: none !important;
+  }
 }
 
 .has-text {

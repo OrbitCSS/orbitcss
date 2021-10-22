@@ -3,45 +3,73 @@ $list-margin-left: calculateRem(20) !default;
 $list-margin-top: calculateRem(16) !default;
 $list-item-padding: 0 !default;
 
-$title-font-family: 'Lato', sans-serif !default;
-$title-font-weight: 600 !default;
-$title-line-height: 1.4 !default;
-$title-margin-bottom: calculateRem(7.2) !default;
+$heading-font-family: 'Lato', sans-serif !default;
+$heading-font-weight: 600 !default;
+$heading-line-height: 1.4 !default;
+$heading-margin-bottom: calculateRem(7.2) !default;
+$heading-color: inherit !default;
 
-$subtitle-margin-bottom: calculateRem(16) !default;
-$subtitle-margin-top: calculateRem(-6.4) !default;
-$subtitle-font-weight: 400 !default;
-$subtitle-line-height: $title-line-height !default;
-$subtitle-color: #838383 !default;
+$subheading-margin-bottom: calculateRem(16) !default;
+$subheading-margin-top: calculateRem(-6.4) !default;
+$subheading-font-weight: 400 !default;
+$subheading-line-height: $heading-line-height !default;
+$subheading-color: createColor(#838383) !default;
 
-$blockquote-border-left: 1px solid #d6d6d6 !default;
-$blockquote-color: $black !default;
+$blockquote-border-color: createColor(#d6d6d6) !default;
+$blockquote-border-width: 1px !default;
+$blockquote-color: var(--color-black) !default;
 $blockquote-margin: calculateRem(16) 0 0 !default;
 $blockquote-padding: 0.5rem 0 0.5rem 1.25rem !default;
 $cite-font-size: calculateRem(13) !default;
-$cite-color: $black !default;
+$cite-color: var(--color-black) !default;
 
-$abbr-border-bottom: 1px dotted $black !default;
+$abbr-border-color: var(--color-black) !default;
 
-%title {
+:root {
+  --theme-heading-font-family: #{$heading-font-family};
+}
+
+%heading {
+  --font-color: #{$heading-color};
+  --font-family: var(--theme-heading-font-family);
+  --font-weight: #{$heading-font-weight};
+  --line-height: #{$heading-line-height};
+
+  color: var(--font-color);
   display: block;
-  font-family: $title-font-family;
-  font-weight: $title-font-weight;
-  line-height: $title-line-height;
-  margin-bottom: $title-margin-bottom;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  margin-bottom: $heading-margin-bottom;
 
-  &:not(.subtitle) + .subtitle {
-    margin-top: $subtitle-margin-top;
+  &.is-subheading {
+    --font-color: #{$subheading-color};
+    --font-weight: #{$subheading-font-weight};
+    --line-height: #{$subheading-line-height};
   }
 
-  & + .subtitle:last-of-type {
-    margin-bottom: $subtitle-margin-bottom;
+  &:not(.is-subheading) + .is-subheading {
+    margin-top: $subheading-margin-top;
+  }
+
+  & + .is-subheading:last-of-type {
+    margin-bottom: $subheading-margin-top;
   }
 }
 
-$title-sizes: 'very-big-title' h1, 'big-title' h2, 'medium-title' h3, 'title' h4, 'small-title' h5, 'very-small-title' h6;
+$heading-sizes: 'very-big-heading' h1, 'big-heading' h2, 'medium-heading' h3, 'heading' h4, 'small-heading' h5, 'very-small-heading' h6;
 
-$title-size: (
+@function heading-size($key) {
+  @if map-has-key($heading-size, $key) {
+    @return map-get($heading-size, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $heading-sizes.";
+  @return null;
+}
+
+$heading-size: (
   h1: calculateRem(46),
   h2: calculateRem(40),
   h3: calculateRem(30),
@@ -50,8 +78,52 @@ $title-size: (
   h6: calculateRem(16)
 ) !default;
 
+@each $size in $heading-sizes {
+  #{nth($size, 2)}, .is-#{nth($size, 1)} {
+    @extend %heading;
+    --font-size: #{heading-size(nth($size, 2))};
+  }
+}
+
+a {
+  color: var(--color-link);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .has-link-inherit & {
+    color: inherit;
+  }
+}
+
+ol, ul {
+  --margin-left: #{$list-margin-left};
+  --margin-top: #{$list-margin-top};
+  --item-padding: #{$list-item-padding};
+
+  margin-left: var(--margin-left);
+  margin-top: var(--margin-top);
+
+  ul, ol, dl {
+    margin-top: 0;
+  }
+
+  li {
+    padding: var(--item-padding);
+  }
+}
+
+ul, ol {
+  list-style-position: outside;
+}
+
 ul {
-  list-style-type: $list-style-type;
+  --style-type: #{$list-style-type};
+
+  list-style-type: var(--style-type);
 
   &.has-no-list-style {
     list-style-type: none;
@@ -59,7 +131,7 @@ ul {
   }
 
   &.is-inline-list {
-    display: flex;
+    display: flex !important;
     flex-flow: row wrap;
     list-style-type: none;
     margin: 0;
@@ -68,23 +140,6 @@ ul {
       margin-right: 0.5rem;
     }
   }
-}
-
-ol, ul {
-  margin-left: $list-margin-left;
-  margin-top: $list-margin-top;
-
-  ul, ol, dl {
-    margin-top: 0;
-  }
-
-  li {
-    padding: $list-item-padding;
-  }
-}
-
-ul, ol {
-  list-style-position: outside;
 }
 
 dl {
@@ -98,29 +153,25 @@ dl {
   }
 }
 
-@each $size in $title-sizes {
-  #{nth($size, 2)}, .is-#{nth($size, 1)} {
-    @extend %title;
-    font-size: title-size(nth($size, 2));
-  }
-}
-
-.subtitle {
-  color: $subtitle-color;
-  font-weight: $subtitle-font-weight;
-  line-height: $subtitle-line-height;
-}
-
 blockquote {
-  border-left: $blockquote-border-left;
-  color: $blockquote-color;
-  margin: $blockquote-margin;
-  padding: $blockquote-padding;
+  --border-color: #{$blockquote-border-color};
+  --border-width: #{$blockquote-border-width};
+  --font-color: #{$blockquote-color};
+  --margin: #{$blockquote-margin};
+  --padding: #{$blockquote-padding};
+
+  border-left: var(--border-width) solid var(--border-color);
+  color: var(--font-color);
+  margin: var(--margin);
+  padding: var(--padding);
 
   cite {
-    color: $cite-color;
+    --font-color: #{$cite-color};
+    --font-size: #{$cite-font-size};
+
+    color: var(--font-color);
     display: block;
-    font-size: $cite-font-size;
+    font-size: var(--font-size);
 
     &::before {
       content: "- ";
@@ -129,21 +180,9 @@ blockquote {
 }
 
 abbr {
-  border-bottom: $abbr-border-bottom;
+  --border-color: #{$abbr-border-color};
+
+  border-bottom: 1px dotted var(--border-color);
   cursor: help;
   text-decoration: none;
-}
-
-a {
-  color: $link;
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  .has-link-inherit & {
-    color: inherit;
-  }
 }

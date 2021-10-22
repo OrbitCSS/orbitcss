@@ -12,10 +12,11 @@
     "url": "https://github.com/OrbitCSS/orbitcss/issues"
   },
   "scripts": {
-    "build:sass": "node-sass --output-style expanded orbit.scss css/orbit.css",
+    "build:sass": "sass --style expanded orbit.scss css/orbit.css",
     "build:clean": "cleancss -o css/orbit.min.css css/orbit.css",
-    "build:autoprefixer": "postcss --use autoprefixer --no-map --output css/orbit.css css/orbit.css",
-    "build": "npm-run-all build:sass build:autoprefixer build:clean"
+    "build:autoprefixer": "postcss --use autoprefixer --map false --output css/orbit.css css/orbit.css",
+    "build": "npm-run-all build:sass build:autoprefixer build:clean",
+    "start": "npm run build:sass -- --watch"
   },
   "author": "Rhys Hall <hello@rhyshall.com>",
   "license": "MIT",
@@ -28,10 +29,11 @@
     "orbitcss"
   ],
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "clean-css-cli": "^4.3.0",
-    "node-sass": "^6.0.1",
+    "autoprefixer": "^10.3.7",
+    "clean-css-cli": "^5.4.1",
     "npm-run-all": "^4.1.5",
-    "postcss-cli": ">=7.0.36"
+    "postcss": "^8.3.10",
+    "postcss-cli": "^9.0.1",
+    "sass": "^1.43.2"
   }
 }

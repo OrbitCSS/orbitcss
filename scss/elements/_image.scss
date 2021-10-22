@@ -1,34 +1,49 @@
-$image-radius: 50% !default;
-$image-thumb-border: 1px solid $light-grey !default;
-$image-thumb-radius: 6px !default;
-$image-thumb-padding: 0.25rem !default;
-$image-tile-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2) !default;
-$image-tile-radius: 6px !default;
 $image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'square' 128px, 'medium-square' 160px, 'large-square' 208px !default;
 
+$image-radius: 50% !default;
+
+$image-thumb-border-width: 1px !default;
+$image-thumb-border-color: var(--color-light-grey) !default;
+$image-thumb-radius: 6px !default;
+$image-thumb-padding: 0.25rem !default;
+
+$image-tile-shadow: 0 5px 10px 0px createColor(rgba(0, 0, 0, 0.2)) !default;
+$image-tile-radius: 6px !default;
+
 @mixin imageBoxSize($width, $height: $width) {
-  height: $height;
-  width: $width;
+  --height: #{$height};
+  --width: #{$width};
+
+  height: var(--height);
+  width: var(--width);
   img {
     height: 100%;
   }
 }
 
 .image {
+  --border-radius: 0;
+  --border-color: transparent;
+  --border-width: 0;
+
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
 
   &.is-thumbnail {
-    border: $image-thumb-border;
-    border-radius: $image-thumb-radius;
+    --border-width: #{$image-thumb-border-width};
+    --border-color: #{$image-thumb-border-color};
+    --border-radius: #{$image-tile-radius};
+    --padding: #{$image-thumb-padding};
 
     img {
-      padding: $image-thumb-padding;
+      padding: var(--padding);
     }
   }
 
   &.is-rounded {
-    border-radius: $image-radius;
+    --border-radius: #{$image-radius};
 
     img {
       border-radius: inherit;
@@ -36,11 +51,13 @@ $image-square-sizes: 'tiny-square' 48px, 'small-square' 96px, 'square' 128px, 'm
   }
 
   &.is-tile, &.is-rounded-tile {
-    box-shadow: $image-tile-shadow;
+    --box-shadow: #{$image-tile-shadow};
+
+    box-shadow: var(--box-shadow);
   }
 
   &.is-rounded-tile {
-    border-radius: $image-tile-radius;
+    --border-radius: #{$image-tile-radius};
 
     img {
       border-radius: inherit;

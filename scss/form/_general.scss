@@ -1,26 +1,28 @@
-$input-background-color: $white !default;
-$input-border-color: #dbdbdb !default;
-$input-border: 1px solid $input-border-color !default;
+$input-background-color: var(--color-white) !default;
+$input-border-color: createColor(#dbdbdb) !default;
+$input-border-width: 1px !default;
 $input-border-radius: 0 !default;
-$input-color: inherit !default;
-$input-shadow: inset 0 1px 2px rgba(10,10,10,.1) !default;
+$input-color: var(--color-black) !default;
+$input-shadow: inset 0 1px 2px createColor(rgba(10, 10, 10, 0.1)) !default;
 $input-font-size: calculateRem(16) !default;
 $input-line-height: 1.5 !default;
 $input-padding: calculateRem(8) !default;
-$input-focus-border: $info !default;
-$input-focus-shadow: 0 0 0 0.125em rgba(50,115,220,.25) !default;
-$input-disabled-background: $disabled !default;
-$input-disabled-border: $disabled !default;
-$input-disabled-color: #afafaf !default;
+$input-focus-border: var(--color-info) !default;
+$input-focus-shadow: 0 0 0 0.125em createColor(rgba(50,115,220,.25)) !default;
+$input-disabled-background: var(--color-disabled) !default;
+$input-disabled-border: var(--color-disabled) !default;
+$input-disabled-color: var(--color-muted) !default;
+$input-error-background: var(--color-danger-alert) !default;
+$input-error-border-color: var(--color-danger) !default;
+$input-error-color: var(--color-black) !default;
 
-$select-arrow-color: #7284ff !default;
-$select-arrow-height: calculateEm(10) !default;
+$select-arrow-color: createColor(#7284ff) !default;
 $select-arrow-width: calculateEm(10) !default;
-$select-multiple-padding: .5rem 1rem !default;
 $select-padding: calculateRem(8) !default;
-$select-loading-animation: spinner .8s linear infinite !default;
+$select-multiple-padding: .5rem 1rem !default;
+$select-loading-speed: .8s !default;
 $select-loading-width: 2px !default;
-$select-loading-color: $light-grey !default;
+$select-loading-color: var(--color-light-grey) !default;
 
 $label-font-weight: 600 !default;
 $label-bottom-margin: calculateRem(6.4) !default;
@@ -33,35 +35,53 @@ form, input, textarea, select {
 }
 
 input[type="text"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="password"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="week"], input[type="url"], textarea, select {
-  background-color: $input-background-color;
-  border: $input-border;
-  border-radius: $input-border-radius;
-  box-shadow: $input-shadow;
-  color: $input-color;
-  font-size: $input-font-size;
+  --border-width: #{$input-border-width};
+  --border-radius: #{$input-border-radius};
+  --box-shadow: inset 0 1px 2px #{createColor(rgba(10,10,10, 0.1))};
+  --font-size: #{$input-font-size};
+  --line-height: #{$input-line-height};
+  --padding: #{$input-padding};
+  --background-color: #{$input-background-color};
+  --border-color: #{$input-border-color};
+  --font-color: #{$input-color};
+  --padding: #{$input-padding};
+
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--font-color);
+  font-size: var(--font-size);
   font-family: inherit;
-  line-height: $input-line-height;
+  line-height: var(--line-height);
+  padding: var(--padding, 0);
   outline: none;
   width: 100%;
 
   &:focus {
-    border-color: $input-focus-border;
+    --border-color: #{$input-focus-border};
   }
 
   &:not([readonly]):focus {
-    box-shadow: $input-focus-shadow;
+    --box-shadow: #{$input-focus-shadow};
   }
 
   &[disabled] {
-    background-color: $input-disabled-background;
-    border-color: $input-disabled-border;
-    box-shadow: none;
-    color: $input-disabled-color;
+    --background-color: #{$input-disabled-background};
+    --box-shadow: none;
+    --font-color: #{$input-disabled-color};
+
+    :not(.is-input-group) > & {
+      --border-color: #{$input-disabled-border};
+    }
   }
 
   &.has-error {
-    border-color: $danger;
-    background-color: transparentize($danger, 0.9);
+    --border-color: #{$input-error-border-color};
+    --background-color: #{$input-error-background};
+    --font-color: #{$input-error-color};
   }
 }
 
@@ -69,10 +89,6 @@ input[type="date"], input[type="datetime-local"] {
   &::-webkit-datetime-edit-fields-wrapper {
     padding: 0;
   }
-}
-
-input, textarea {
-  padding: $input-padding;
 }
 
 textarea {
@@ -92,11 +108,17 @@ textarea {
 }
 
 .is-select {
+  --arrow-color: #{$select-arrow-color};
+  --arrow-width: #{$select-arrow-width};
+  --loading-spinner-speed: #{$select-loading-speed};
+  --loading-icon-width: #{$select-loading-width};
+  --loading-icon-color: #{$select-loading-color};
+
   position: relative;
   width: 100%;
 
   select {
-    padding: $select-padding;
+    --pading: #{$select-padding};
     padding-right: 2rem;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -105,7 +127,7 @@ textarea {
   }
 
   &:not(.is-loading)::after {
-    border-color: $select-arrow-color;
+    border-color: var(--arrow-color);
     border-width: 3px;
     border-style: solid;
     border-radius: 2px;
@@ -113,7 +135,7 @@ textarea {
     border-top: 0;
     content: " ";
     display: block;
-    height: $select-arrow-height;
+    height: var(--arrow-width);
     margin-top: calculateEm(-6.4);
     pointer-events: none;
     position: absolute;
@@ -121,15 +143,15 @@ textarea {
     top: 50%;
     transform: rotate(-45deg);
     transform-origin: center;
-    width: $select-arrow-width;
+    width: var(--arrow-width);
   }
 
   &.is-loading {
     position: relative;
 
     &::after {
-      animation: $select-loading-animation;
-      border: $select-loading-width solid $select-loading-color;
+      animation: spinner var(--loading-spinner-speed) linear infinite;
+      border: var(--loading-icon-width) solid var(--loading-icon-color);
       border-left-color: transparent;
       border-bottom-color: transparent;
       border-radius: 50%;
@@ -153,15 +175,21 @@ textarea {
   }
 
   option {
-    padding: $select-multiple-padding;
+    padding: #{$select-multiple-padding};
   }
 }
 
 label {
+  --font-size: #{$label-font-size};
+  --font-weight: #{$label-font-weight};
+  --line-height: #{$label-line-height};
+  --font-color: inherit;
+
+  color: var(--font-color);
   display: inline-block;
-  font-size: $label-font-size;
-  font-weight: $label-font-weight;
-  line-height: $label-line-height;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
 }
 
 label:not(:last-child) {
@@ -204,16 +232,28 @@ label:not(:last-child) {
 }
 
 .is-input-group {
+  --background-color: var(--color-disabled);
+  --border-color: #{$input-border-color};
+  --border-width: #{$input-border-width};
+  --font-color: var(--color-black);
+  --font-size: #{$input-font-size};
+  --focus-color: #{$input-focus-border};
+
   align-items: center;
   display: flex;
+  width: 100%;
 
   & > label, & > span {
-    border: $input-border;
-    font-size: $input-font-size;
+    border-color: var(--border-color);
+    border-style: solid;
+    border-width: var(--border-width);
+    color: var(--font-color);
+    font-size: var(--font-size);
     font-family: inherit;
+    font-weight: 400;
     line-height: 1.5;
     outline: none;
-    background-color: #f7f7f7;
+    background-color: var(--background-color);
     padding: calculateRem(8) calculateRem(16);
   }
 
@@ -224,10 +264,6 @@ label:not(:last-child) {
 
   input, select {
     box-shadow: none;
-
-    &[disabled] {
-      border-color: $input-border-color;
-    }
 
     &:focus {
       box-shadow: none !important;
@@ -241,7 +277,7 @@ label:not(:last-child) {
     }
 
     &:focus + * {
-      border-left-color: $input-focus-border;
+      border-left-color: var(--focus-color);
     }
   }
 
@@ -251,7 +287,7 @@ label:not(:last-child) {
     }
 
     &:focus-within + * {
-      border-left-color: $input-focus-border;
+      border-left-color: var(--focus-color);
     }
   }
 }
