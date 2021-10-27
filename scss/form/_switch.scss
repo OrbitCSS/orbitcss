@@ -14,6 +14,8 @@ $switch-toggle-width: calculateRem(24) !default;
   --track-radius: 0;
   --toggle-radius: 0;
   --track-background-color: #{$switch-background};
+  --active-track-background-color: #{$switch-checked-background};
+
   --toggle-background-color: #{$switch-toggle-background};
   --track-height: #{$switch-height};
   --track-width: #{$switch-width};
@@ -39,7 +41,7 @@ $switch-toggle-width: calculateRem(24) !default;
   }
 
   input:checked ~ label {
-    --track-background-color: #{$switch-checked-background};
+    --track-background-color: var(--active-track-background-color);
 
     &::after {
       left: calculateRem(36);

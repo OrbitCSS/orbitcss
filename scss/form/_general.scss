@@ -46,6 +46,18 @@ input[type="text"], input[type="color"], input[type="date"], input[type="datetim
   --font-color: #{$input-color};
   --padding: #{$input-padding};
 
+  --focus-border-color: #{$input-focus-border};
+  --focus-box-shadow: #{$input-focus-shadow};
+
+  --disabled-background-color: #{$input-disabled-background};
+  --disabled-box-shadow: none;
+  --disabled-font-color: #{$input-disabled-color};
+  --disabled-border-color: #{$input-disabled-border};
+
+  --error-border-color: #{$input-error-border-color};
+  --error-background-color: #{$input-error-background};
+  --error-font-color: #{$input-error-color};
+
   background-color: var(--background-color);
   border-color: var(--border-color);
   border-style: solid;
@@ -61,27 +73,27 @@ input[type="text"], input[type="color"], input[type="date"], input[type="datetim
   width: 100%;
 
   &:focus {
-    --border-color: #{$input-focus-border};
+    --border-color: var(--focus-border-color);
   }
 
   &:not([readonly]):focus {
-    --box-shadow: #{$input-focus-shadow};
+    --box-shadow: var(--focus-box-shadow);
   }
 
   &[disabled] {
-    --background-color: #{$input-disabled-background};
-    --box-shadow: none;
-    --font-color: #{$input-disabled-color};
+    --background-color: var(--disabled-background-color);
+    --box-shadow: var(--disabled-box-shadow);
+    --font-color: var(--disabled-font-color);
 
     :not(.is-input-group) > & {
-      --border-color: #{$input-disabled-border};
+      --border-color: var(--disabled-border-color);
     }
   }
 
   &.has-error {
-    --border-color: #{$input-error-border-color};
-    --background-color: #{$input-error-background};
-    --font-color: #{$input-error-color};
+    --border-color: var(--error-border-color);
+    --background-color: var(--error-background-color);
+    --font-color: var(--error-font-color);
   }
 }
 

@@ -46,6 +46,10 @@ $button-cross-width: 1px !default;
   --hover-font-color: #{$button-hover-color};
   --hover-border-color: #{$button-hover-border};
 
+  --loading-speed: #{$button-loading-speed};
+  --loading-width: #{$button-loading-width};
+  --loading-color: #{$button-loading-color};
+
   align-items: center;
   border-width: var(--border-width);
   border-style: solid;
@@ -122,9 +126,6 @@ $button-cross-width: 1px !default;
   }
 
   &.is-loading {
-    --loading-speed: #{$button-loading-speed};
-    --loading-width: #{$button-loading-width};
-    --loading-color: #{$button-loading-color};
 
     color: transparent !important;
     pointer-events: none;

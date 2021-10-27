@@ -18,7 +18,13 @@ $hero-color: var(--color-black) !default;
     padding: var(--padding);
   }
 
-  &__header, &__footer {
+  &__footer {
+    background-color: var(--background-color);
+    color: var(--font-color);
+    flex: none;
+  }
+
+  &__header {
     flex: none;
   }
 

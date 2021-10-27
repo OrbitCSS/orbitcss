@@ -11,6 +11,10 @@ $breadcrumb-separator: '/' !default;
   --separator-color: #{$breadcrumb-separator-color};
   --separator-padding: #{$breadcrumb-separator-padding};
 
+  --hover-font-color: #{$breadcrumb-hover-color};
+  --disabled-font-color: #{$breadcrumb-disabled-color};
+  --active-font-color: #{$breadcrumb-active-color};
+
   display: flex;
   flex-flow: column wrap;
 
@@ -28,15 +32,15 @@ $breadcrumb-separator: '/' !default;
       }
 
       &:hover {
-        --font-color: #{$breadcrumb-hover-color};
+        --font-color: var(--hover-font-color);
       }
 
       &.is-disabled {
-        --font-color: #{$breadcrumb-disabled-color};
+        --font-color: var(--disabled-font-color);
       }
 
       &.is-active {
-        --font-color: #{$breadcrumb-active-color};
+        --font-color: var(--active-font-color);
       }
     }
 

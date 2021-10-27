@@ -1,6 +1,6 @@
 # OrbitCSS Changelog
 
-## v2.0
+## v2.0.0
 
 ### Core changes
 
@@ -13,162 +13,465 @@
 * Removed a handful of functions from *_function.scss*. See the deprecations section for a full list.
 * Added <code>$color-type</code> variable to *_colors.scss*. This variable controls the framework wide format for colors to be generated. Supported values are 'hsl', 'rgba' and 'hex'.
 * Removed **link** and **disabled** from the <code>$color-palette</code> list. These colors still exist and can be referenced as per usual.
+* Added new **secondary** color to the color palette.
 * CSS variables added for each color along with a lighter and darker version, a text color and an alert color.
 * Replaced most variables in *_general.scss* with CSS variables.
 * Added <code>has-no-transition</code> helper to the global helpers. It sets the transition property of an element to **none**.
-* Add CSS variable support to typography module.
-* Add CSS variable support to Container module.
-* Add CSS variable support to Grid module.
-* Replaced <code>$hero-padding</code> variable with CSS variable equivalent.
-* Add CSS variable support to Section module.
-* Add CSS variable support to Form module.
-* Add CSS variable support to the Breadcrumb module.
-* Add CSS variable support to the Menu module.
-* Add CSS variable support to the Pagination module.
-* Add CSS variable support to the Top module.
-* Add CSS variable for all modules in the Elements section.
-
-### Colors
-* Add `$secondary` color variable.
-* Add *secondary* key to `$color-palette` variable.
-* Add *$color-type* variable. Valid values are hsl, rgba and hex. This variable sets the compiled type of all colors.
-* Removed *link* and *disabled* from the `$color-palette` variable.
-
-### Typography
 * *title* and *subtitle* changed to *heading* and *subheading*. Variables updated to reflect this change.
-
-### Hero
-* Add `$hero-background-color` variable.
-* Add `$hero-color` variable.
-* Controls for background and font color added to the *.hero__content* element.
-
-### Form
-* Add `$input-error-background` variable.
-* Add `$input-error-border-color` variable.
-* Add `$input-error-color` variable.
-* Various element color changes.
-* Remove `$select-arrow-height` variable.
-* Remove `$input-border` variable.
-* Add `$input-border-width` variable.
-* Add `$select-loading-speed` variable.
-* Add `$select-loading-width` variable.
-* Add `$select-loading-color` variable.
-
-### Top (Navbar)
-* Add `$top-shadow` variable.
-* Add `$top-brand-color` variable.
-* Add `$top-brand-max-logo-width` variable.
+* Added the `is-subheading` modifier to replace the `subtitle` modifier.
+* Controls for background and font color added to the *hero__content* and *hero__footer* element. Background color can no longer be set on the *hero* block.
 * Added a max width control to images within the *top__brand* element.
-* Add `$top-link-background` variable.
-* Add `$top-social-hover-color` variable.
-* Remove `$top-burger-height` variable.
-* Change the transition speed of the *top__burger* element.
-
-### Menu
-* Add `$menu-list-background` variable.
-* Remove `$menu-list-hover` variable.
-* Add `$menu-list-hover-background` variable.
-* Add `$menu-list-hover-color` variable.
-* Remove `$menu-divider` variable.
-* Add `$menu-divider-width` variable.
-* Add `$menu-divider-color` variable.
-* Remove `$menu-expandable-border` variable.
-* Add `$menu-expandable-border-width` variable.
-* Add `$menu-expandable-border-color` variable.
-
-### Pagination
-* Remove `$pagination-border` variable.
-* Add `$pagination-border-color` variable.
-* Add `$pagination-border-width` variable.
-* Add `$pagination-border-radius` variable.
-* Add `$pagination-hover-color` variable.
-* Rename `$pagination-rounded` variable to `$pagination-rounded-radius`.
-* Add `$pagination-bordered-color` variable.
-* Remove `$pagination-bordered` variable.
-* Add `$pagination-bordered-border-color` variable.
-* Rename `$pagination-bordered-active` variable to `$pagination-bordered-active-background`.
-* Add `$pagination-bordered-active-border-color` variable.
-* Add `$pagination-bordered-active-color` variable.
-* Remove `$pagination-bordered-hover` variable.
-* Add `$pagination-bordered-hover-background` variable.
-* Add `$pagination-bordered-hover-border-color` variable.
-* Add `$pagination-bordered-hover-color` variable.
-
-### Accordion
-* Remove `$accordion-border` variable.
-* Add `$accordion-border-width` variable.
-* Add `$accordion-border-color` variable.
-* Add `$accordion-title-background-color` variable.
-* Add `$accordion-content-color` variable.
-* Add `$accordion-content-background` variable.
-* Various element color changes.
-
-### Alert
-* Add `$alert-background-color` variable.
-* Add `$alert-color` variable.
-
-### Button
-* Remove `$button-border-style` variable.
-* Remove `$button-text-align` variable.
-* Add `$button-hover-background` variable.
-* Add `$button-hover-color` variable.
-* Add `$button-rounded-radius` variable.
-* Remove `$button-loading-animation` variable.
-* Add `$button-loading-speed` variable.
-
-### Card
-* Remove `$card-border-style` variable.
-
-### Dropdown
-* Remove `$dropdown-border` variable.
-* Add `$dropdown-color` variable.
-* Add `$dropdown-border-width` variable.
-* Add `$dropdown-border-color` variable.
-* Rename `$dropdown-radius` variable to `$dropdown-border-radius`.
-* Rename `$dropdown-link-hover` variable to `$dropdown-link-hover-background`.
-* Add `$dropdown-link-hover-color` variable.
-* Various element color changes.
-
-### Image
-* Remove `$image-thumb-border` variable.
-* Add `$image-thumb-border-width` variable.
-* Add `$image-thumb-border-color` variable.
-
-### Media
-* Remove `$media-border-style` variable.
-
-### Modal
-* Add `$modal-color` variable.
-
-### Table
-* Add `$table-background-color` variable.
-* Add `$table-color` variable.
-
-### Tabs
-* Add `$tab-item-background` variable.
-* Add `$tab-item-active-background` variable.
-* Add `$tab-item-hover-color` variable.
-* Add `$tab-item-hover-background` variable.
-* Add `$tab-content-background` variable.
-* Add `$tab-content-color` variable.
-
-### Tag
-* Remove `$tag-border-style` variable.
-
-### New Sass variables
-* `$theme-font-color`
-* `$theme-background-color`
-* `$secondary`
-
-### Removed Sass variables
-* `$body-font-color`
-
-### Minor changes
-* Added `top: 0` to static top (navbar) element.
-
-### Deprecations
+* Various changes to the appearance of certain module elements.
 * Removed <code>color($key)</code> function.
 * Removed <code>title-size($key)</code> function.
+* Removed `has-bg-link` and `has-text-link` modifiers from the *color* module.
+* Removed the set of `is-*-title` modifiers from the Typography module.
+* Removed the `subtitle` modifier from the Typography module.
+
+* Add CSS variable support to all modules. Refer to the [documentation](https://orbitcss.com/documentation/) of each module for the list of CSS variables.
+
+### New Sass variables
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>Module</th>
+      <th>Default value</th>
+    </tr>
+    <tr>
+      <td><code>$hero-background-color</code></td>
+      <td>Hero</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$hero-color</code></td>
+      <td>Hero</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$input-error-background</code></td>
+      <td>Form</td>
+      <td><code>hsl(348deg, 100%, 58%, 0.2)</code></td>
+    </tr>
+    <tr>
+      <td><code>$input-error-border-color</code></td>
+      <td>Form</td>
+      <td><code>hsl(347deg, 100%, 58%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$input-error-color</code></td>
+      <td>Form</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$input-border-width</code></td>
+      <td>Form</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$select-loading-speed</code></td>
+      <td>Form</td>
+      <td><code>.8s</code></td>
+    </tr>
+    <tr>
+      <td><code>$select-loading-width</code></td>
+      <td>Form</td>
+      <td><code>2px</code></td>
+    </tr>
+    <tr>
+      <td><code>$select-loading-color</code></td>
+      <td>Form</td>
+      <td><code>hsl(32deg, 12%, 82%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$top-shadow</code></td>
+      <td>Top (Navbar)</td>
+      <td><code>none</code></td>
+    </tr>
+    <tr>
+      <td><code>$top-brand-color</code></td>
+      <td>Top (Navbar)</td>
+      <td><code>inherit</code></td>
+    </tr>
+    <tr>
+      <td><code>$top-brand-max-logo-width</code></td>
+      <td>Top (Navbar)</td>
+      <td><code>200px</code></td>
+    </tr>
+    <tr>
+      <td><code>$top-link-background</code></td>
+      <td>Top (Navbar)</td>
+      <td><code>hsl(0deg, 0%, 66%, 0.15)</code></td>
+    </tr>
+    <tr>
+      <td><code>$top-social-hover-color</code></td>
+      <td>Top (Navbar)</td>
+      <td><code>inherit</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-list-background</code></td>
+      <td>Menu</td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-list-hover-background</code></td>
+      <td>Menu</td>
+      <td><code>hsl(0deg, 0%, 75%, 0.09)</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-list-hover-color</code></td>
+      <td>Menu</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-divider-width</code></td>
+      <td>Menu</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-divider-color</code></td>
+      <td>Menu</td>
+      <td><code>hsl(210deg, 16%, 92%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-expandable-border-width</code></td>
+      <td>Menu</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-expandable-border-color</code></td>
+      <td>Menu</td>
+      <td><code>hsl(210deg, 16%, 92%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-border-color</code></td>
+      <td>Pagination</td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-border-width</code></td>
+      <td>Pagination</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-border-radius</code></td>
+      <td>Pagination</td>
+      <td><code>0</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-hover-color</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-color</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-border-color</code></td>
+      <td>Pagination</td>
+      <td><code>4px</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-active-border-color</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(255deg, 73%, 58%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-active-color</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-hover-background</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-hover-border-color</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(33, 12%, 72%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-hover-color</code></td>
+      <td>Pagination</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$accordion-border-width</code></td>
+      <td>Accordion</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$accordion-border-color</code></td>
+      <td>Accordion</td>
+      <td><code>hsl(0deg, 0%, 90%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$accordion-title-background-color</code></td>
+      <td>Accordion</td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>$accordion-content-color</code></td>
+      <td>Accordion</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$accordion-content-background</code></td>
+      <td>Accordion</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$alert-background-color</code></td>
+      <td>Alert</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$alert-color</code></td>
+      <td>Alert</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$button-hover-background</code></td>
+      <td>Button</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$button-hover-color</code></td>
+      <td>Button</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$button-rounded-radius</code></td>
+      <td>Button</td>
+      <td><code>6px</code></td>
+    </tr>
+    <tr>
+      <td><code>$button-loading-speed</code></td>
+      <td>Button</td>
+      <td><code>0.8s</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-color</code></td>
+      <td>Dropdown</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-border-width</code></td>
+      <td>Dropdown</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-border-color</code></td>
+      <td>Dropdown</td>
+      <td><code>hsl(0deg, 0%, 80%, 0.34)</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-link-hover-color</code></td>
+      <td>Dropdown</td>
+      <td><code>inherit</code></td>
+    </tr>
+    <tr>
+      <td><code>$image-thumb-border-width</code></td>
+      <td>Image</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>$image-thumb-border-color</code></td>
+      <td>Image</td>
+      <td><code>hsl(33, 12%, 82%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$modal-color</code></td>
+      <td>Modal</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$table-background-color</code></td>
+      <td>Table</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$table-color</code></td>
+      <td>Table</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$tab-item-background</code></td>
+      <td>Tabs</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$tab-item-active-background</code></td>
+      <td>Tabs</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$tab-item-hover-color</code></td>
+      <td>Tabs</td>
+      <td><code>hsl(234deg, 100%, 64%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$tab-item-hover-background</code></td>
+      <td>Tabs</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$tab-content-background</code></td>
+      <td>Tabs</td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>$tab-content-color</code></td>
+      <td>Tabs</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$secondary</code></td>
+      <td>Colors</td>
+      <td><code>#ff5e82</code></td>
+    </tr>
+    <tr>
+      <td><code>$theme-font-color</code></td>
+      <td>Base</td>
+      <td><code>hsl(0deg, 0%, 22%, 1)</code></td>
+    </tr>
+    <tr>
+      <td><code>$theme-background-color</code></td>
+      <td>Base</td>
+      <td><code>hsl(0deg, 0%, 100%, 1)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Removed Sass variables
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Variable</th>
+      <th>Module</th>
+      <th>Replaced with</th>
+    </tr>
+    <tr>
+      <td><code>$select-arrow-height</code></td>
+      <td>Form</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$input-border</code></td>
+      <td>Form</td>
+      <td><code>$input-border-color</code><br /><code>$input-border-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$top-burger-height</code></td>
+      <td>Top (Navbar)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$menu-list-hover</code></td>
+      <td>Menu</td>
+      <td><code>$menu-list-hover-background</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-divider</code></td>
+      <td>Menu</td>
+      <td><code>$menu-divider-color</code><br /><code>$menu-divider-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$menu-expandable-border</code></td>
+      <td>Menu</td>
+      <td><code>$menu-expandable-border-color</code><br /><code>$menu-expandable-border-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-border</code></td>
+      <td>Pagination</td>
+      <td><code>$pagination-border-color</code><br /><code>$pagination-border-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-rounded</code></td>
+      <td>Pagination</td>
+      <td><code>$pagination-rounded-radius</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered</code></td>
+      <td>Pagination</td>
+      <td><code>$pagination-bordered-border-color</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-active</code></td>
+      <td>Pagination</td>
+      <td><code>$pagination-bordered-active-background</code></td>
+    </tr>
+    <tr>
+      <td><code>$pagination-bordered-hover</code></td>
+      <td>Pagination</td>
+      <td><code>$pagination-bordered-hover-border-color</code></td>
+    </tr>
+    <tr>
+      <td><code>$accordion-border</code></td>
+      <td>Accordion</td>
+      <td><code>$accordion-border-color</code><br /><code>$accordion-border-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$button-border-style</code></td>
+      <td>Button</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$button-text-align</code></td>
+      <td>Button</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$button-loading-animation</code></td>
+      <td>Button</td>
+      <td><code>$button-loading-speed</code></td>
+    </tr>
+    <tr>
+      <td><code>$card-border-style</code></td>
+      <td>Card</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-border</code></td>
+      <td>Dropdown</td>
+      <td><code>$dropdown-border-color</code><br /><code>$dropdown-border-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-radius</code></td>
+      <td>Dropdown</td>
+      <td><code>$dropdown-border-radius</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-link-hover</code></td>
+      <td>Dropdown</td>
+      <td><code>$dropdown-link-hover-background</code></td>
+    </tr>
+    <tr>
+      <td><code>$image-thumb-border</code></td>
+      <td>Image</td>
+      <td><code>$image-thumb-border-color</code><br /><code>$image-thumb-border-width</code></td>
+    </tr>
+    <tr>
+      <td><code>$media-border-style</code></td>
+      <td>Media</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$tag-border-style</code></td>
+      <td>Tags</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>$body-font-color</code></td>
+      <td>Base</td>
+      <td><code>$theme-font-color</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ## v1.1.1
 
@@ -715,7 +1018,7 @@ Before upgrading check the use of the <code>.is-{size}-only</code> and <code>.is
 * Improve flex properties for the <code>Grid</code> system.
 * Add <code>.is-mobile-auto</code> helper class to allow for equal width columns on smaller views.
 * Add flex properties to the <code>.is-checkbox</code> and <code>.is-radio</code> elements.
-* Improve flex properties for the <code>Hero</code> element.
+* Improve flex properties for the Hero element.
 * Improve flex properties for the <code>Image</code> element.
 * Improve flex properties for the <code>Media</code> element.
 * Remove width property from <code>.menu</code> element.

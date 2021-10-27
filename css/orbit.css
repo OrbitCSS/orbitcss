@@ -6,11 +6,11 @@
   --color-primary-lighter: hsl(255.6687898089deg, 73.023255814%, 67.8431372549%, 1);
   --color-primary-text: var(--color-white);
   --color-primary-alert: hsl(255.6687898089deg, 73.023255814%, 57.8431372549%, 0.2);
-  --color-secondary: hsl(255.652173913deg, 74.1935483871%, 87.8431372549%, 1);
-  --color-secondary-darker: hsl(255.652173913deg, 74.1935483871%, 77.8431372549%, 1);
-  --color-secondary-lighter: hsl(255.652173913deg, 74.1935483871%, 97.8431372549%, 1);
+  --color-secondary: hsl(346.5838509317deg, 100%, 68.431372549%, 1);
+  --color-secondary-darker: hsl(346.5838509317deg, 100%, 58.431372549%, 1);
+  --color-secondary-lighter: hsl(346.5838509317deg, 100%, 78.431372549%, 1);
   --color-secondary-text: var(--color-black);
-  --color-secondary-alert: hsl(255.652173913deg, 74.1935483871%, 87.8431372549%, 0.2);
+  --color-secondary-alert: hsl(346.5838509317deg, 100%, 68.431372549%, 0.2);
   --color-warning: hsl(47.8571428571deg, 100%, 67.0588235294%, 1);
   --color-warning-darker: hsl(47.8571428571deg, 100%, 57.0588235294%, 1);
   --color-warning-lighter: hsl(47.8571428571deg, 100%, 77.0588235294%, 1);
@@ -474,15 +474,11 @@ a:hover {
 ol, ul {
   --margin-left: 1.25rem;
   --margin-top: 1rem;
-  --item-padding: 0;
   margin-left: var(--margin-left);
   margin-top: var(--margin-top);
 }
 ol ul, ol ol, ol dl, ul ul, ul ol, ul dl {
   margin-top: 0;
-}
-ol li, ul li {
-  padding: var(--item-padding);
 }
 
 ul, ol {
@@ -1245,7 +1241,12 @@ abbr {
   flex: auto;
   padding: var(--padding);
 }
-.hero__header, .hero__footer {
+.hero__footer {
+  background-color: var(--background-color);
+  color: var(--font-color);
+  flex: none;
+}
+.hero__header {
   flex: none;
 }
 .hero.is-medium > .hero__content {
@@ -1291,6 +1292,15 @@ input[type=text], input[type=color], input[type=date], input[type=datetime-local
   --border-color: hsl(0deg, 0%, 85.8823529412%, 1);
   --font-color: var(--color-black);
   --padding: 0.5rem;
+  --focus-border-color: var(--color-info);
+  --focus-box-shadow: 0 0 0 0.125em hsl(217.0588235294deg, 70.8333333333%, 52.9411764706%, 0.25);
+  --disabled-background-color: var(--color-disabled);
+  --disabled-box-shadow: none;
+  --disabled-font-color: var(--color-muted);
+  --disabled-border-color: var(--color-disabled);
+  --error-border-color: var(--color-danger);
+  --error-background-color: var(--color-danger-alert);
+  --error-font-color: var(--color-black);
   background-color: var(--background-color);
   border-color: var(--border-color);
   border-style: solid;
@@ -1306,23 +1316,23 @@ input[type=text], input[type=color], input[type=date], input[type=datetime-local
   width: 100%;
 }
 input[type=text]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=password]:focus, input[type=month]:focus, input[type=number]:focus, input[type=search]:focus, input[type=tel]:focus, input[type=time]:focus, input[type=week]:focus, input[type=url]:focus, textarea:focus, select:focus {
-  --border-color: var(--color-info);
+  --border-color: var(--focus-border-color);
 }
 input[type=text]:not([readonly]):focus, input[type=color]:not([readonly]):focus, input[type=date]:not([readonly]):focus, input[type=datetime-local]:not([readonly]):focus, input[type=email]:not([readonly]):focus, input[type=password]:not([readonly]):focus, input[type=month]:not([readonly]):focus, input[type=number]:not([readonly]):focus, input[type=search]:not([readonly]):focus, input[type=tel]:not([readonly]):focus, input[type=time]:not([readonly]):focus, input[type=week]:not([readonly]):focus, input[type=url]:not([readonly]):focus, textarea:not([readonly]):focus, select:not([readonly]):focus {
-  --box-shadow: 0 0 0 0.125em hsl(217.0588235294deg, 70.8333333333%, 52.9411764706%, 0.25);
+  --box-shadow: var(--focus-box-shadow);
 }
 input[type=text][disabled], input[type=color][disabled], input[type=date][disabled], input[type=datetime-local][disabled], input[type=email][disabled], input[type=password][disabled], input[type=month][disabled], input[type=number][disabled], input[type=search][disabled], input[type=tel][disabled], input[type=time][disabled], input[type=week][disabled], input[type=url][disabled], textarea[disabled], select[disabled] {
-  --background-color: var(--color-disabled);
-  --box-shadow: none;
-  --font-color: var(--color-muted);
+  --background-color: var(--disabled-background-color);
+  --box-shadow: var(--disabled-box-shadow);
+  --font-color: var(--disabled-font-color);
 }
 :not(.is-input-group) > input[type=text][disabled], :not(.is-input-group) > input[type=color][disabled], :not(.is-input-group) > input[type=date][disabled], :not(.is-input-group) > input[type=datetime-local][disabled], :not(.is-input-group) > input[type=email][disabled], :not(.is-input-group) > input[type=password][disabled], :not(.is-input-group) > input[type=month][disabled], :not(.is-input-group) > input[type=number][disabled], :not(.is-input-group) > input[type=search][disabled], :not(.is-input-group) > input[type=tel][disabled], :not(.is-input-group) > input[type=time][disabled], :not(.is-input-group) > input[type=week][disabled], :not(.is-input-group) > input[type=url][disabled], :not(.is-input-group) > textarea[disabled], :not(.is-input-group) > select[disabled] {
-  --border-color: var(--color-disabled);
+  --border-color: var(--disabled-border-color);
 }
 input[type=text].has-error, input[type=color].has-error, input[type=date].has-error, input[type=datetime-local].has-error, input[type=email].has-error, input[type=password].has-error, input[type=month].has-error, input[type=number].has-error, input[type=search].has-error, input[type=tel].has-error, input[type=time].has-error, input[type=week].has-error, input[type=url].has-error, textarea.has-error, select.has-error {
-  --border-color: var(--color-danger);
-  --background-color: var(--color-danger-alert);
-  --font-color: var(--color-black);
+  --border-color: var(--error-border-color);
+  --background-color: var(--error-background-color);
+  --font-color: var(--error-font-color);
 }
 
 input[type=date]::-webkit-datetime-edit-fields-wrapper, input[type=datetime-local]::-webkit-datetime-edit-fields-wrapper {
@@ -1583,6 +1593,7 @@ label:not(:last-child) {
   --track-radius: 0;
   --toggle-radius: 0;
   --track-background-color: hsl(0deg, 0%, 85.8823529412%, 1);
+  --active-track-background-color: var(--color-primary);
   --toggle-background-color: var(--color-white);
   --track-height: 2rem;
   --track-width: 4rem;
@@ -1602,7 +1613,7 @@ label:not(:last-child) {
   position: absolute;
 }
 .is-switch input:checked ~ label {
-  --track-background-color: var(--color-primary);
+  --track-background-color: var(--active-track-background-color);
 }
 .is-switch input:checked ~ label::after {
   left: 2.25rem;
@@ -1634,6 +1645,9 @@ label:not(:last-child) {
   --font-color: var(--color-link);
   --separator-color: var(--color-black);
   --separator-padding: 0 0.625rem;
+  --hover-font-color: var(--color-black);
+  --disabled-font-color: var(--color-muted);
+  --active-font-color: var(--color-black);
   display: flex;
   flex-flow: column wrap;
 }
@@ -1650,13 +1664,13 @@ label:not(:last-child) {
   color: inherit;
 }
 .breadcrumb ul li:hover {
-  --font-color: var(--color-black);
+  --font-color: var(--hover-font-color);
 }
 .breadcrumb ul li.is-disabled {
-  --font-color: var(--color-muted);
+  --font-color: var(--disabled-font-color);
 }
 .breadcrumb ul li.is-active {
-  --font-color: var(--color-black);
+  --font-color: var(--active-font-color);
 }
 .breadcrumb ul li + li::before {
   color: var(--separator-color);
@@ -1774,6 +1788,7 @@ label:not(:last-child) {
   --active-border-color: transparent;
   display: flex;
   flex-direction: column;
+  font-size: var(--font-size);
 }
 @media (min-width: 768px) {
   .pagination {
@@ -1783,6 +1798,7 @@ label:not(:last-child) {
 }
 .pagination ul {
   display: flex;
+  font-size: inherit;
   margin: 0;
 }
 .pagination .is-center {
@@ -1800,7 +1816,6 @@ label:not(:last-child) {
   cursor: pointer;
   color: var(--font-color);
   display: inline-block;
-  font-size: var(--font-size);
   line-height: var(--line-height);
   justify-content: center;
   margin: var(--margin);
@@ -2353,6 +2368,9 @@ label:not(:last-child) {
   --hover-background-color: var(--color-white);
   --hover-font-color: var(--color-black);
   --hover-border-color: var(--color-light-grey-darker);
+  --loading-speed: 0.8s;
+  --loading-width: 2px;
+  --loading-color: var(--color-light-grey);
   align-items: center;
   border-width: var(--border-width);
   border-style: solid;
@@ -2730,9 +2748,6 @@ label:not(:last-child) {
   border-top-color: var(--color-dark-grey);
 }
 .button.is-loading {
-  --loading-speed: 0.8s;
-  --loading-width: 2px;
-  --loading-color: var(--color-light-grey);
   color: transparent !important;
   pointer-events: none;
   position: relative;
