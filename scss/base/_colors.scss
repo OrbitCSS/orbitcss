@@ -59,18 +59,18 @@ $color-palette: map-merge($color-palette, $custom-palette);
 .has-text {
   @each $color in $color-palette {
     &-#{nth($color, 1)} {
-      --font-color: var(--color-#{nth($color, 1)});
+      --font-color: var(--color-#{nth($color, 1)}) !important;
       color: var(--font-color) !important;
     }
   }
 
   &-muted {
-    --font-color: var(--color-muted);
+    --font-color: var(--color-muted) !important;
     color: var(--font-color) !important;
   }
 
   &-disabled {
-    --font-color: var(--color-disabled);
+    --font-color: var(--color-disabled) !important;
     color: var(--font-color) !important;
   }
 }
@@ -78,13 +78,13 @@ $color-palette: map-merge($color-palette, $custom-palette);
 .has-bg {
   @each $color in $color-palette {
     &-#{nth($color, 1)} {
-      --background-color: var(--color-#{nth($color, 1)});
+      --background-color: var(--color-#{nth($color, 1)}) !important;
       background-color: var(--background-color) !important;
     }
   }
 
   &-disabled {
-    --background-color: var(--color-disabled);
+    --background-color: var(--color-disabled) !important;
     background-color: var(--background-color) !important;
   }
 }

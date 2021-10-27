@@ -92,11 +92,14 @@ $top-burger-transition: 0.75s !default;
     --font-color: #{$top-link-color};
     --border-radius: #{$top-link-radius};
     --link-padding: #{$top-link-padding};
+    --text-align: start;
 
     --hover-background-color: #{$top-link-hover-background};
     --hover-font-color: #{$top-link-hover-color};
     --active-background-color: #{$top-link-active-background};
     --active-font-color: #{$top-link-active-color};
+
+    text-align: var(--text-align);
 
     ul:not(.dropdown) > li {
       background-color: var(--background-color);

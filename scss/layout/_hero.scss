@@ -11,20 +11,17 @@ $hero-color: var(--color-black) !default;
   display: flex;
   flex-direction: column;
 
-  &__content {
+  &__content, &__footer, &__header {
     background-color: var(--background-color);
     color: var(--font-color);
+  }
+
+  &__content {
     flex: auto;
     padding: var(--padding);
   }
 
-  &__footer {
-    background-color: var(--background-color);
-    color: var(--font-color);
-    flex: none;
-  }
-
-  &__header {
+  &__footer, &__header {
     flex: none;
   }
 

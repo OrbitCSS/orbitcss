@@ -93,7 +93,7 @@ a {
     text-decoration: underline;
   }
 
-  .has-link-inherit & {
+  .has-link-inherit &:not(.button) {
     color: inherit;
   }
 }

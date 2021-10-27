@@ -45,6 +45,7 @@ input[type="text"], input[type="color"], input[type="date"], input[type="datetim
   --border-color: #{$input-border-color};
   --font-color: #{$input-color};
   --padding: #{$input-padding};
+  --width: 100%;
 
   --focus-border-color: #{$input-focus-border};
   --focus-box-shadow: #{$input-focus-shadow};
@@ -70,7 +71,7 @@ input[type="text"], input[type="color"], input[type="date"], input[type="datetim
   line-height: var(--line-height);
   padding: var(--padding, 0);
   outline: none;
-  width: 100%;
+  width: var(--width);
 
   &:focus {
     --border-color: var(--focus-border-color);
