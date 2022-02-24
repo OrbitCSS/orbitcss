@@ -1,8 +1,8 @@
 {
   "name": "orbitcss",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Flexbox based CSS framework",
-  "main": "orbit.scss",
+  "main": "src/index.js",
   "homepage": "https://orbitcss.com",
   "repository": {
     "type": "git",
@@ -11,12 +11,19 @@
   "bugs": {
     "url": "https://github.com/OrbitCSS/orbitcss/issues"
   },
+  "bin": {
+    "orbitcss": "src/cli"
+  },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "build:sass": "sass --style expanded orbit.scss css/orbit.css",
     "build:clean": "cleancss -o css/orbit.min.css css/orbit.css",
     "build:autoprefixer": "postcss --use autoprefixer --map false --output css/orbit.css css/orbit.css",
     "build": "npm-run-all build:sass build:autoprefixer build:clean",
-    "start": "npm run build:sass -- --watch"
+    "start": "npm run build:sass -- --watch",
+    "orbitcss": "node src/index"
   },
   "author": "Rhys Hall <hello@rhyshall.com>",
   "license": "MIT",
@@ -28,12 +35,21 @@
     "sass",
     "orbitcss"
   ],
-  "devDependencies": {
-    "autoprefixer": "^10.3.7",
-    "clean-css-cli": "^5.4.1",
+  "dependencies": {
+    "arg": "^5.0.1",
+    "autoprefixer": "^10.4.2",
+    "chalk": "^4.1.2",
+    "clean-css-cli": "^5.5.2",
+    "fs": "0.0.1-security",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.10",
-    "postcss-cli": "^9.0.1",
-    "sass": "^1.43.2"
+    "postcss-cli": "^9.1.0",
+    "postcss-js": "^4.0.0",
+    "postcss-nested": "^5.0.6",
+    "postcss-selector-parser": "^6.0.9",
+    "postcss-value-parser": "^4.2.0"
+  },
+  "devDependencies": {
+    "cssnano": "^5.0.17",
+    "postcss": "^8.4.6"
   }
 }

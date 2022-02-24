@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+const orbitcss = require('./index.js');
+orbitcss();
