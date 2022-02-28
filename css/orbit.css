@@ -22,6 +22,345 @@
 .align-super {
     vertical-align: super
 }
+.text-inherit {
+    color: inherit
+}
+.text-current {
+    color: currentColor
+}
+.text-transparent {
+    color: transparent
+}
+.text-black {
+    color: #000000
+}
+.text-white {
+    color: #ffffff
+}
+.text-blue-100 {
+    color: #d4e2ff
+}
+.text-blue-200 {
+    color: #a1bfff
+}
+.text-blue-300 {
+    color: #6e9cff
+}
+.text-blue-400 {
+    color: #3b79ff
+}
+.text-blue-500 {
+    color: #0856ff
+}
+.text-blue-600 {
+    color: #0043d4
+}
+.text-blue-700 {
+    color: #0033a1
+}
+.text-blue-800 {
+    color: #00236e
+}
+.text-blue-900 {
+    color: #00133b
+}
+.text-purple-100 {
+    color: #f8f5fe
+}
+.text-purple-200 {
+    color: #d5c9f7
+}
+.text-purple-300 {
+    color: #b39df0
+}
+.text-purple-400 {
+    color: #9071e9
+}
+.text-purple-500 {
+    color: #6e45e2
+}
+.text-purple-600 {
+    color: #4f21d3
+}
+.text-purple-700 {
+    color: #3f1aa7
+}
+.text-purple-800 {
+    color: #2e137b
+}
+.text-purple-900 {
+    color: #1e0c4f
+}
+.text-indigo-100 {
+    color: #e2ccff
+}
+.text-indigo-200 {
+    color: #c499ff
+}
+.text-indigo-300 {
+    color: #a766ff
+}
+.text-indigo-400 {
+    color: #8933ff
+}
+.text-indigo-500 {
+    color: #6c00ff
+}
+.text-indigo-600 {
+    color: #5600cc
+}
+.text-indigo-700 {
+    color: #410099
+}
+.text-indigo-800 {
+    color: #2b0066
+}
+.text-indigo-900 {
+    color: #160033
+}
+.text-magenta-100 {
+    color: #fdbae5
+}
+.text-magenta-200 {
+    color: #fc88d2
+}
+.text-magenta-300 {
+    color: #fb56c0
+}
+.text-magenta-400 {
+    color: #f925ad
+}
+.text-magenta-500 {
+    color: #e50695
+}
+.text-magenta-600 {
+    color: #b30575
+}
+.text-magenta-700 {
+    color: #820354
+}
+.text-magenta-800 {
+    color: #500234
+}
+.text-magenta-900 {
+    color: #1e0114
+}
+.text-red-100 {
+    color: #ffedea
+}
+.text-red-200 {
+    color: #ffc0b7
+}
+.text-red-300 {
+    color: #fe9485
+}
+.text-red-400 {
+    color: #fe6752
+}
+.text-red-500 {
+    color: #fe3b1f
+}
+.text-red-600 {
+    color: #e91e01
+}
+.text-red-700 {
+    color: #b61801
+}
+.text-red-800 {
+    color: #831101
+}
+.text-red-900 {
+    color: #510a00
+}
+.text-orange-100 {
+    color: #ffe6cc
+}
+.text-orange-200 {
+    color: #ffcd99
+}
+.text-orange-300 {
+    color: #ffb566
+}
+.text-orange-400 {
+    color: #ff9c33
+}
+.text-orange-500 {
+    color: #ff8300
+}
+.text-orange-600 {
+    color: #cc6900
+}
+.text-orange-700 {
+    color: #994f00
+}
+.text-orange-800 {
+    color: #663400
+}
+.text-orange-900 {
+    color: #331a00
+}
+.text-yellow-100 {
+    color: #fff5cc
+}
+.text-yellow-200 {
+    color: #ffeb99
+}
+.text-yellow-300 {
+    color: #ffe166
+}
+.text-yellow-400 {
+    color: #ffd733
+}
+.text-yellow-500 {
+    color: #ffcd00
+}
+.text-yellow-600 {
+    color: #cca400
+}
+.text-yellow-700 {
+    color: #997b00
+}
+.text-yellow-800 {
+    color: #665200
+}
+.text-yellow-900 {
+    color: #332900
+}
+.text-green-100 {
+    color: #e7f4e1
+}
+.text-green-200 {
+    color: #c7e7bc
+}
+.text-green-300 {
+    color: #a8da96
+}
+.text-green-400 {
+    color: #89cc71
+}
+.text-green-500 {
+    color: #6abf4b
+}
+.text-green-600 {
+    color: #549f38
+}
+.text-green-700 {
+    color: #40792b
+}
+.text-green-800 {
+    color: #2c531e
+}
+.text-green-900 {
+    color: #182e10
+}
+.text-cyan-100 {
+    color: #abf4ff
+}
+.text-cyan-200 {
+    color: #78edff
+}
+.text-cyan-300 {
+    color: #45e7ff
+}
+.text-cyan-400 {
+    color: #12e0ff
+}
+.text-cyan-500 {
+    color: #00c1de
+}
+.text-cyan-600 {
+    color: #0095ab
+}
+.text-cyan-700 {
+    color: #006878
+}
+.text-cyan-800 {
+    color: #003c45
+}
+.text-cyan-900 {
+    color: #001012
+}
+.text-gray-100 {
+    color: #e6e6e6
+}
+.text-gray-200 {
+    color: #cccccc
+}
+.text-gray-300 {
+    color: #b3b3b3
+}
+.text-gray-400 {
+    color: #999999
+}
+.text-gray-500 {
+    color: #808080
+}
+.text-gray-600 {
+    color: #666666
+}
+.text-gray-700 {
+    color: #4d4d4d
+}
+.text-gray-800 {
+    color: #333333
+}
+.text-gray-900 {
+    color: #1a1a1a
+}
+.text-cool-gray-100 {
+    color: #f3f4f5
+}
+.text-cool-gray-200 {
+    color: #d8dbdd
+}
+.text-cool-gray-300 {
+    color: #bdc2c5
+}
+.text-cool-gray-400 {
+    color: #a2a9ad
+}
+.text-cool-gray-500 {
+    color: #879095
+}
+.text-cool-gray-600 {
+    color: #6d777c
+}
+.text-cool-gray-700 {
+    color: #555d61
+}
+.text-cool-gray-800 {
+    color: #3d4346
+}
+.text-cool-gray-900 {
+    color: #26292a
+}
+.text-warm-gray-100 {
+    color: #f9f8f7
+}
+.text-warm-gray-200 {
+    color: #eeebe9
+}
+.text-warm-gray-300 {
+    color: #e2dedb
+}
+.text-warm-gray-400 {
+    color: #d7d2cc
+}
+.text-warm-gray-500 {
+    color: #ccc5be
+}
+.text-warm-gray-600 {
+    color: #b6aba1
+}
+.text-warm-gray-700 {
+    color: #9f9285
+}
+.text-warm-gray-800 {
+    color: #87786a
+}
+.text-warm-gray-900 {
+    color: #6a5f54
+}
 .text-left {
     text-align: left
 }
@@ -34,9 +373,15 @@
 .text-justify {
     text-align: justify
 }
-.serif: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-.sans: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-.mono: font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.serif {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+.sans {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+}
+.mono {
+    font-family: font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+}
 .font-base {
     font-size: 1rem;
     line-height: 1.6
@@ -69,8 +414,12 @@
     font-size: 2.25rem;
     line-height: 1.6
 }
-.non-italic: normal;
-.italic: italic;
+.non-italic {
+    font-style: normal
+}
+.italic {
+    font-style: italic
+}
 .weight-thin {
     font-weight: 100
 }
@@ -116,23 +465,90 @@
 .line-xl {
     line-height: 2
 }
-.overline: red;
-.underline: underline;
-.line-through: line-through;
-.no-underline: none;
-.decoration-style {
-    solid: solid;
-    double: double;
-    dotted: dotted;
-    dashed: dashed;
-    wavy: wavy
+.overline {
+    -webkit-text-decoration-line: overline;
+            text-decoration-line: overline;
+    color: red
 }
-.text-black {
-    color: #000000
+.underline {
+    -webkit-text-decoration-line: underline;
+            text-decoration-line: underline
 }
-.text-white {
-    color: #ffffff
+.line-through {
+    -webkit-text-decoration-line: line-through;
+            text-decoration-line: line-through
 }
-.text-red {
-    color: 'red'
+.no-underline {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none
+}
+.decoration-style-solid {
+    -webkit-text-decoration-style: solid;
+            text-decoration-style: solid
+}
+.decoration-style-double {
+    -webkit-text-decoration-style: double;
+            text-decoration-style: double
+}
+.decoration-style-dotted {
+    -webkit-text-decoration-style: dotted;
+            text-decoration-style: dotted
+}
+.decoration-style-dashed {
+    -webkit-text-decoration-style: dashed;
+            text-decoration-style: dashed
+}
+.decoration-style-wavy {
+    -webkit-text-decoration-style: wavy;
+            text-decoration-style: wavy
+}
+.list-none {
+    list-style-type: none
+}
+.list-disc {
+    list-style-type: disc
+}
+.list-circle {
+    list-style-type: circle
+}
+.list-decimal {
+    list-style-type: decimal
+}
+.list-square {
+    list-style-type: square
+}
+.list-inside {
+    list-style-position: inside
+}
+.list-outside {
+    list-style-position: outside
+}
+.uppercase {
+    text-transform: uppercase
+}
+.lowercase {
+    text-transform: lowercase
+}
+.capitalize {
+    text-transform: capitalize
+}
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.wrap {
+    white-space: normal
+}
+.nowrap {
+    white-space: nowrap
+}
+.pre {
+    white-space: pre
+}
+.pre-line {
+    white-space: pre-line
+}
+.pre-wrap {
+    white-space: pre-wrap
 }

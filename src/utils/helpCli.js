@@ -29,7 +29,7 @@ const help = ({ message, usage = {}, commands = {}, options = {} }) => {
     }
   }
 
-  if(options) {
+  if(options.length > 0) {
     console.log();
     console.log('Options:');
     console.log();

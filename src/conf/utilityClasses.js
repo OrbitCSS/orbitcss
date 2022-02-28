@@ -1,11 +1,14 @@
 const parseUtilities = require('../parseUtilities');
 
-// const colors = parseUtilities(require('./colors'));
-// const textColors = Object.fromEntries(
-//   Object.entries(colors).map(([key, value]) => ([key, {color: value}]))
-// );
-//
-// console.log(colors);
+const colors = require('./colors');
+const textColors = Object.fromEntries(
+  Object.entries(colors).map(([key, value]) =>
+    typeof value === 'string'
+    ? [key, {color: value}]
+    : [key, Object.fromEntries(Object.entries(value).map(([key, value]) =>
+      [key, {color: value}]))
+    ])
+);
 
 module.exports = {
   align: {
@@ -19,7 +22,7 @@ module.exports = {
     super: {verticalAlign: 'super'}
   },
   text: {
-    // ...textColors,
+    ...textColors,
     left: {textAlign: 'left'},
     right: {textAlign: 'right'},
     center: {textAlign: 'center'},
@@ -77,5 +80,27 @@ module.exports = {
       dashed: {textDecorationStyle: 'dashed'},
       wavy: {textDecorationStyle: 'wavy'}
     }
-  }
+  },
+  list: {
+    none: {listStyleType: 'none'},
+    disc: {listStyleType: 'disc'},
+    circle: {listStyleType: 'circle'},
+    decimal: {listStyleType: 'decimal'},
+    square: {listStyleType: 'square'},
+    inside: {listStylePosition: 'inside'},
+    outside: {listStylePosition: 'outside'}
+  },
+  uppercase: {textTransform: 'uppercase'},
+  lowercase: {textTransform: 'lowercase'},
+  capitalize: {textTransform: 'capitalize'},
+  truncate: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  },
+  wrap: {whiteSpace: 'normal'},
+  nowrap: {whiteSpace: 'nowrap'},
+  pre: {whiteSpace: 'pre'},
+  preLine: {whiteSpace: 'pre-line'},
+  preWrap: {whiteSpace: 'pre-wrap'},
 }

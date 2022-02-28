@@ -38,8 +38,8 @@ let commands = {
   }
 }
 
-let command = process.argv[2] || 'build';
-
+let command = (Object.keys(commands.build.args).includes(process.argv[2])
+  ? 'build' : process.argv[2]) || 'build';
 if(commands[command] === undefined) {
   help({
     message: `Invalid command ${command}`,
@@ -50,7 +50,7 @@ if(commands[command] === undefined) {
         .map((command) => `${command} [options]`),
     options: sharedFlags
   })
-  process.exit(1);
+  process.exit(9);
 }
 
 let { args: flags, run } = commands[command];
@@ -76,7 +76,7 @@ if(args['--help']) {
 }
 
 async function getInputCss(path) {
-  let inputFile = await fs.readFile(path);
+  const inputFile = await fs.readFile(path);
   return postcssJs.objectify(postcss.parse(inputFile));
 }
 
@@ -84,6 +84,15 @@ async function build() {
   let input = args['--input'];
   let output = args['--output'];
   let min = args['--minimize'];
+
+  if(output === undefined) {
+    let { description, usage } = commands[command];
+    help({
+      message: "Missing output command. Expects --output OR -o.",
+      commands: ["orbitcss build --output <file path>", "orbitcss build -o <file path>"]
+    });
+    process.exit(9);
+  }
 
   let plugins = [
     autoprefixer,
