@@ -3,14 +3,20 @@ const postcss = require('postcss');
 const postcssJs = require('postcss-js');
 const cssnano = require('cssnano');
 const postcssNested = require('postcss-nested');
-const fs = require('fs').promises;
+const fs = require('fs');
+const path = require('path');
 const arg = require('arg');
 const parser = require('postcss-selector-parser');
 const help = require('./utils/helpCli');
 const parseUtilities = require('./parseUtilities');
 const createCss = require('./createCss');
-
-
+const {createMediaQueries, getMediaClasses} = require('./createMediaQueries');
+const {createPseudoCSS, getPseudoClasses} = require('./createPseudoCSS');
+const config = require('./getUserConfig');
+const getContent = require('./getContent');
+const formatClassName = require('./utils/formatClassName');
+const fg = require('fast-glob');
+const chokidar = require('chokidar');
 
 let sharedFlags = {
   '--help': {type: Boolean, description: 'Displays usage and additional options for the command'},
@@ -75,15 +81,54 @@ if(args['--help']) {
   process.exit(0);
 }
 
+function filterClasses(content) {
+  return Object.fromEntries(Object.entries(
+    parseUtilities(require('./conf/utilityClasses'))
+  ).filter(
+    ([k]) => [...content].includes(formatClassName(k).replace('\\', ''))
+  ));
+}
+
 async function getInputCss(path) {
-  const inputFile = await fs.readFile(path);
+  const inputFile = await fs.readFileSync(path);
   return postcssJs.objectify(postcss.parse(inputFile));
+}
+
+async function createFinalCss({
+  content,
+  input,
+  cssClasses = {},
+  mediaClasses = {},
+  pseudoClasses = {}
+}) {
+  cssClasses = {...filterClasses(content), ...cssClasses};
+  mediaClasses = getMediaClasses(content, mediaClasses);
+  pseudoClasses = getPseudoClasses(content, pseudoClasses);
+  let inputCss = input ? await getInputCss(input) : {};
+
+  return {
+    css: {
+      ...await getInputCss(path.join(__dirname, './css/normalize.css')),
+      ...createCss({
+        rules: cssClasses
+      }),
+      ...createMediaQueries(mediaClasses),
+      ...createPseudoCSS(pseudoClasses),
+      ...inputCss
+    },
+    classes: {
+      cssClasses,
+      mediaClasses,
+      pseudoClasses
+    }
+  };
 }
 
 async function build() {
   let input = args['--input'];
   let output = args['--output'];
-  let min = args['--minimize'];
+  let min = args['--minimize'] || false;
+  let watch = args['--watch'] || false;
 
   if(output === undefined) {
     let { description, usage } = commands[command];
@@ -102,24 +147,64 @@ async function build() {
     plugins.push(cssnano);
   }
 
-  const utilityClasses = require('./conf/utilityClasses');
+  const content = getContent(fg.sync(config.files));
+  console.time('Creating CSS');
+  const createCss = await createFinalCss({content, input});
+  console.timeEnd('Creating CSS');
+  let css = createCss.css;
 
-  const style = parseUtilities(utilityClasses);
+  function runBuild() {
+    console.time('Compiling CSS');
+    postcss(plugins)
+      .process(css, { from: undefined, to: output, parser: postcssJs })
+      .then((result) => {
+        fs.writeFile(output, result.css, () => true);
+        if(result.map) {
+          fs.writeFile(`${output}.map`, result.map.toString(), () => true)
+        }
+      });
+    console.timeEnd('Compiling CSS')
+  }
 
-  const css = createCss({
-    rules: style
-  });
-
-  const finalCss = input ? {...css, ...await getInputCss(input)} : css;
-
-  postcss(plugins)
-    .process(finalCss, { from: undefined, to: output, parser: postcssJs })
-    .then((result) => {
-      fs.writeFile(output, result.css, () => true);
-      if(result.map) {
-        fs.writeFile(`${output}.map`, result.map.toString(), () => true)
-      }
+  function runWatch() {
+    runBuild();
+    console.log();
+    console.log(`CSS output > ${output}`);
+    let existing = createCss.classes;
+    const watcher = chokidar.watch(fg.sync(config.files), {
+      ignoreInitial: true,
     });
+    console.log();
+    console.log('Watching for changes...');
+
+    async function rebuild(file) {
+      console.log();
+      console.log(`Change on ${file}`);
+      console.log('Rebuilding...');
+      let content = getContent([file]);
+      let finalCss = await createFinalCss({content, input, ...existing});
+      css = finalCss.css;
+      existing = finalCss.classes;
+      runBuild();
+    }
+
+    watcher.on('add', async(file) => {
+      await rebuild(file);
+    })
+    .on('change', async(file) => {
+      console.log(watcher.getWatched())
+      await rebuild(file);
+    });
+  }
+
+  if(watch) {
+    runWatch();
+  }
+  else {
+    runBuild();
+    console.log();
+    console.log(`CSS output > ${output}`);
+  }
 }
 
 module.exports = run;

@@ -1,7 +1,4 @@
 module.exports = {
-  inherit: 'inherit',
-  current: 'currentColor',
-  transparent: 'transparent',
   black: '#000000',
   white: '#ffffff',
   blue: {

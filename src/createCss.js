@@ -1,11 +1,11 @@
-function formatClassName(str) {
-  return str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? "-" : "") + $.toLowerCase());
-}
+const formatClassName = require('./utils/formatClassName');
 
 const create = ({rules}) => {
   style = {};
   for (let [className, rule] of Object.entries(rules)) {
-    style[`.${formatClassName(className)}`] = rule;
+    let formattedClass = formatClassName(className).replace('.', '\\.')
+      .replace('/', '\\/');
+    style[`.${formattedClass}`] = rule;
   }
   return style;
 };

@@ -7,15 +7,18 @@ const parse = (styles) => {
           if(typeof rules[Object.keys(rules)[0]] === 'object') {
             result = {...result, ...parse({[`${namespace}-${key}`]: rules})};
           }
+          else if(key.trim().length < 1) {
+            result[namespace] = rules;
+          }
           else {
             result[`${namespace}-${key}`] = rules;
           }
         }
         else if(typeof rules === 'string') {
-          result[`${namespace}`] = {...result[`${namespace}`], ...{[key]: rules}};
+          result[namespace] = {...result[`${namespace}`], ...{[key]: rules}};
         }
         else {
-          result[`${namespace}`] = rules;
+          result[namespace] = rules;
         }
       }
     }
