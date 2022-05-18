@@ -1,4 +1,6 @@
-module.exports = {
+const config = require('../getUserConfig');
+
+const breakpoints = {
   xs: {
     minWidth: '320px'
   },
@@ -17,4 +19,9 @@ module.exports = {
   '2xl': {
     minWidth: '1500px'
   }
-}
+};
+
+module.exports = {
+  ...breakpoints,
+  ...config.breakpoints || {}
+};

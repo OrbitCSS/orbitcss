@@ -17,24 +17,21 @@ const createMediaAttribute = (breakpoint) => {
   return `@media ${mediaAttribute.join(' and ')}`;
 }
 
-const getMediaClasses = (content, existingClasses = {}) => {
-  let potentialStyles = {};
+const getMediaClasses = (content, existingClassess = {}) => {
+  let potentialStyles = existingClassess;
+  if(Object.keys(potentialStyles).length < 1) {
+    for(let [size, width] of Object.entries(breakpoints)) {
+      potentialStyles[size] = [];
+    }
+  }
   getPotentialStyles(content, breakpoints).forEach(k => {
     let match = k.match(/^(?<breakpoint>[a-zA-Z\d]+)[\:]{1}(?<class>.*)$/)['groups'] || {};
     if(match.breakpoint !== undefined && match.class !== undefined) {
-      potentialStyles[match.breakpoint] = [...potentialStyles[match.breakpoint] || [], ...[match.class]]
+      potentialStyles[match.breakpoint] = [
+        ...new Set([...potentialStyles[match.breakpoint] || [], ...[match.class]])
+      ]
     }
   });
-  if(existingClasses.length) {
-    potentialStyles = Object.fromEntries(
-      Object.entries(potentialStyles)
-        .map(([key, value]) => [key,
-          existingClasses[key]
-            ? [...new Set([...value, ...existingClasses[key]])]
-            : value
-        ])
-    )
-  }
   return potentialStyles;
 }
 

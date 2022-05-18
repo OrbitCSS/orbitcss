@@ -14,7 +14,7 @@ const percentages = {
   '1/3': '33.333333%',
   '2/3': '66.666666%',
   '1/4': '25%',
-  '2/4': '50%',
+  '1/2': '50%',
   '3/4': '75%',
   '1/5': '20%',
   '2/5': '40%',
@@ -29,12 +29,14 @@ module.exports = {
     ...percentages,
     screen: '100vh'
   }),
-  maxH: createSizeProperties('height', {
+  maxH: createSizeProperties('max-height', {
     ...sizing,
+    ...scale.rem,
     screen: '100vh'
   }),
-  minH: createSizeProperties('height', {
+  minH: createSizeProperties('min-height', {
     ...sizing,
+    ...scale.rem,
     screen: '100vh'
   }),
   w: createSizeProperties('width', {
@@ -45,10 +47,13 @@ module.exports = {
   }),
   maxW: createSizeProperties('max-width', {
     ...sizing,
+    ...scale.rem,
     none: 'none',
-    container: '1400px'
+    screen: '100vw',
+    container: '1320px'
   }),
-  minW: createSizeProperties('max-width', {
-    ...sizing
+  minW: createSizeProperties('min-width', {
+    ...sizing,
+    ...scale.rem
   })
 };

@@ -105,16 +105,15 @@ async function createFinalCss({
   mediaClasses = getMediaClasses(content, mediaClasses);
   pseudoClasses = getPseudoClasses(content, pseudoClasses);
   let inputCss = input ? await getInputCss(input) : {};
-
   return {
     css: {
       ...await getInputCss(path.join(__dirname, './css/normalize.css')),
+      ...inputCss,
       ...createCss({
         rules: cssClasses
       }),
       ...createMediaQueries(mediaClasses),
-      ...createPseudoCSS(pseudoClasses),
-      ...inputCss
+      ...createPseudoCSS(pseudoClasses)
     },
     classes: {
       cssClasses,
@@ -192,7 +191,6 @@ async function build() {
       await rebuild(file);
     })
     .on('change', async(file) => {
-      console.log(watcher.getWatched())
       await rebuild(file);
     });
   }

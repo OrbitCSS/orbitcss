@@ -1,8 +1,11 @@
 const pixelsToRem = require('../utils/pixelsToRem');
+const config = require('../getUserConfig');
 
-const px = {
+const px = {...{
   0: '0',
+  0.25: '1px',
   0.5: '2px',
+  0.75: '3px',
   1: '4px',
   1.5: '6px',
   2: '8px',
@@ -28,7 +31,7 @@ const px = {
   40: '160px',
   44: '176px',
   48: '192px'
-};
+}, ...config.scale?.px};
 
 const rem = Object.fromEntries(
   Object.entries(px).map(([key, value]) =>

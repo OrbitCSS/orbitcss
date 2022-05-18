@@ -20,26 +20,18 @@ const getPseudoLabel = (property) => {
   return false;
 }
 
-const getPseudoClasses = (content, existingClasses = {}) => {
-  let potentialStyles = {};
+const getPseudoClasses = (content, existingClassess = {}) => {
+  let potentialStyles = existingClassess;
   getPotentialStyles(content,
     [...pseudo.classes, ...pseudo.elements].map(i => typeof i === 'object' ? Object.keys(i)[0] : i)
   ).forEach(k => {
     let match = k.match(/^(?<pseudo>[a-zA-Z\d\-]+)[\:]{1}(?<class>.*)$/)['groups'] || {};
     if(match.pseudo !== undefined && match.class !== undefined) {
-      potentialStyles[match.pseudo] = [...potentialStyles[match.pseudo] || [], ...[match.class.replace('\\', '')]]
+      potentialStyles[match.pseudo] = [
+        ...new Set([...potentialStyles[match.pseudo] || [], ...[match.class.replace('\\', '')]])
+      ]
     }
   });
-  if(existingClasses.length) {
-    potentialStyles = Object.fromEntries(
-      Object.entries(potentialStyles)
-        .map(([key, value]) => [key,
-          existingClasses[key]
-            ? [...new Set([...value, ...existingClasses[key]])]
-            : value
-        ])
-    )
-  }
   return potentialStyles;
 }
 
@@ -59,6 +51,9 @@ const createPseudoCSS = (pseudoClasses) => {
       rules: Object.fromEntries(
         Object.entries(styles)
           .map(([key, value]) => {
+            if(['before', 'after'].includes(label)) {
+              value = {...value, 'content': '""'};
+            }
             return [`${label}\\:${key}${property}`, value];
           })
       )
