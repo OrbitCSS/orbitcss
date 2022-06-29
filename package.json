@@ -22,8 +22,7 @@
     "build:clean": "cleancss -o css/orbit.min.css css/orbit.css",
     "build:autoprefixer": "postcss --use autoprefixer --map false --output css/orbit.css css/orbit.css",
     "build": "npm-run-all build:sass build:autoprefixer build:clean",
-    "start": "npm run build:sass -- --watch",
-    "orbitcss": "node src/index"
+    "start": "npm run build:sass -- --watch"
   },
   "author": "Rhys Hall <hello@rhyshall.com>",
   "license": "MIT",
